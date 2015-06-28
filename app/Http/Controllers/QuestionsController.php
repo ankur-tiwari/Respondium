@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Question;
+use App\Post;
 use App\Http\Requests;
 use Illuminate\Support\Str;
+use App\Jobs\StoreQuestionCommand;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreQuestionRequest;
@@ -21,7 +22,7 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest()->get();
+        $questions = Post::where('type', '=' ,'question')->latest()->get();
         return view('questions.index', compact('questions'));
     }
 
@@ -42,22 +43,10 @@ class QuestionsController extends Controller
      */
     public function store(StoreQuestionRequest $request)
     {
-        $question = new Question();
-
-        $question->title = $request->title;
-
-        $question->description = $request->description;
-
-        $question->slug = Str::slug($request->title);
-
-        $question->user_id = Auth::user()->id;
-
-        if ($question->save())
-        {
-            return redirect('/')->with('flash_message', 'Your question has been submitted!');
-        } else {
-            return redirect('/ask');
-        }
+        $this->dispatch(
+            new StoreQuestionCommand($request->title, $request->description, Auth::user()->id)
+        );
+        return redirect('/')->with('flash_message', 'Your question has been submitted!');
     }
 
     /**
@@ -68,7 +57,7 @@ class QuestionsController extends Controller
      */
     public function show($slug)
     {
-        $question = Question::where('slug', $slug)->firstOrFail();
+        $question = Post::where('type', 'question')->where('slug', $slug)->firstOrFail();
         return view('questions.show', compact('question'));
     }
 

@@ -13,7 +13,7 @@
 				<div class="col-md-11">
 					<h2>{{ $question->title }}</h2>
 					<hr>
-					<p>{{ $question->description }}</p>
+					<p>{!! $question->description !!}</p>
 				</div>
 			</div>
 		</div>

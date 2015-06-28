@@ -1,5 +1,11 @@
 @extends('layouts.front')
 
+@section('header')
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link href="/editor/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
+	<link href="/editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+@stop
+
 @section('content')
 
 	<div class="row">
@@ -17,7 +23,7 @@
 
 				<div class="form-group">
 					<label>Description</label>
-					<textarea name="description" class="form-control" cols="30" rows="7" required=""></textarea>
+					<textarea id="description_editor" name="description" class="form-control" cols="30" rows="7" required=""></textarea>
 				</div>
 
 				<div class="form-group">
@@ -28,4 +34,14 @@
 		</div>
 		<div class="col-md-3"></div>
 	</div>
+@stop
+
+@section('footer')
+	<script src="/editor/js/froala_editor.min.js"></script>
+	<script>
+		$('#description_editor').editable({
+			inlineMode: false,
+			height: 300
+		});
+	</script>
 @stop

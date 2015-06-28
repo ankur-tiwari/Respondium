@@ -1,2 +1,17 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "resources/assets/sass/vendor/bootstrap";
+body {
+	padding-top: 70px;
+}
 
+.arrow-mark {
+	font-size: 32px;
+	display: block;
+	margin-top: 5px;
+}
+
+.votes {
+	font-size: 32px;
+	display: block;
+	margin-top: 5px;
+	padding-left: 7px;
+}

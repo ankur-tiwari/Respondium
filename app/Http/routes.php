@@ -4,10 +4,7 @@ Route::get('/home', function() {
 	return 'Home';
 });
 
-Route::get('/', [
-	'uses'	=> 'QuestionsController@index',
-	'as'	=> 'QuestionsList'
-]);
+// Users
 
 Route::get('/signup', [
 	'as'	=> 'signup',
@@ -34,6 +31,27 @@ Route::get('/logout', [
 	'uses' 	=> 'AuthController@logout'
 ]);
 
+// Questions
+
+Route::get('/', [
+	'uses'	=> 'QuestionsController@index',
+	'as'	=> 'QuestionsList'
+]);
+
+Route::get('/ask', [
+	'as'	=> 'ask',
+	'uses'	=> 'QuestionsController@create'
+]);
+
+Route::post('/ask', [
+	'as'	=> 'store_question',
+	'uses'	=> 'QuestionsController@store'
+]);
+
+Route::get('/questions/{slug}', [
+	'as'	=> 'show_question',
+	'uses'	=> 'QuestionsController@show'
+]);
 
 // Dashboard
 

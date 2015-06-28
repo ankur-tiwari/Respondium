@@ -4,8 +4,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Document</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/app.css">
+		{{-- <link rel="stylesheet" href="http://bootswatch.com/yeti/bootstrap.min.css"> --}}
+		<link rel="stylesheet" href="/css/app.css">
 	</head>
 	<body>
 

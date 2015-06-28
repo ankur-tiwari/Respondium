@@ -10,10 +10,18 @@ use Illuminate\Support\Str;
 use App\Jobs\StoreQuestionCommand;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Authenticate;
 use App\Http\Requests\StoreQuestionRequest;
 
 class QuestionsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(Authenticate::class, [
+            'except' => ['index', 'show']
+        ]);
+    }
 
     /**
      * Display a listing of the questions.
@@ -22,7 +30,7 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Post::where('type', '=' ,'question')->latest()->get();
+        $questions = Post::where('type', 'question')->latest()->paginate(10);
         return view('questions.index', compact('questions'));
     }
 

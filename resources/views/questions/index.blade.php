@@ -31,6 +31,7 @@
 					</div>
 				</li>
 				@endforeach
+				{!! $questions->render() !!}
 			</ul>
 
 		</div>

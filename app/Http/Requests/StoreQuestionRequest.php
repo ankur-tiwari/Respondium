@@ -24,7 +24,7 @@ class StoreQuestionRequest extends Request
     public function rules()
     {
         return [
-            'title'         => 'required|min:5|unique:questions',
+            'title'         => 'required|min:5|unique:posts',
             'description'   => 'required|min:10'
         ];
     }

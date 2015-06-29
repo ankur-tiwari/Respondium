@@ -29,6 +29,11 @@
 							</p>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-3 col-md-offset-9">
+							Asked by {{ $question->user->name }}. Modified {{ $question->updated_at->diffForHumans() }}.
+						</div>
+					</div>
 				</li>
 				@endforeach
 				{!! $questions->render() !!}

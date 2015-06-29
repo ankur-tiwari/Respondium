@@ -28,17 +28,15 @@ class StoreQuestionCommand extends Job implements SelfHandling
      */
     public function handle()
     {
-        $question = new Post();
+        $question = new Post([
+            'title'         => $this->title,
+            'description'   => $this->description,
+            'slug'          => Str::slug($this->title)
+        ]);
 
         $question->type = 'question';
 
-        $question->title = $this->title;
-
-        $question->description = $this->description;
-
-        $question->slug = Str::slug($this->title);
-
-        $question->user_id = Auth::user()->id;
+        $question->user_id = $this->userId;
 
         $question->save();
     }

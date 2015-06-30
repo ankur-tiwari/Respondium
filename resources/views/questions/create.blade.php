@@ -27,6 +27,14 @@
 				</div>
 
 				<div class="form-group">
+					<select name="tags[]" id="tags_select_box" class="form-control" multiple="">
+						@foreach($tags as $tag)
+							<option value="{{$tag->id}}">{{ $tag->name}}</option>
+						@endforeach
+					</select>
+				</div>
+
+				<div class="form-group">
 					<input type="submit" value="Ask" class="btn btn-primary">
 				</div>
 

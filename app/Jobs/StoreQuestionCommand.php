@@ -14,11 +14,15 @@ class StoreQuestionCommand extends Job implements SelfHandling
     public $description;
     public $userId;
 
-    public function __construct($title, $description, $userId)
+    public function __construct($title, $description, $userId, $tagIds)
     {
         $this->title = $title;
+
         $this->description = $description;
+
         $this->userId = $userId;
+
+        $this->tagIds = $tagIds;
     }
 
     /**
@@ -34,10 +38,16 @@ class StoreQuestionCommand extends Job implements SelfHandling
             'slug'          => Str::slug($this->title)
         ]);
 
+        $question->user_id = $this->userId;
+
         $question->type = 'question';
 
         $question->user_id = $this->userId;
 
         $question->save();
+
+        $question->tags()->attach($this->tagIds);
+
+        return $question;
     }
 }

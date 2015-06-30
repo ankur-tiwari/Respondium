@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Tag;
 use App\Post;
 use App\Http\Requests;
 use Illuminate\Support\Str;
@@ -41,7 +42,9 @@ class QuestionsController extends Controller
      */
     public function create()
     {
-        return view('questions.create');
+        $tags = Tag::orderBy('created_at', 'DESC')->get();
+
+        return view('questions.create', compact('tags'));
     }
 
     /**
@@ -51,9 +54,10 @@ class QuestionsController extends Controller
      */
     public function store(StoreQuestionRequest $request)
     {
-        $this->dispatch(
-            new StoreQuestionCommand($request->title, $request->description, Auth::user()->id)
+        $question = $this->dispatch(
+            new StoreQuestionCommand($request->title, $request->description, Auth::user()->id, $request->tags)
         );
+
         return redirect('/')->with('flash_message', 'Your question has been submitted!');
     }
 

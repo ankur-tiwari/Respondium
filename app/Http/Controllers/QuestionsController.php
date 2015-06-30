@@ -66,7 +66,10 @@ class QuestionsController extends Controller
     public function show($slug)
     {
         $question = Post::where('type', 'question')->where('slug', $slug)->firstOrFail();
-        return view('questions.show', compact('question'));
+
+        $comments = $question->comments()->latest()->get();
+
+        return view('questions.show', compact('question', 'comments'));
     }
 
     /**

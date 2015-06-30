@@ -35,13 +35,3 @@
 		<div class="col-md-3"></div>
 	</div>
 @stop
-
-@section('footer')
-	<script src="/editor/js/froala_editor.min.js"></script>
-	<script>
-		$('#description_editor').editable({
-			inlineMode: false,
-			height: 300
-		});
-	</script>
-@stop

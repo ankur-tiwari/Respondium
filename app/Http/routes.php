@@ -1,10 +1,32 @@
 <?php
 
-Route::get('/home', function() {
-	return 'Home';
-});
+// Questions
+
+Route::get('/', [
+	'uses'	=> 'QuestionsController@index',
+	'as'	=> 'QuestionsList'
+]);
+
+Route::get('/ask', [
+	'as'	=> 'ask',
+	'uses'	=> 'QuestionsController@create'
+]);
+
+Route::post('/ask', [
+	'as'	=> 'store_question',
+	'uses'	=> 'QuestionsController@store'
+]);
+
+Route::get('/questions/{slug}', [
+	'as'	=> 'show_question',
+	'uses'	=> 'QuestionsController@show'
+]);
 
 // Users
+
+Route::get('/raw/user/{userId}', [
+	'uses'	=> 'UsersController@rawShow'
+]);
 
 Route::get('/signup', [
 	'as'	=> 'signup',
@@ -31,26 +53,14 @@ Route::get('/logout', [
 	'uses' 	=> 'AuthController@logout'
 ]);
 
-// Questions
+// Comments
 
-Route::get('/', [
-	'uses'	=> 'QuestionsController@index',
-	'as'	=> 'QuestionsList'
+Route::get('/comments/post/:post', [
+	'uses'	=> 'CommentsController@getCommentsForPost'
 ]);
 
-Route::get('/ask', [
-	'as'	=> 'ask',
-	'uses'	=> 'QuestionsController@create'
-]);
-
-Route::post('/ask', [
-	'as'	=> 'store_question',
-	'uses'	=> 'QuestionsController@store'
-]);
-
-Route::get('/questions/{slug}', [
-	'as'	=> 'show_question',
-	'uses'	=> 'QuestionsController@show'
+Route::post('/comments', [
+	'uses'	=> 'CommentsController@store'
 ]);
 
 // Dashboard

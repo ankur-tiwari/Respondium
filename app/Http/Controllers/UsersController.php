@@ -28,11 +28,25 @@ class UsersController extends Controller
     public function store(StoreUserRequest $request)
     {
     	$user = new User();
+
     	$user->name = $request->name;
-    	$user->email = $request->email;
-    	$user->password = Hash::make($request->password);
-    	$user->save();
-    	Auth::login($user);
-    	return redirect('/');
+
+        $user->email = $request->email;
+
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        Auth::login($user);
+
+        return redirect('/');
     }
+
+    public function rawShow($id)
+    {
+        $user = User::findOrFail($id);
+
+        return $user;
+    }
+
 }

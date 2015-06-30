@@ -3,6 +3,17 @@ body {
 	padding-top: 70px;
 }
 
+.no-padding {
+	padding: 0px;
+}
+
+.padding-15 {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+@import "resources/assets/sass/modules/comments";
+
 .arrow-mark {
 	font-size: 32px;
 	display: block;

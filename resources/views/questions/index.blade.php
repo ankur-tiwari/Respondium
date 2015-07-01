@@ -1,7 +1,6 @@
 @extends('layouts.front')
 
 @section('content')
-	@include('partials.flash')
 
 	<div class="row">
 		<div class="col-md-9">
@@ -21,11 +20,11 @@
 							<h4 class="list-group-item-heading">
 								<a href="/questions/{{ $question->slug }}">{{ $question->title }}</a>
 							</h4>
-							<p>
-								<a class="label label-primary">pronunciation</a>
-								<a class="label label-primary">name</a>
-								<a class="label label-primary">personal</a>
-							</p>
+							<div>
+								@foreach($question->tags as $tag)
+									<a href="/tagged/{{ $tag->name }}" class="label label-primary">{{ $tag->name }}</a>
+								@endforeach
+							</div>
 						</div>
 					</div>
 					<div class="row">
@@ -41,4 +40,5 @@
 		</div>
 		<div class="col-md-3"></div>
 	</div>
+
 @stop

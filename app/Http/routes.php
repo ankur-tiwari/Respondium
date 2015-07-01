@@ -22,6 +22,12 @@ Route::get('/questions/{slug}', [
 	'uses'	=> 'QuestionsController@show'
 ]);
 
+// Tags
+
+Route::get('/tagged/{tag}', [
+	'uses' => 'TagsController@show'
+]);
+
 // Users
 
 Route::get('/raw/user/{userId}', [

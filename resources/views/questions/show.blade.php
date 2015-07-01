@@ -11,9 +11,9 @@
 					<hr>
 					<div>{!! $question->description !!}</div>
 					<div>
-						<a class="label label-primary">pronunciation</a>
-						<a class="label label-primary">name</a>
-						<a class="label label-primary">personal</a>
+						@foreach($question->tags as $tag)
+							<a href="/tagged/{{ $tag->name }}" class="label label-primary">{{ $tag->name }}</a>
+						@endforeach
 					</div>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 			</div>
 
 			<div class="row" id="comments">
-				@foreach($comments as $comment)
+				@foreach($question->comments as $comment)
 				<div class="comment-item">
 					<div class="body">
 						{{ $comment->body }} - {{ $comment->user->name }} <time class="timeago" datetime="{{ $comment->created_at }}"></time>

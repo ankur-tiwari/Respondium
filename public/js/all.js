@@ -256,25 +256,14 @@
 			url: '/comments',
 			data: data,
 			success: function(data) {
-				getUser(data.user_id).success(function(user) {
-					data.user = user;
-					var output = Mustache.render(template, data);
-					$comments.prepend(output);
-					$('.created-at-timeago').timeago();
-				});
+				var output = Mustache.render(template, data);
+				$comments.prepend(output);
+				$('.created-at-timeago').timeago();
 			}
 		});
-
 	});
 
-	function getUser(id) {
-
-		return $.ajax({
-			url: '/raw/user/' + id,
-			method: 'get'
-		});
-
-	}
+	$('select#tags_select_box').select2();
 
 })();
 //# sourceMappingURL=all.js.map

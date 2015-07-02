@@ -3,7 +3,8 @@
 	// HTML editor
 	$('#description_editor').editable({
 		inlineMode: false,
-		height: 300
+		height: 300,
+		allowedTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code'],
 	});
 
 	$('time.timeago').timeago();

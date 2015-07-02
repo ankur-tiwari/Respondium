@@ -8,6 +8,7 @@ use App\Post;
 use App\Http\Requests;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Jobs\StoreViewCommand;
 use App\Jobs\StoreQuestionCommand;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -48,11 +49,15 @@ class QuestionsController extends Controller
         return redirect('/')->with('flash_message', 'Your question has been submitted!');
     }
 
-    public function show($slug)
+    public function show($slug, QuestionRepository $questionRepo)
     {
-        $question = Post::where('type', 'question')->where('slug', $slug)->with('comments')->firstOrFail();
+        $question = $questionRepo->getBySlug($slug);
 
-        return view('questions.show', compact('question', 'comments'));
+        $this->dispatch(
+            new StoreViewCommand($_SERVER['REMOTE_ADDR'], $question->id)
+        );
+
+        return view('questions.show', compact('question'));
     }
 
     public function edit($id)

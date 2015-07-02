@@ -15,11 +15,26 @@
 							<a href="/tagged/{{ $tag->name }}" class="label label-primary">{{ $tag->name }}</a>
 						@endforeach
 					</div>
+					<hr>
 				</div>
 			</div>
 
 			<div class="row">
-				<div class="col-md-3 col-md-offset-9 padding-15">
+				<div class="col-md-6">
+					<form id="upvote_form" class="inline">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="post_id" value="{{ $question->id }}">
+						<input type="hidden" name="type" value="upvote">
+						<button class="btn btn-xs btn-success">Upvote</button>
+					</form>
+					<form id="downvote_form" class="inline">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="post_id" value="{{ $question->id }}">
+						<input type="hidden" name="type" value="downvote">
+						<button class="btn btn-xs btn-default">Downvote</button>
+					</form>
+				</div>
+				<div class="col-md-6">
 					<div class="well">
 						Asked <time class="timeago" datetime="{{ $question->created_at->format('c') }}"></time> <br>
 						{{ $question->user->name }}

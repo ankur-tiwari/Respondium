@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Vote;
+use App\View;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -24,6 +26,20 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany('App\Tag');
+    }
+
+    public function getViews()
+    {
+        return View::where('post_id', $this->id)->get()->count();
+    }
+
+    public function getVotes()
+    {
+        $upvotes = Vote::where('post_id', $this->id)->where('type', 'upvote')->get()->count();
+
+        $downvotes = Vote::where('post_id', $this->id)->where('type', 'downvote')->get()->count();
+
+        return $upvotes - $downvotes;
     }
 
 }

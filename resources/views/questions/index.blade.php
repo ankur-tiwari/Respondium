@@ -11,9 +11,9 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="row">
-								<div class="col-md-4 text-center">{{ $question->votes }} <br>votes</div>
+								<div class="col-md-4 text-center">{{ $question->getVotes() }} <br>votes</div>
 								<div class="col-md-4 text-center">{{ $question->answers }} <br>answers</div>
-								<div class="col-md-4 text-center">{{ $question->views }} <br>views</div>
+								<div class="col-md-4 text-center">{{ $question->getViews() }} <br>views</div>
 							</div>
 						</div>
 						<div class="col-md-9">

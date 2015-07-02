@@ -5645,6 +5645,9 @@ body {
   padding-left: 15px;
   padding-right: 15px; }
 
+.inline {
+  display: inline; }
+
 #comments {
   padding-left: 20px;
   font-size: .9em; }

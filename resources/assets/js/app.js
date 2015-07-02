@@ -37,4 +37,33 @@
 
 	$('select#tags_select_box').select2();
 
+	$('#upvote_form').on('submit', function(e) {
+		e.preventDefault();
+
+		$this = $(this);
+
+		var data = $this.serialize();
+
+		$.ajax({
+			url: '/votes',
+			method: 'post',
+			data: data
+		});
+	});
+
+	$('#downvote_form').on('submit', function(e) {
+		e.preventDefault();
+
+		$this = $(this);
+
+		var data = $this.serialize();
+
+		$.ajax({
+			url: '/votes',
+			method: 'post',
+			data: data
+		});
+	});
+
+
 })();

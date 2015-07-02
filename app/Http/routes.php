@@ -59,6 +59,12 @@ Route::get('/logout', [
 	'uses' 	=> 'AuthController@logout'
 ]);
 
+// Votes
+
+Route::post('/votes', [
+	'uses'	=> 'VotesController@store'
+]);
+
 // Comments
 
 Route::get('/comments/post/:post', [

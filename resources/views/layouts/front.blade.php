@@ -4,9 +4,12 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Document</title>
-		@yield('header')
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+		<link href="/editor/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
+		<link href="/editor/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="/css/app.css">
+		@yield('header')
 	</head>
 	<body>
 

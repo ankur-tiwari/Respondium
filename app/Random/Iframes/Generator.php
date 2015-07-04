@@ -5,7 +5,7 @@ namespace App\Random\Iframes;
 class Generator
 {
 
-	protected $supportedWebsites = ['Youtube', 'Vimeo', 'Dailymotion'];
+	protected $supportedWebsites = ['youtube', 'vimeo', 'dailymotion'];
 
 	protected $supportedWebsitesUrls = ['www.youtube.com', 'www.vimeo.com', 'www.dailymotion.com'];
 

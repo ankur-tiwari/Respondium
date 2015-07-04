@@ -232,7 +232,13 @@
 	$('#description_editor').editable({
 		inlineMode: false,
 		height: 300,
-		allowedTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code'],
+		allowedTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code']
+	});
+
+	$('#answer_description_textarea').editable({
+		inlineMode: false,
+		height: 300,
+		allowedTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code']
 	});
 
 	$('time.timeago').timeago();
@@ -294,6 +300,19 @@
 		});
 	});
 
+	$('#answer_form').on('submit', function(e) {
+		e.preventDefault();
+
+		$this = $(this);
+
+		var data = $this.serialize();
+
+		$.ajax({
+			url: '/answers',
+			method: 'post',
+			data: data
+		});
+	});
 
 })();
 //# sourceMappingURL=all.js.map

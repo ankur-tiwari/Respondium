@@ -3,32 +3,30 @@
 Route::get('/test', function() {
 	$generator = new \App\Random\Iframes\Generator();
 
-	$website = 'Dailymotion';
-
-	$url = 'http://www.dailymotion.com/video/x16thp0_angry-nerd-the-implausibility-of-thor-s-physics-defying-hammer-mjolnir_tech';
-
 	return view('test', compact('generator'));
 });
+
+// Answers
+
+Route::post('/answers', [
+	'uses'	=> 'AnswersController@store'
+]);
 
 // Questions
 
 Route::get('/', [
-	'uses'	=> 'QuestionsController@index',
-	'as'	=> 'QuestionsList'
+	'uses'	=> 'QuestionsController@index'
 ]);
 
 Route::get('/ask', [
-	'as'	=> 'ask',
 	'uses'	=> 'QuestionsController@create'
 ]);
 
 Route::post('/ask', [
-	'as'	=> 'store_question',
 	'uses'	=> 'QuestionsController@store'
 ]);
 
 Route::get('/questions/{slug}', [
-	'as'	=> 'show_question',
 	'uses'	=> 'QuestionsController@show'
 ]);
 
@@ -45,27 +43,22 @@ Route::get('/raw/user/{userId}', [
 ]);
 
 Route::get('/signup', [
-	'as'	=> 'signup',
 	'uses' 	=> 'UsersController@create'
 ]);
 
 Route::post('/signup', [
-	'as'	=> 'signup_post',
 	'uses'	=> 'UsersController@store'
 ]);
 
 Route::get('/signin', [
-	'as' 	=> 'login',
 	'uses'	=> 'AuthController@create'
 ]);
 
 Route::post('/signin', [
-	'as' 	=> 'post_signin',
 	'uses'	=> 'AuthController@store'
 ]);
 
 Route::get('/logout', [
-	'as' 	=> 'logout',
 	'uses' 	=> 'AuthController@logout'
 ]);
 
@@ -88,6 +81,5 @@ Route::post('/comments', [
 // Dashboard
 
 Route::get('/dashboard', [
-	'as'	=> 'dashboard_home',
 	'uses'	=> 'DashboardController@home'
 ]);

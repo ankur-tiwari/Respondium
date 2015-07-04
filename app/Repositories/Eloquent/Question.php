@@ -13,7 +13,7 @@ class Question implements QuestionInterface
 {
 	public function getMainFeed()
 	{
-		return Post::where('type', 'question')->with('comments')->latest()->paginate(10);
+		return Post::where('type', 'question')->with('answers')->with('comments')->latest()->paginate(10);
 	}
 
 	public function getForTag($tagName)

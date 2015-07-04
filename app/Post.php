@@ -42,4 +42,8 @@ class Post extends Model
         return $upvotes - $downvotes;
     }
 
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
 }

@@ -1,5 +1,15 @@
 <?php
 
+Route::get('/test', function() {
+	$generator = new \App\Random\Iframes\Generator();
+
+	$website = 'Dailymotion';
+
+	$url = 'http://www.dailymotion.com/video/x16thp0_angry-nerd-the-implausibility-of-thor-s-physics-defying-hammer-mjolnir_tech';
+
+	return view('test', compact('generator'));
+});
+
 // Questions
 
 Route::get('/', [

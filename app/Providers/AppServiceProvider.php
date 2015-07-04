@@ -14,7 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $generator = new \App\Random\Iframes\Generator();
+
+        view()->composer('questions.partials.answerslist', function ($view) use($generator) {
+            $view->with('generator', $generator);
+        });
     }
 
     /**

@@ -29,15 +29,15 @@ class Generator
 
 		switch ($this->website) {
 
-			case 'Youtube':
+			case 'youtube':
 				$this->generateYoutubeIframe($this->videoUrl);
 			break;
 
-			case 'Vimeo':
+			case 'vimeo':
 				$this->generateVimeoIframe($this->videoUrl);
 			break;
 
-			case 'Dailymotion':
+			case 'dailymotion':
 				$this->generateDailymotionIframe($this->videoUrl);
 			break;
 

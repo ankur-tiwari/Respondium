@@ -19,6 +19,7 @@
 			</div>
 			@include('questions.forms.comment')
 			@include('questions.partials.commentslist')
+			@include('questions.partials.answerslist')
 			@include('questions.forms.answer')
 		</div>
 		<div class="col-md-3"></div>

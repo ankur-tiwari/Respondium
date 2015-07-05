@@ -82,7 +82,10 @@
 		$.ajax({
 			url: '/answers',
 			method: 'post',
-			data: data
+			data: data,
+			success: function(answer) {
+				window.location.reload();
+			}
 		});
 	});
 

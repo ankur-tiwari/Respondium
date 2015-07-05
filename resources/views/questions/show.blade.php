@@ -25,7 +25,7 @@
 		<div class="col-md-3"></div>
 	</div>
 
-	<template id="comment_template" type="text/html">
+	<template id="comment_template">
 		<div class="comment-item">
 			<div class="body">@{{body}} - @{{user.name}} <time class="created-at-timeago" datetime="@{{created_at}}"></time></div>
 		</div>

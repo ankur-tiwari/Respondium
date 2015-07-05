@@ -17,7 +17,9 @@ class StoreAnswerCommand extends Job implements SelfHandling
 
     public $postId;
 
-    public function __construct($website, $videoUrl, $description, $postId)
+    public $userId;
+
+    public function __construct($website, $videoUrl, $description, $postId, $userId)
     {
         $this->website = $website;
 
@@ -26,6 +28,8 @@ class StoreAnswerCommand extends Job implements SelfHandling
         $this->description = $description;
 
         $this->postId = $postId;
+
+        $this->userId = $userId;
     }
 
     public function handle()
@@ -39,6 +43,8 @@ class StoreAnswerCommand extends Job implements SelfHandling
         $answer->video_url = $this->videoUrl;
 
         $answer->post_id = $this->postId;
+
+        $answer->user_id = $this->userId;
 
         $answer->save();
 

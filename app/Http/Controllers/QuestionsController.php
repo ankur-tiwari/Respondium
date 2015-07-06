@@ -46,13 +46,13 @@ class QuestionsController extends Controller
             new StoreQuestionCommand($request->title, $request->description, Auth::user()->id, $request->tags)
         );
 
-        return redirect('/')->with('flash_message', 'Your question has been submitted!');
+        return redirect('/questions/' . $question->slug);
     }
 
     public function show($slug, QuestionRepository $questionRepo)
     {
         $question = $questionRepo->getBySlug($slug);
-
+        
         $this->dispatch(
             new StoreViewCommand($_SERVER['REMOTE_ADDR'], $question->id)
         );

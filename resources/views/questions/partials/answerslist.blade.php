@@ -19,6 +19,8 @@
 					</div>
 				</div>
 			</div>
+			@include('questions.forms.answercomment')
+			@include('questions.partials.answerscommentslist')
 		@endforeach
 	</div>
 

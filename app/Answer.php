@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-	public function questions()
+	public function post()
 	{
 		return $this->belongsTo('App\Post');
 	}
@@ -14,5 +14,10 @@ class Answer extends Model
 	public function user()
 	{
 		return $this->belongsTo('App\User');
+	}
+
+	public function comments()
+	{
+		return $this->hasMany('App\Comment', 'post_id');
 	}
 }

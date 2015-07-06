@@ -29,9 +29,17 @@ class Question implements QuestionInterface
 	{
 		return Post::where('type', 'question')->where('slug', $slug)->with([
 			'answers' => function($query) {
-				$query->with('user')->orderBy('created_at', 'DESC');
+				$query->with('user')->with([
+					'comments' => function($query) {
+						$query->where('is_answer', 1);
+					}
+				])->orderBy('created_at', 'DESC');
 			}
-		])->with('comments')->firstOrFail();
+		])->with([
+			'comments' => function($query) {
+				$query->where('is_answer', 0)->get();	
+			}
+		])->firstOrFail();
 	}
 
 	public function getViewsFor($postId)

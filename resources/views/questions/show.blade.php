@@ -26,7 +26,7 @@
 	</div>
 
 	<template id="comment_template">
-		<div class="comment-item">
+		<div class="col-md-12 comment-item">
 			<div class="body">@{{body}} - @{{user.name}} <time class="created-at-timeago" datetime="@{{created_at}}"></time></div>
 		</div>
 	</template>

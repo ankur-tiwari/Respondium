@@ -2,22 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Middleware\Authenticate;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Repositories\Eloquent\User as UserRepository;
 
 class UsersController extends Controller
 {
 	public function __construct()
 	{
 		$this->middleware(RedirectIfAuthenticated::class, [
-			'only' => 'create'
+			'only' => 'create',
 		]);
+
+        $this->middleware(Authenticate::class, [
+            'only' => 'profile'
+        ]);
 	}
 
     public function create()
@@ -47,6 +53,13 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
 
         return $user;
+    }
+
+    public function profile(UserRepository $repo)
+    {
+        $user = $repo->getForProfile(Auth::user()->id);
+
+        return view('users.profile', compact('user'));
     }
 
 }

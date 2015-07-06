@@ -50,6 +50,10 @@ Route::post('/signup', [
 	'uses'	=> 'UsersController@store'
 ]);
 
+Route::get('/profile', [
+	'uses'	=> 'UsersController@profile'
+]);
+
 Route::get('/signin', [
 	'uses'	=> 'AuthController@create'
 ]);
@@ -76,6 +80,10 @@ Route::get('/comments/post/:post', [
 
 Route::post('/comments', [
 	'uses'	=> 'CommentsController@store'
+]);
+
+Route::post('/comments/answer', [
+	'uses'	=> 'CommentsController@storeAnswersComment'
 ]);
 
 // Dashboard

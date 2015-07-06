@@ -4,6 +4,6 @@ elixir(function(mix) {
 
     mix.sass('app.scss');
 
-    mix.scripts(['vendor/mustache.min.js', 'vendor/jquery.timeago.js', 'app.js']);
+    mix.scripts(['vendor/mustache.min.js', 'vendor/jquery.timeago.js', 'functions.js', 'app.js']);
 
 });

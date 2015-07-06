@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Jobs\StoreCommentCommand;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Authenticate;
+use App\Jobs\StoreAnswersCommentCommand;
 use App\Http\Requests\StoreCommentRequest;
 
 class CommentsController extends Controller
@@ -21,9 +22,18 @@ class CommentsController extends Controller
     public function store(StoreCommentRequest $request)
     {
         $comment = $this->dispatch(
-            new StoreCommentCommand($request->body, Auth::user()->id, $request->post_id)
+            new StoreCommentCommand($request->body, Auth::user()->id, $request->post_id, false)
         );
 
+        return Comment::with('user')->where('id', $comment->id)->first();
+    }
+    
+    public function storeAnswersComment(StoreCommentRequest $request)
+    {
+        $comment = $this->dispatch(
+            new StoreCommentCommand($request->body, Auth::user()->id, $request->post_id, true)
+        );
+        
         return Comment::with('user')->where('id', $comment->id)->first();
     }
 

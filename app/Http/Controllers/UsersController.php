@@ -6,12 +6,12 @@ use Auth;
 use App\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Jobs\StoreUserCommand;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Middleware\Authenticate;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Repositories\Eloquent\User as UserRepository;
+use App\Repositories\UserInterface as UserRepository;
 
 class UsersController extends Controller
 {
@@ -33,17 +33,9 @@ class UsersController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-    	$user = new User();
-
-    	$user->name = $request->name;
-
-        $user->email = $request->email;
-
-        $user->password = Hash::make($request->password);
-
-        $user->save();
-
-        Auth::login($user);
+        $this->dispatch(
+            new StoreUserCommand($request->name, $request->email, $request->password)
+        );
 
         return redirect('/');
     }

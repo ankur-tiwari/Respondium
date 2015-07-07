@@ -27,17 +27,9 @@ class Question implements QuestionInterface
 
 	public function getBySlug($slug)
 	{
-		return Post::where('type', 'question')->where('slug', $slug)->with([
+		return Post::where('slug', $slug)->with('comments')->with([
 			'answers' => function($query) {
-				$query->with('user')->with([
-					'comments' => function($query) {
-						$query->where('is_answer', 1);
-					}
-				])->orderBy('created_at', 'DESC');
-			}
-		])->with([
-			'comments' => function($query) {
-				$query->where('is_answer', 0)->get();	
+			 	$query->with('comments');
 			}
 		])->firstOrFail();
 	}

@@ -22,18 +22,18 @@ class CommentsController extends Controller
     public function store(StoreCommentRequest $request)
     {
         $comment = $this->dispatch(
-            new StoreCommentCommand($request->body, Auth::user()->id, $request->post_id, false)
+            new StoreCommentCommand($request->body, Auth::user()->id, $request->post_id, 'App\Post')
         );
 
         return Comment::with('user')->where('id', $comment->id)->first();
     }
-    
+
     public function storeAnswersComment(StoreCommentRequest $request)
     {
         $comment = $this->dispatch(
-            new StoreCommentCommand($request->body, Auth::user()->id, $request->post_id, true)
+            new StoreCommentCommand($request->body, Auth::user()->id, $request->post_id, 'App\Answer')
         );
-        
+
         return Comment::with('user')->where('id', $comment->id)->first();
     }
 

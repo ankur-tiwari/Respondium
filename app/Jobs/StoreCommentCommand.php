@@ -13,15 +13,19 @@ class StoreCommentCommand extends Job implements SelfHandling
 
     public $userId;
 
-    public function __construct($body, $userId, $postId, $isAnswer)
+    public $commentableId;
+
+    public $commentableType;
+
+    public function __construct($body, $userId, $commentableId, $commentableType)
     {
         $this->body = $body;
-        
+
         $this->userId = $userId;
-        
-        $this->postId = $postId;
-        
-        $this->isAnswer = $isAnswer;
+
+        $this->commentableId = $commentableId;
+
+        $this->commentableType = $commentableType;
     }
 
     /**
@@ -37,9 +41,9 @@ class StoreCommentCommand extends Job implements SelfHandling
 
         $comment->user_id = $this->userId;
 
-        $comment->post_id = $this->postId;
+        $comment->commentable_id = $this->commentableId;
 
-        $comment->is_answer = $this->isAnswer;
+        $comment->commentable_type = $this->commentableType;
 
         $comment->save();
 

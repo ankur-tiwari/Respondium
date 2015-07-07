@@ -52,26 +52,11 @@ class QuestionsController extends Controller
     public function show($slug, QuestionRepository $questionRepo)
     {
         $question = $questionRepo->getBySlug($slug);
-        
+
         $this->dispatch(
             new StoreViewCommand($_SERVER['REMOTE_ADDR'], $question->id)
         );
 
         return view('questions.show', compact('question'));
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update($id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
     }
 }

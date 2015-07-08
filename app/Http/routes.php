@@ -1,11 +1,5 @@
 <?php
 
-Route::get('/test', function() {
-	$generator = new \App\Random\Iframes\Generator();
-
-	return view('test', compact('generator'));
-});
-
 // Answers
 
 Route::post('/answers', [

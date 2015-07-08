@@ -1,19 +1,19 @@
 (function() {
+	makeDescritionEditableForQuestions();
 
-	makeDescritionEditableForQuestions();	
-
-	makeDescriptionEditableForAnswers();	
+	makeDescriptionEditableForAnswers();
 
 	implementTimeAgoLibrary();
 
 	makeCommentFormFunctional();
-		
+
 	implementSelect2Library();
-		
+
 	makeVotesFormFunctional();
-	
+
 	makeAnswersFormFunctional();
-	
+
 	makeAnswersCommentsFormFunctional();
 
+	makeSearchFunctionalOnTheHomePage();
 })();

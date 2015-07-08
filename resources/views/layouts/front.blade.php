@@ -23,6 +23,7 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="/editor/js/froala_editor.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+		<script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
 		<script src="/js/all.js"></script>
 		@yield('footer')
 	</body>

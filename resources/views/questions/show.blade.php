@@ -6,10 +6,12 @@
 		<div class="col-md-9">
 			@include('questions.partials.single')
 			<div class="row">
+				@if (Auth::check())
 				<div class="col-md-6">
 					@include('questions.forms.upvote')
 					@include('questions.forms.downvote')
 				</div>
+				@endif
 				<div class="col-md-6">
 					<div class="well">
 						Asked <time class="timeago" datetime="{{ $question->created_at->format('c') }}"></time> <br>

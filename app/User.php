@@ -43,4 +43,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->hasMany('App\Answer');
     }
+
+    public static function firstEmailOrCreate($attributes)
+    {
+        $found = self::where('email', $attributes->email)->first();
+
+        if ($found) {
+            return $found;
+        } else {
+            return self::create([
+                'name' => $attributes->name,
+                'email'=> $attributes->email
+            ]);
+        }
+    }
 }

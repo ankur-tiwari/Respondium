@@ -60,6 +60,28 @@ Route::get('/logout', [
 	'uses' 	=> 'AuthController@logout'
 ]);
 
+// Social Login
+
+Route::post('/social-login', [
+	'uses' => 'AuthController@social'
+]);
+
+Route::get('/signin/process/google', [
+	'uses' => 'AuthController@google'
+]);
+
+Route::get('/signin/process/facebook', [
+	'uses' => 'AuthController@facebook'
+]);
+
+Route::get('/signin/process/github', [
+	'uses' => 'AuthController@github'
+]);
+
+Route::get('/signin/process/linkedin', [
+	'uses' => 'AuthController@linkedin'
+]);
+
 // Votes
 
 Route::post('/votes', [

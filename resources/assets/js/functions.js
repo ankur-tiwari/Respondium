@@ -176,3 +176,17 @@ function makeSearchFunctionalOnTheHomePage()
 
 	});
 }
+
+function deleteRequestWithLinks()
+{
+	$('a[data-method=delete]').on('click', function(event) {
+		event.preventDefault();
+
+		$.ajax({
+			url: $(this).attr('href'),
+			method: 'DELETE'
+		});
+
+		window.location.reload();
+	});
+}

@@ -22,7 +22,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3 col-md-offset-9">
-				Asked by {{ $question->user->name }}. Modified <time class="timeago" datetime="{{ $question->updated_at->format('c') }}"></time>.
+				Asked by {{ $question->user }}. Modified <time class="timeago" datetime="{{ $question->updated_at->format('c') }}"></time>.
 			</div>
 		</div>
 	</li>

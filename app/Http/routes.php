@@ -32,10 +32,6 @@ Route::get('/tagged/{tag}', [
 
 // Users
 
-Route::get('/raw/user/{userId}', [
-	'uses'	=> 'UsersController@rawShow'
-]);
-
 Route::get('/signup', [
 	'uses' 	=> 'UsersController@create'
 ]);
@@ -106,4 +102,20 @@ Route::post('/comments/answer', [
 
 Route::get('/dashboard', [
 	'uses'	=> 'DashboardController@home'
+]);
+
+Route::get('/dashboard/users', [
+	'uses' => 'UsersController@index'
+]);
+
+Route::get('/dashboard/users/{id}/edit', [
+	'uses' => 'UsersController@edit'
+]);
+
+Route::put('/dashboard/users/{id}', [
+	'uses' => 'UsersController@update'
+]);
+
+Route::delete('/dashboard/users/{id}', [
+	'uses' => 'UsersController@destroy'
 ]);

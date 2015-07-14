@@ -2,14 +2,12 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>Html version | Angulr</title>
-		<meta name="description" content="Angularjs, Html5, Music, Landing, 4 in 1 ui kits package" />
-		<meta name="keywords" content="AngularJS, angular, bootstrap, admin, dashboard, panel, app, charts, components,flat, responsive, layout, kit, ui, route, web, app, widgets" />
+		<title>Dashboard</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<link rel="stylesheet" href="dashboard_theme/libs/assets/animate.css/animate.css" type="text/css" />
-		<link rel="stylesheet" href="dashboard_theme/libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
-		<link rel="stylesheet" href="dashboard_theme/libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
-		<link rel="stylesheet" href="dashboard_theme/libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+		<link rel="stylesheet" href="/dashboard_theme/libs/assets/animate.css/animate.css" type="text/css" />
+		<link rel="stylesheet" href="/dashboard_theme/libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+		<link rel="stylesheet" href="/dashboard_theme/libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+		<link rel="stylesheet" href="/dashboard_theme/libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
 		<link rel="stylesheet" href="/dashboard_theme/css/font.css" type="text/css" />
 		<link rel="stylesheet" href="/dashboard_theme/css/app.css" type="text/css" />
 	</head>
@@ -64,7 +62,7 @@
 									<div class="list-group">
 										<a href class="list-group-item">
 										<span class="pull-left m-r thumb-sm">
-										<img src="img/a0.jpg" alt="..." class="img-circle">
+										<img src="/img/a0.jpg" alt="..." class="img-circle">
 										</span>
 										<span class="clear block m-b-none">
 										Use awesome animate.css<br>
@@ -138,43 +136,7 @@
 							<div class="line dk hidden-folded"></div>
 						</div>
 						<!-- / user -->
-						<!-- nav -->
-						<nav ui-nav class="navi clearfix">
-							<ul class="nav">
-								<li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-									<span>Navigation</span>
-								</li>
-								<li>
-									<a href class="auto">
-									<span class="pull-right text-muted">
-									<i class="fa fa-fw fa-angle-right text"></i>
-									<i class="fa fa-fw fa-angle-down text-active"></i>
-									</span>
-									<i class="glyphicon glyphicon-stats icon text-primary-dker"></i>
-									<span class="font-bold">Dashboard</span>
-									</a>
-									<ul class="nav nav-sub dk">
-										<li class="nav-sub-header">
-											<a href>
-											<span>Dashboard</span>
-											</a>
-										</li>
-										<li>
-											<a href="index.html">
-											<span>Dashboard v1</span>
-											</a>
-										</li>
-										<li>
-											<a href="dashboard.html">
-											<b class="label bg-info pull-right">N</b>
-											<span>Dashboard v2</span>
-											</a>
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</nav>
-						<!-- nav -->
+						@include('layouts.partials.dashboard.nav')
 					</div>
 				</div>
 			</aside>
@@ -189,14 +151,15 @@
 							<div class="bg-light lter b-b wrapper-md">
 								<div class="row">
 									<div class="col-sm-6 col-xs-12">
-										<h1 class="m-n font-thin h3 text-black">Dashboard</h1>
-										<small class="text-muted">Welcome to angulr application</small>
+										<h1 class="m-n font-thin h3 text-black">@yield('page_title')</h1>
+										<small class="text-muted">@yield('page_description')</small>
 									</div>
 								</div>
 							</div>
 							<!-- / main header -->
 							<div class="wrapper-md">
-								<h1>Hello World!</h1>
+								@include('layouts.partials.front.flash')
+								@yield('content')
 							</div>
 						</div>
 						<!-- / main -->
@@ -213,9 +176,12 @@
 			</footer>
 			<!-- / footer -->
 		</div>
-		<script src="dashboard_theme/libs/jquery/jquery/dist/jquery.js"></script>
-		<script src="dashboard_theme/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-		<script src="dashboard_theme/js/ui-nav.js"></script>
-		<script src="dashboard_theme/js/ui-toggle.js"></script>
+		<script src="/dashboard_theme/libs/jquery/jquery/dist/jquery.js"></script>
+		<script src="/dashboard_theme/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="/dashboard_theme/js/ui-nav.js"></script>
+		<script src="/dashboard_theme/js/ui-toggle.js"></script>
+		<script src="/editor/js/froala_editor.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+		<script src="/js/all.js"></script>
 	</body>
 </html>

@@ -13,9 +13,9 @@
 	</head>
 	<body>
 
-		@include('partials.nav')
+		@include('layouts.partials.front.nav')
 		<div class="container">
-			@include('partials.flash')
+			@include('layouts.partials.front.flash')
 			@yield('content')
 		</div>
 

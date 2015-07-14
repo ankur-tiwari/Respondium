@@ -8,7 +8,6 @@
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 				@include('partials.errors')
-				@include('partials.flash')
 				<div class="form-group">
 					<input type="text" class="form-control" name="name" placeholder="Full Name" required="" autofocus="" />
 				</div>

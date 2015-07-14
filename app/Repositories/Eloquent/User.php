@@ -20,6 +20,29 @@ class User implements UserInterface
 		return $user;
 	}
 
+	public function getAllForDashboard()
+	{
+		return UserModel::latest()->paginate(10);
+	}
+
+	public function getOne($id)
+	{
+		return UserModel::findOrFail($id);
+	}
+
+	public function updateUser($id, $attributes)
+	{
+		$user = UserModel::findOrFail($id);
+
+		$user->email = $attributes['email'];
+
+		$user->name = $attributes['name'];
+
+		$user->save();
+
+		return $user;
+	}
+
 	public function getOrCreate($user)
 	{
 		$user = UserModel::firstEmailOrCreate($user);
@@ -27,5 +50,10 @@ class User implements UserInterface
 		Auth::login($user);
 
 		return $user;
+	}
+
+	public function deleteUser($id)
+	{
+		return UserModel::findOrFail($id)->delete();
 	}
 }

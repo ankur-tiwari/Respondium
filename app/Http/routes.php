@@ -1,5 +1,9 @@
 <?php
 
+Route::get('test', function (App\HtmlGenerators\AnswerVideo $answerVideo) {
+	return $answerVideo->generate('http://youtube.com/watch?v=123');
+});
+
 // Answers
 
 Route::post('/answers', [

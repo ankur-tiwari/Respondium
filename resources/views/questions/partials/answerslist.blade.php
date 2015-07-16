@@ -7,7 +7,12 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div>{!! $answer->description !!}</div>
-					{!! $generator->generate($answer->website, $answer->video_url)->iframeCodeForBootstrap() !!}
+					<hr>
+					<div align="center" class="embed-responsive embed-responsive-16by9">
+					    <video class="embed-responsive-item" controls="">
+					        <source src="{{ $answer->video_url }}" type="video/mp4">
+					    </video>
+					</div>
 					<br>
 				</div>
 			</div>

@@ -6,6 +6,10 @@ Route::post('/answers', [
 	'uses'	=> 'AnswersController@store'
 ]);
 
+Route::post('/answers/upload', [
+	'uses'	=> 'AnswersController@upload'
+]);
+
 // Questions
 
 Route::get('/', [

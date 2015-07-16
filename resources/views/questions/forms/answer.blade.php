@@ -1,32 +1,70 @@
-@if (\Auth::check())
-	<div class="row">
-		<div class="col-md-12">
-			<h2>Your Answer</h2>
-			<hr>
-			<form id="answer_form" method="post">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<input type="hidden" name="post_id" value="{{ $question->id }}">
-				<div class="form-group">
-					<label>Website</label>
-					<select class="form-control" name="website" required>
-						<option value="youtube">Youtube</option>
-						<option value="vimeo">Vimeo</option>
-						<option value="dailymotion">Dailymotion</option>
-					</select>
+@if (Auth::check())
+<form action="/answers/upload" method="post" enctype="multipart/form-data">
+	<div class="modal fade" id="answer_form_modal_upload">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Post your answer</h4>
 				</div>
-				<div class="form-group">
-					<label>Link</label>
-					<input name="video_url" type="url" class="form-control" placeholder="e.g. http://youtube.com/watch?v=zxi123" required>
+				<div class="modal-body">
+						{!! csrf_field() !!}
+						<input type="hidden" name="post_id" value="{{ $question->id }}">
+						<div class="form-group">
+							<label>Upload an mp4</label>
+							<input type="file" name="video_file" class="form-control">
+						</div>
+						<div class="form-group">
+							<label>Description</label>
+							<input type="text" name="description" class="form-control" required>
+						</div>
 				</div>
-				<div class="form-group">
-					<label>Description: </label>
-					<textarea name="description" id="answer_description_textarea" required></textarea>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Post</button>
 				</div>
-
-				<div class="form-group">
-					<button class="btn btn-primary">Submit Your Answer</button>
-				</div>
-			</form>
+			</div>
 		</div>
 	</div>
+</form>
+
+<form action="/answers" method="post" enctype="multipart/form-data">
+	<div class="modal fade" id="answer_form_modal_link">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Post your answer</h4>
+				</div>
+				<div class="modal-body">
+						{!! csrf_field() !!}
+						<input type="hidden" name="post_id" value="{{ $question->id }}">
+
+						<div class="form-group">
+							<label>Add a link</label>
+							<input type="url" name="video_url" class="form-control" placeholder="http://youtube.com/watch?v=123123">
+						</div>
+						<div class="form-group">
+							<label>Description</label>
+							<input type="text" name="description" class="form-control" required>
+						</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Post</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<div class="row">
+	<div class="col-md-12">
+		<h2>Post your answer</h2>
+		<hr>
+		<a class="btn btn-primary" data-toggle="modal" href="#answer_form_modal_upload">Upload a video</a>
+		<a class="btn btn-primary" data-toggle="modal" href="#answer_form_modal_link">Post a video link</a>
+	</div>
+</div>
+
 @endif

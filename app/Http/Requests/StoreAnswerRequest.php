@@ -24,8 +24,9 @@ class StoreAnswerRequest extends Request
     public function rules()
     {
         return [
-            'website'   => 'in:youtube,vimeo,dailymotion',
-            'video_url' => 'url'
+            'video_url'     => 'required|url',
+            'description'   => 'required',
+            'post_id'       => 'required|integer',
         ];
     }
 }

@@ -8,9 +8,6 @@ use Illuminate\Contracts\Bus\SelfHandling;
 
 class StoreAnswerCommand extends Job implements SelfHandling
 {
-
-    public $website;
-
     public $videoUrl;
 
     public $description;
@@ -19,10 +16,8 @@ class StoreAnswerCommand extends Job implements SelfHandling
 
     public $userId;
 
-    public function __construct($website, $videoUrl, $description, $postId, $userId)
+    public function __construct($videoUrl, $description, $postId, $userId)
     {
-        $this->website = $website;
-
         $this->videoUrl = $videoUrl;
 
         $this->description = $description;
@@ -37,8 +32,6 @@ class StoreAnswerCommand extends Job implements SelfHandling
         $answer = new Answer();
 
         $answer->description = $this->description;
-
-        $answer->website = $this->website;
 
         $answer->video_url = $this->videoUrl;
 

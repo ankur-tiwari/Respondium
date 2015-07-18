@@ -1,3 +1,4 @@
+@inject('videoGenerator', 'App\HtmlGenerators\AnswerVideo')
 <div class="row" id="answers">
 	<div class="col-md-12">
 		<hr>
@@ -8,11 +9,7 @@
 				<div class="col-md-12">
 					<div>{!! $answer->description !!}</div>
 					<hr>
-					<div align="center" class="embed-responsive embed-responsive-16by9">
-					    <video class="embed-responsive-item" controls="">
-					        <source src="{{ $answer->video_url }}" type="video/mp4">
-					    </video>
-					</div>
+					{!! $videoGenerator->generate($answer->video_url) !!}
 					<br>
 				</div>
 			</div>

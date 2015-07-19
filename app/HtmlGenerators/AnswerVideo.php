@@ -5,7 +5,7 @@ namespace App\HtmlGenerators;
 class AnswerVideo
 {
 	protected $supportedHosts = [
-		'www.youtube.com', 'www.vimeo.com', 'www.dailymotion.com'
+		'www.youtube.com',
 	];
 
 	public function generate($videoUrl)

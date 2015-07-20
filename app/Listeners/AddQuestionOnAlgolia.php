@@ -7,7 +7,7 @@ use App\Events\QuestionWasCreated;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class AddQuestionOnAlgolia
+class AddQuestionOnAlgolia implements ShouldQueue
 {
 	protected $algolia;
 

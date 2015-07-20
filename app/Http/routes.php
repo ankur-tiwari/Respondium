@@ -1,9 +1,5 @@
 <?php
 
-Route::get('test', function (App\HtmlGenerators\AnswerVideo $answerVideo) {
-	return $answerVideo->generate('http://youtube.com/watch?v=123');
-});
-
 // Answers
 
 Route::post('/answers', [
@@ -126,4 +122,14 @@ Route::put('/dashboard/users/{id}', [
 
 Route::delete('/dashboard/users/{id}', [
 	'uses' => 'UsersController@destroy'
+]);
+
+// Contact Us Page
+
+Route::get('/contact-us', [
+	'uses' => 'ContactController@form'
+]);
+
+Route::post('/contact-us', [
+	'uses' => 'ContactController@send'
 ]);

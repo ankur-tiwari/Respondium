@@ -16,6 +16,7 @@
 		@include('layouts.partials.front.nav')
 		<div class="container">
 			@include('layouts.partials.front.flash')
+			@include('partials.errors')
 			@yield('content')
 		</div>
 

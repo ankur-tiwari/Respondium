@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Mail;
-use App\Http\Requests;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use App\Http\Requests\ContactRequest;
+use App\Jobs\SendContactFormEmail;
+use Illuminate\Http\Request;
+use Mail;
 
 class ContactController extends Controller
 {
@@ -17,10 +18,10 @@ class ContactController extends Controller
 
 	public function send(ContactRequest $request)
 	{
-		Mail::raw('Hello World! This is a simple raw email.', function ($message) {
-		    $message->from('no-reply@answersvidsupport.com', 'Rana Faiz Ahmad');
+		$this->dispatch(
+			new SendContactFormEmail($request->email, $request->name, $request->subject, $request->message)
+		);
 
-		    $message->to('iamfaizahmed123@gmail.com');
-		});
+		return redirect()->back()->with('flash_message', 'Thank you for contacting us. We will respond as soon as we could!');
 	}
 }

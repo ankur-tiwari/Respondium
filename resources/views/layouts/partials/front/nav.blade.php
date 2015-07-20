@@ -15,7 +15,7 @@
 			<ul class="nav navbar-nav">
 				<li><a href="/">Home</a></li>
 				<li><a href="/ask">Ask</a></li>
-				<li><a href="#">Contact</a></li>
+				<li><a href="/contact-us">Contact Us</a></li>
 				<li><a href="#">Donate</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

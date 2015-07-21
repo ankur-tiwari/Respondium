@@ -49,7 +49,7 @@ class UsersController extends Controller
             new StoreUserCommand($request->name, $request->email, $request->password)
         );
 
-        return redirect('/');
+        return redirect('/')->with('flash_message', 'You are successfully registered as a new user!');
     }
 
     public function edit($id, UserRepository $repo)

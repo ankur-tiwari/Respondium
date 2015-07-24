@@ -13,4 +13,6 @@ interface QuestionInterface
 	public function getViewsFor($postId);
 
 	public function getVotesFor($postId);
+
+	public function findByIds($ids);
 }

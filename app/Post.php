@@ -5,13 +5,17 @@ namespace App;
 use App\Vote;
 use App\View;
 use Illuminate\Database\Eloquent\Model;
+use App\Search\Traits\SearchableModel;
 
 class Post extends Model
 {
+    use SearchableModel;
 
 	protected $fillable = [
-		'title', 'description', 'slug'
+		'id', 'title', 'description', 'slug'
 	];
+
+    protected static $indexName = 'questions';
 
     public function user()
     {

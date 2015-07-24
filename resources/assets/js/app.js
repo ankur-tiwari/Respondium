@@ -15,7 +15,5 @@
 
 	makeAnswersCommentsFormFunctional();
 
-	makeSearchFunctionalOnTheHomePage();
-
 	deleteRequestWithLinks();
 })();

@@ -24,9 +24,14 @@ Route::post('/ask', [
 	'uses'	=> 'QuestionsController@store'
 ]);
 
+Route::get('/questions/search', [
+	'uses' => 'QuestionsController@search'
+]);
+
 Route::get('/questions/{slug}', [
 	'uses'	=> 'QuestionsController@show'
 ]);
+
 
 // Tags
 

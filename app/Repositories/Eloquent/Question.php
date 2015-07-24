@@ -11,9 +11,14 @@ use App\Repositories\QuestionInterface;
 
 class Question implements QuestionInterface
 {
+	public function __construct(Post $post)
+	{
+		$this->post = $post;
+	}
+
 	public function getMainFeed()
 	{
-		return Post::with('answers')->with('comments')->latest()->paginate(10);
+		return $this->post->with('answers')->with('comments')->latest()->paginate(10);
 	}
 
 	public function getForTag($tagName)
@@ -22,12 +27,12 @@ class Question implements QuestionInterface
 
 		$postIds = PostTagPivot::where('tag_id', $tagId)->get()->lists('post_id')->toArray();
 
-		return Post::whereIn('id', $postIds)->latest()->paginate(10);
+		return $this->post->whereIn('id', $postIds)->latest()->paginate(10);
 	}
 
 	public function getBySlug($slug)
 	{
-		return Post::where('slug', $slug)->with('comments')->with([
+		return $this->post->where('slug', $slug)->with('comments')->with([
 			'answers' => function($query) {
 			 	$query->with('comments');
 			}
@@ -48,4 +53,8 @@ class Question implements QuestionInterface
 		return $upvotes - $downvotes;
 	}
 
+	public function findByIds($ids)
+	{
+		return $this->post->findMany($ids);
+	}
 }

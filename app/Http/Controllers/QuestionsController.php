@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Tag;
-use App\Post;
-use App\Http\Requests;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
-use App\Jobs\StoreViewCommand;
-use App\Jobs\StoreQuestionCommand;
-use Illuminate\Support\Facades\Auth;
+use App\Contracts\Search;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Authenticate;
+use App\Http\Requests;
 use App\Http\Requests\StoreQuestionRequest;
+use App\Jobs\StoreQuestionCommand;
+use App\Jobs\StoreViewCommand;
+use App\Post;
 use App\Repositories\QuestionInterface as QuestionRepository;
+use App\Tag;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class QuestionsController extends Controller
 {
@@ -21,7 +22,7 @@ class QuestionsController extends Controller
     public function __construct()
     {
         $this->middleware(Authenticate::class, [
-            'except' => ['index', 'show']
+            'except' => ['index', 'show', 'search']
         ]);
     }
 
@@ -57,5 +58,14 @@ class QuestionsController extends Controller
         );
 
         return view('questions.show', compact('question'));
+    }
+
+    public function search(Request $request, Search $search, QuestionRepository $questionsRepo)
+    {
+        $ids = $search->getIds('questions', $request->get('query'));
+
+        $results = $questionsRepo->findByIds($ids);
+
+        return view('questions.search', compact('results'));
     }
 }

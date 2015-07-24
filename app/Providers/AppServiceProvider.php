@@ -26,9 +26,5 @@ class AppServiceProvider extends ServiceProvider
         App::bind('\App\Repositories\QuestionInterface', '\App\Repositories\Eloquent\Question');
 
         App::bind('\App\Repositories\UserInterface', '\App\Repositories\Eloquent\User');
-
-        App::singleton('\App\Search\Algolia', function() {
-            return new \App\Search\Algolia;
-        });
     }
 }

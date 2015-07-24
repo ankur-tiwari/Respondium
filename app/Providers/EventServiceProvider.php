@@ -14,7 +14,6 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\QuestionWasCreated' => [
-            'App\Listeners\AddQuestionOnAlgolia',
         ],
     ];
 

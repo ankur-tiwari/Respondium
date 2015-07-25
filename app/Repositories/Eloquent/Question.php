@@ -55,6 +55,6 @@ class Question implements QuestionInterface
 
 	public function findByIds($ids)
 	{
-		return $this->post->findMany($ids);
+		return $this->post->whereIn('id', $ids)->latest()->paginate(10);
 	}
 }

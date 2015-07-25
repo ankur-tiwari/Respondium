@@ -16,4 +16,6 @@
 	makeAnswersCommentsFormFunctional();
 
 	deleteRequestWithLinks();
+
+	questionSearchForm();
 })();

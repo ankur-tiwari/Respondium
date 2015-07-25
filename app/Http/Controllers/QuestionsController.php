@@ -60,9 +60,9 @@ class QuestionsController extends Controller
         return view('questions.show', compact('question'));
     }
 
-    public function search(Request $request, Search $search, QuestionRepository $questionsRepo)
+    public function search($query, Request $request, Search $search, QuestionRepository $questionsRepo)
     {
-        $ids = $search->getIds('questions', $request->get('query'));
+        $ids = $search->getIds('questions', $query);
 
         $results = $questionsRepo->findByIds($ids);
 

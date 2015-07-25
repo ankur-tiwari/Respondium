@@ -24,7 +24,7 @@ Route::post('/ask', [
 	'uses'	=> 'QuestionsController@store'
 ]);
 
-Route::get('/questions/search', [
+Route::get('/questions/search/{query}', [
 	'uses' => 'QuestionsController@search'
 ]);
 

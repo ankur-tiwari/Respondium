@@ -138,3 +138,14 @@ function deleteRequestWithLinks()
 		window.location.reload();
 	});
 }
+
+function questionSearchForm()
+{
+	$('#questions_search_form').on('submit', function(e) {
+		e.preventDefault();
+
+		var searchQuery = $(this).find('input[type=search]').val();
+
+		window.location.href = '/questions/search/' + searchQuery;
+	});
+}

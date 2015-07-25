@@ -73,6 +73,7 @@ class Elasticsearch implements Search
 		return $this->elasticSearchClient->search([
 			'index' => 'answersvid',
 			'type' => $indexName,
+			'size' => 10000,
 			'body' => [
 				'query' => [
 					'query_string' => [

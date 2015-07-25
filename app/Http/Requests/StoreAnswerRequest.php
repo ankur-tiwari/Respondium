@@ -24,7 +24,7 @@ class StoreAnswerRequest extends Request
     public function rules()
     {
         return [
-            'video_url'     => 'required|url',
+            'video_url'     => 'required|url|allowed_websites:www.youtube.com',
             'description'   => 'required',
             'post_id'       => 'required|integer',
         ];

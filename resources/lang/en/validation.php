@@ -75,6 +75,8 @@ return [
     'unique'               => 'The :attribute has already been taken.',
     'url'                  => 'The :attribute format is invalid.',
 
+    'allowed_websites'     => 'The :attribute you entered is not supported.',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

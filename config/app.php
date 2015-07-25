@@ -145,6 +145,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\SearchServiceProvider::class,
+        App\Providers\ValidatorsServiceProvider::class,
 
         Laravel\Socialite\SocialiteServiceProvider::class,
     ],

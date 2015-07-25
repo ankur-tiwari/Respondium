@@ -1,4 +1,13 @@
 @import "resources/assets/sass/vendor/bootstrap";
+
+@import "resources/assets/sass/vendor/bootstrap-social";
+
+// Line height adjustment from bootstrap-social
+
+.btn-social.btn-lg > :first-child {
+	line-height: 68px;
+}
+
 body {
 	padding-top: 70px;
 }

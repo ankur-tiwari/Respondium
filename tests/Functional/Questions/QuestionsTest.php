@@ -13,7 +13,11 @@ class QuestionsTest extends TestCase
 
     public function test_it_displays_questions_on_the_front_page()
     {
-    	$questions = factory(Post::class, 2)->create();
+    	$user = $this->registeredUser();
+
+    	$questions = factory(Post::class, 2)->create([
+    		'user_id' => $user->id
+    	]);
 
     	$this->visit('/')
     		 ->see($questions[0]->title)

@@ -3,6 +3,9 @@
 	<input type="hidden" name="service" value="facebook">
 
 	<div class="form-group">
-		<button class="btn btn-primary btn-lg btn-block">Sign In With Facebook</button>
+		<button class="btn btn-block btn-social btn-lg btn-facebook">
+			<i class="fa fa-facebook"></i>
+			Sign in with facebook
+		</button>
 	</div>
 </form>

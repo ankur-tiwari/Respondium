@@ -3,6 +3,9 @@
 	<input type="hidden" name="service" value="google">
 
 	<div class="form-group">
-		<button class="btn btn-primary btn-lg btn-block">Sign In With Google</button>
+		<button class="btn btn-block btn-social btn-lg btn-google">
+			<i class="fa fa-google"></i>
+			Sign in with google
+		</button>
 	</div>
 </form>

@@ -31,21 +31,11 @@ class AuthController extends Controller
 
     public function store(SignInRequest $request)
     {
-        $credentials = [
-            'email'     => $request->email,
-            'password'  => $request->password
-        ];
-
-        if (Auth::attempt($credentials))
+        if (Auth::attempt($request->only('email', 'password')))
         {
-            if (Auth::user()->admin == '1')
-            {
-                return redirect('/dashboard');
-            } else {
-                return redirect('/');
-            }
+            return redirect('/')->with('flash_message', 'You have successfully signed in!');
         } else {
-            return redirect('/signin')->with('flash_message', 'The username or password is incorrect!');
+            return redirect()->back()->with('flash_message', 'The username or password is incorrect!');
         }
     }
 

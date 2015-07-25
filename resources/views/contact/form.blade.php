@@ -14,12 +14,12 @@
 
 				<div class="form-group">
 					<label>Name</label>
-					<input type="text" name="name" class="form-control" value="{{ old('email') }}" required>
+					<input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
 				</div>
 
 				<div class="form-group">
 					<label>Subject</label>
-					<input type="text" name="subject" class="form-control" value="{{ old('email') }}" required>
+					<input type="text" name="subject" class="form-control" value="{{ old('subject') }}" required>
 				</div>
 
 				<div class="form-group">

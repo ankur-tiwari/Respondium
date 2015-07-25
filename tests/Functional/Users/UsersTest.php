@@ -32,4 +32,18 @@ class UsersTest extends TestCase
 	{
 		$this->signOut()->assertFalse(Auth::check());
 	}
+
+	/** @test */
+	public function it_allows_password_reset()
+	{
+		$user = $this->registeredUser();
+
+		$this->visit('/signin')
+			 ->click('Forgot your password?')
+			 ->seePageIs('/password/email')
+			 ->type($user->email, 'email')
+			 ->press('Send Password Reset Link')
+			 ->seePageIs('/password/email')
+			 ->see('We have e-mailed your password reset link!');
+	}
 }

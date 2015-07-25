@@ -76,6 +76,7 @@ return [
     'url'                  => 'The :attribute format is invalid.',
 
     'allowed_websites'     => 'The :attribute you entered is not supported.',
+    'video_urls_for_websites'=> 'The url is not a valid video. Or probably it is not supported just yet :(',
 
     /*
     |--------------------------------------------------------------------------

@@ -107,28 +107,6 @@ Route::post('/comments/answer', [
 	'uses'	=> 'CommentsController@storeAnswersComment'
 ]);
 
-// Dashboard
-
-Route::get('/dashboard', [
-	'uses'	=> 'DashboardController@home'
-]);
-
-Route::get('/dashboard/users', [
-	'uses' => 'UsersController@index'
-]);
-
-Route::get('/dashboard/users/{id}/edit', [
-	'uses' => 'UsersController@edit'
-]);
-
-Route::put('/dashboard/users/{id}', [
-	'uses' => 'UsersController@update'
-]);
-
-Route::delete('/dashboard/users/{id}', [
-	'uses' => 'UsersController@destroy'
-]);
-
 // Contact Us Page
 
 Route::get('/contact-us', [

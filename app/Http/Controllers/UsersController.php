@@ -25,18 +25,7 @@ class UsersController extends Controller
         $this->middleware(Authenticate::class, [
             'only' => 'profile'
         ]);
-
-        $this->middleware(RedirectIfNotAdmin::class, [
-            'only' => ['index', 'edit', 'update']
-        ]);
 	}
-
-    public function index(UserRepository $repo)
-    {
-        $users = $repo->getAllForDashboard();
-
-        return view('users.index', compact('users'));
-    }
 
     public function create()
     {
@@ -50,25 +39,6 @@ class UsersController extends Controller
         );
 
         return redirect('/')->with('flash_message', 'You are successfully registered as a new user!');
-    }
-
-    public function edit($id, UserRepository $repo)
-    {
-        $user = $repo->getOne($id);
-
-        return view('users.edit', compact('user'));
-    }
-
-    public function update($id, UserRepository $repo, Request $request)
-    {
-        $user = $repo->updateUser($id, $request->only('email', 'name'));
-
-        return redirect('/dashboard/users/'. $id . '/edit')->with('flash_message', 'User Saved!');
-    }
-
-    public function destroy($id, UserRepository $repo)
-    {
-        $repo->deleteUser($id);
     }
 
     public function profile(UserRepository $repo)

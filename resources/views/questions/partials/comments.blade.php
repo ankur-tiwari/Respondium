@@ -1,15 +1,11 @@
-<div id="comments">
+<div id="comments" v-el="comments" data-post="{{$question->id}}">
 	@if(Auth::check())
 		<div class="row">
 			<div class="col-md-12">
-				<form id="comment_form" method="post">
+				<form v-on="submit: addComment" method="post">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<input type="hidden" name="post_id" value="{{ $question->id }}">
 					<div class="form-group">
-						<textarea placeholder="Write a comment" name="body" id="comment_body" class="form-control"></textarea>
-					</div>
-					<div class="form-group">
-						<button class="btn btn-primary">Submit</button>
+						<input v-model="newComment" type="text" class="form-control" placeholder="Write a comment">
 					</div>
 				</form>
 			</div>
@@ -17,12 +13,11 @@
 	@endif
 
 	<div id="comments_list" class="row comments">
-		@foreach($question->comments as $comment)
-		<div class="col-md-12 comment-item">
+
+		<div class="col-md-12 comment-item" v-repeat="comment in comments">
 			<div class="body">
-				{{ $comment->body }} - {{ $comment->user->name }} <time class="timeago" datetime="{{ $comment->created_at }}"></time>
+				@{{ comment.body }} - @{{ comment.user.name }} <time class="timeago" datetime="@{{ comment.created_at }}">@{{ comment.created_at }}</time>
 			</div>
 		</div>
-		@endforeach
 	</div>
 </div>

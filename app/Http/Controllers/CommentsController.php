@@ -25,7 +25,9 @@ class CommentsController extends Controller
 
     public function index($postId, CommentRepository $repo)
     {
-        $repo->getByPostId($postId);
+        $comments = $repo->getByPostId($postId);
+
+        return $comments;
     }
 
     public function store($postId, StoreCommentRequest $request)

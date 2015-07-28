@@ -21,9 +21,9 @@ class Comment implements CommentInterface
 
 	public function getByPostId($postId)
 	{
-		$comments = $this->comment->where('commentable_id', $postId)->where('commentable_type', Post::class)->get();
+		$comments = $this->comment->where('commentable_id', $postId)->where('commentable_type', Post::class)->with('user')->get();
 
-		dd($comments);
+		return $comments;
 	}
 
 	public function saveQuestionComment($body, $userId, $postId)
@@ -40,6 +40,6 @@ class Comment implements CommentInterface
 
 		$comment->save();
 
-		return $this->comment->findOrFail($comment->id);
+		return $this->comment->where('id', $comment->id)->with('user')->firstOrFail();
 	}
 }

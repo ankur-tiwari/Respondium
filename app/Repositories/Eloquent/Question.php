@@ -18,7 +18,7 @@ class Question implements QuestionInterface
 
 	public function getMainFeed()
 	{
-		return $this->post->with('answers')->with('comments')->latest()->paginate(10);
+		return $this->post->with('answers')->with('comments')->with('views')->latest()->paginate(10);
 	}
 
 	public function getForTag($tagName)
@@ -37,11 +37,6 @@ class Question implements QuestionInterface
 			 	$query->with('comments');
 			}
 		])->firstOrFail();
-	}
-
-	public function getViewsFor($postId)
-	{
-		return View::where('post_id', $postId)->get()->count();
 	}
 
 	public function getVotesFor($postId)

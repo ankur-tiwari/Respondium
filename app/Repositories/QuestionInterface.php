@@ -10,8 +10,6 @@ interface QuestionInterface
 
 	public function getBySlug($slug);
 
-	public function getViewsFor($postId);
-
 	public function getVotesFor($postId);
 
 	public function findByIds($ids);

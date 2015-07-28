@@ -32,9 +32,14 @@ class Post extends Model
         return $this->belongsToMany('App\Tag');
     }
 
+    public function views()
+    {
+        return $this->hasMany(View::class);
+    }
+
     public function getViews()
     {
-        return View::where('post_id', $this->id)->get()->count();
+        return $this->views->count();
     }
 
     public function getVotes()

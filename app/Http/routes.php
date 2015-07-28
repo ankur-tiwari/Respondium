@@ -32,13 +32,13 @@ Route::group(['as' => 'answer::'], function () {
 	]);
 });
 
-Route::group(['as' => 'tag::'], function() {
+Route::group(['as' => 'tag::'], function () {
 	Route::get('/tagged/{tag}', [
 		'uses' => 'TagsController@show'
 	]);
 });
 
-Route::group(['as' => 'auth::'], function() {
+Route::group(['as' => 'auth::'], function () {
 	Route::get('/signup', [
 		'uses' 	=> 'UsersController@create'
 	]);
@@ -64,7 +64,7 @@ Route::group(['as' => 'auth::'], function() {
 	]);
 });
 
-Route::group(['as' => 'socialauth::'], function() {
+Route::group(['as' => 'socialauth::'], function () {
 	Route::post('/social-login', [
 		'uses' => 'AuthController@social'
 	]);
@@ -86,27 +86,23 @@ Route::group(['as' => 'socialauth::'], function() {
 	]);
 });
 
-Route::group(['as' => 'vote::'], function() {
+Route::group(['as' => 'vote::'], function () {
 	Route::post('/votes', [
 		'uses'	=> 'VotesController@store'
 	]);
 });
 
-Route::group(['as' => 'comment::'], function() {
-	Route::get('/comments/post/:post', [
-		'uses'	=> 'CommentsController@getCommentsForPost'
+Route::group(['as' => 'comment::'], function () {
+	Route::get('/questions/{id}/comments', [
+		'uses' => 'CommentsController@index'
 	]);
 
-	Route::post('/comments', [
-		'uses'	=> 'CommentsController@store'
-	]);
-
-	Route::post('/comments/answer', [
-		'uses'	=> 'CommentsController@storeAnswersComment'
+	Route::post('/questions/{id}/comments', [
+		'uses' => 'CommentsController@store'
 	]);
 });
 
-Route::group(['as' => 'contact::'], function() {
+Route::group(['as' => 'contact::'], function () {
 	Route::get('/contact-us', [
 		'uses' => 'ContactController@form'
 	]);
@@ -116,7 +112,7 @@ Route::group(['as' => 'contact::'], function() {
 	]);
 });
 
-Route::group(['password::'], function() {
+Route::group(['password::'], function () {
 	Route::get('password/email', 'Auth\PasswordController@getEmail');
 	Route::post('password/email', 'Auth\PasswordController@postEmail');
 

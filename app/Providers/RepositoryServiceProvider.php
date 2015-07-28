@@ -26,5 +26,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\QuestionInterface', 'App\Repositories\Eloquent\Question');
 
         $this->app->bind('App\Repositories\UserInterface', 'App\Repositories\Eloquent\User');
+
+        $this->app->bind('App\Repositories\CommentInterface', 'App\Repositories\Eloquent\Comment');
     }
 }

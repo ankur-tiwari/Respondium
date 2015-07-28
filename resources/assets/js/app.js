@@ -1,21 +1,2 @@
-(function() {
-	makeDescritionEditableForQuestions();
-
-	makeDescriptionEditableForAnswers();
-
-	implementTimeAgoLibrary();
-
-	makeCommentFormFunctional();
-
-	implementSelect2Library();
-
-	makeVotesFormFunctional();
-
-	makeAnswersFormFunctional();
-
-	makeAnswersCommentsFormFunctional();
-
-	deleteRequestWithLinks();
-
-	questionSearchForm();
-})();
+var Vue = require('vue');
+require('./vendor/jquery.timeago.js');

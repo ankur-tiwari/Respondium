@@ -1,26 +1,3 @@
-function makeDescritionEditableForQuestions()
-{
-	$('#description_editor').editable({
-		inlineMode: false,
-		height: 300,
-		allowedTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code']
-	});
-}
-
-function makeDescriptionEditableForAnswers()
-{
-	$('#answer_description_textarea').editable({
-		inlineMode: false,
-		height: 300,
-		allowedTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'code']
-	});
-}
-
-function implementTimeAgoLibrary()
-{
-	$('time.timeago').timeago();
-}
-
 function makeCommentFormFunctional()
 {
 	$('#comment_form').on('submit', function(e) {

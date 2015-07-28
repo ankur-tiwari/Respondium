@@ -1,4 +1,4 @@
-<form method="post">
+<form method="post" action="/answers">
 
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 

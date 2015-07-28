@@ -19,8 +19,8 @@
 					</div>
 				</div>
 			</div>
-			@include('questions.forms.comment')
-			@include('questions.partials.commentslist')
+			@include('questions.partials.comments')
+
 			@include('questions.partials.answerslist')
 			@include('questions.forms.answer')
 		</div>

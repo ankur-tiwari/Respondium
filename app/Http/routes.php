@@ -1,126 +1,125 @@
 <?php
 
-// Answers
+Route::group(['as' => 'question::'], function () {
+	Route::get('/', [
+		'uses'	=> 'QuestionsController@index'
+	]);
 
-Route::post('/answers', [
-	'uses'	=> 'AnswersController@store'
-]);
+	Route::get('/ask', [
+		'uses'	=> 'QuestionsController@create'
+	]);
 
-Route::post('/answers/upload', [
-	'uses'	=> 'AnswersController@upload'
-]);
+	Route::post('/ask', [
+		'uses'	=> 'QuestionsController@store'
+	]);
 
-// Questions
+	Route::get('/questions/search/{query}', [
+		'uses' => 'QuestionsController@search'
+	]);
 
-Route::get('/', [
-	'uses'	=> 'QuestionsController@index'
-]);
+	Route::get('/questions/{slug}', [
+		'uses'	=> 'QuestionsController@show'
+	]);
+});
 
-Route::get('/ask', [
-	'uses'	=> 'QuestionsController@create'
-]);
+Route::group(['as' => 'answer::'], function () {
+	Route::post('/answers', [
+		'uses'	=> 'AnswersController@store'
+	]);
 
-Route::post('/ask', [
-	'uses'	=> 'QuestionsController@store'
-]);
+	Route::post('/answers/upload', [
+		'uses'	=> 'AnswersController@upload'
+	]);
+});
 
-Route::get('/questions/search/{query}', [
-	'uses' => 'QuestionsController@search'
-]);
+Route::group(['as' => 'tag::'], function() {
+	Route::get('/tagged/{tag}', [
+		'uses' => 'TagsController@show'
+	]);
+});
 
-Route::get('/questions/{slug}', [
-	'uses'	=> 'QuestionsController@show'
-]);
+Route::group(['as' => 'auth::'], function() {
+	Route::get('/signup', [
+		'uses' 	=> 'UsersController@create'
+	]);
 
+	Route::post('/signup', [
+		'uses'	=> 'UsersController@store'
+	]);
 
-// Tags
+	Route::get('/profile', [
+		'uses'	=> 'UsersController@profile'
+	]);
 
-Route::get('/tagged/{tag}', [
-	'uses' => 'TagsController@show'
-]);
+	Route::get('/signin', [
+		'uses'	=> 'AuthController@create'
+	]);
 
-// Users
+	Route::post('/signin', [
+		'uses'	=> 'AuthController@store'
+	]);
 
-Route::get('/signup', [
-	'uses' 	=> 'UsersController@create'
-]);
+	Route::get('/logout', [
+		'uses' 	=> 'AuthController@logout'
+	]);
+});
 
-Route::post('/signup', [
-	'uses'	=> 'UsersController@store'
-]);
+Route::group(['as' => 'socialauth::'], function() {
+	Route::post('/social-login', [
+		'uses' => 'AuthController@social'
+	]);
 
-Route::get('/profile', [
-	'uses'	=> 'UsersController@profile'
-]);
+	Route::get('/signin/process/google', [
+		'uses' => 'AuthController@google'
+	]);
 
-Route::get('/signin', [
-	'uses'	=> 'AuthController@create'
-]);
+	Route::get('/signin/process/facebook', [
+		'uses' => 'AuthController@facebook'
+	]);
 
-Route::post('/signin', [
-	'uses'	=> 'AuthController@store'
-]);
+	Route::get('/signin/process/github', [
+		'uses' => 'AuthController@github'
+	]);
 
-Route::get('/logout', [
-	'uses' 	=> 'AuthController@logout'
-]);
+	Route::get('/signin/process/linkedin', [
+		'uses' => 'AuthController@linkedin'
+	]);
+});
 
-// Social Login
+Route::group(['as' => 'vote::'], function() {
+	Route::post('/votes', [
+		'uses'	=> 'VotesController@store'
+	]);
+});
 
-Route::post('/social-login', [
-	'uses' => 'AuthController@social'
-]);
+Route::group(['as' => 'comment::'], function() {
+	Route::get('/comments/post/:post', [
+		'uses'	=> 'CommentsController@getCommentsForPost'
+	]);
 
-Route::get('/signin/process/google', [
-	'uses' => 'AuthController@google'
-]);
+	Route::post('/comments', [
+		'uses'	=> 'CommentsController@store'
+	]);
 
-Route::get('/signin/process/facebook', [
-	'uses' => 'AuthController@facebook'
-]);
+	Route::post('/comments/answer', [
+		'uses'	=> 'CommentsController@storeAnswersComment'
+	]);
+});
 
-Route::get('/signin/process/github', [
-	'uses' => 'AuthController@github'
-]);
+Route::group(['as' => 'contact::'], function() {
+	Route::get('/contact-us', [
+		'uses' => 'ContactController@form'
+	]);
 
-Route::get('/signin/process/linkedin', [
-	'uses' => 'AuthController@linkedin'
-]);
+	Route::post('/contact-us', [
+		'uses' => 'ContactController@send'
+	]);
+});
 
-// Votes
+Route::group(['password::'], function() {
+	Route::get('password/email', 'Auth\PasswordController@getEmail');
+	Route::post('password/email', 'Auth\PasswordController@postEmail');
 
-Route::post('/votes', [
-	'uses'	=> 'VotesController@store'
-]);
-
-// Comments
-
-Route::get('/comments/post/:post', [
-	'uses'	=> 'CommentsController@getCommentsForPost'
-]);
-
-Route::post('/comments', [
-	'uses'	=> 'CommentsController@store'
-]);
-
-Route::post('/comments/answer', [
-	'uses'	=> 'CommentsController@storeAnswersComment'
-]);
-
-// Contact Us Page
-
-Route::get('/contact-us', [
-	'uses' => 'ContactController@form'
-]);
-
-Route::post('/contact-us', [
-	'uses' => 'ContactController@send'
-]);
-
-// Password reset link request routes...
-Route::get('password/email', 'Auth\PasswordController@getEmail');
-Route::post('password/email', 'Auth\PasswordController@postEmail');
-
-// Password reset routes...
-Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-Route::post('password/reset', 'Auth\PasswordController@postReset');
+	Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+	Route::post('password/reset', 'Auth\PasswordController@postReset');
+});

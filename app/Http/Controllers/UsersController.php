@@ -29,7 +29,7 @@ class UsersController extends Controller
 
     public function create()
     {
-    	return view('users.create');
+    	return view('users.create')->with('title', 'Sign Up');
     }
 
     public function store(StoreUserRequest $request)
@@ -39,12 +39,5 @@ class UsersController extends Controller
         );
 
         return redirect('/')->with('flash_message', 'You are successfully registered as a new user!');
-    }
-
-    public function profile(UserRepository $repo)
-    {
-        $user = $repo->getForProfile(Auth::user()->id);
-
-        return view('users.profile', compact('user'));
     }
 }

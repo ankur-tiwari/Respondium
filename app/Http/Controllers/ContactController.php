@@ -13,7 +13,7 @@ class ContactController extends Controller
 {
 	public function form()
 	{
-		return view('contact.form');
+		return view('contact.form')->with('title', 'Contact Us');
 	}
 
 	public function send(ContactRequest $request)

@@ -47,10 +47,6 @@ Route::group(['as' => 'auth::'], function () {
 		'uses'	=> 'UsersController@store'
 	]);
 
-	Route::get('/profile', [
-		'uses'	=> 'UsersController@profile'
-	]);
-
 	Route::get('/signin', [
 		'uses'	=> 'AuthController@create'
 	]);

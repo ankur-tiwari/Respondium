@@ -37,7 +37,7 @@ class QuestionsController extends Controller
     {
         $tags = Tag::orderBy('created_at', 'DESC')->get();
 
-        return view('questions.create', compact('tags'));
+        return view('questions.create', compact('tags'))->with('title', 'Ask');
     }
 
     public function store(StoreQuestionRequest $request)

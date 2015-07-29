@@ -13,7 +13,11 @@ class VideoUrlsForWebsites
 
 			$website = $this->getWebsiteForValue($value);
 
-			$regex = $this->getRegexes()[$website];
+			if ( isset($this->getRegexes()[$website]) ) {
+				$regex = $this->getRegexes()[$website];
+			} else {
+				return false;
+			}
 
 			if (preg_match($regex, $value)) {
 				return true;
@@ -44,7 +48,9 @@ class VideoUrlsForWebsites
 	protected function getRegexes()
 	{
 		return [
-			'youtube.com' => '/^http(s)?:\/\/(www\.)?youtube.com\/watch\?v=[A-Za-z0-9-_]{11}$/',
+			'youtube.com' => '/^http(s)?:\/\/(www\.)?youtube\.com\/watch\?v=[A-Za-z0-9-_]{11}$/',
+			'dailymotion.com' => '/^http(s)?:\/\/(www\.)?dailymotion\.com\/video\/(.)+$/',
+			'vimeo.com' => '/^http(s)?:\/\/(www\.)?vimeo\.com\/[1-9]+$/'
 		];
 	}
 

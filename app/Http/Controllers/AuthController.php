@@ -26,7 +26,7 @@ class AuthController extends Controller
 
     public function create()
     {
-    	return view('auth.create');
+    	return view('auth.create')->with('title', 'Sign In');
     }
 
     public function store(SignInRequest $request)

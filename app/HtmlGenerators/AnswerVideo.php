@@ -6,6 +6,8 @@ class AnswerVideo
 {
 	protected $supportedHosts = [
 		'www.youtube.com',
+		'www.dailymotion.com',
+		'www.vimeo.com'
 	];
 
 	public function generate($videoUrl)
@@ -35,8 +37,12 @@ class AnswerVideo
 
 	protected function generateFor($host)
 	{
-		if ($host === 'www.youtube.com' || 'youtube.com') {
+		if ($host === 'www.youtube.com' || $host === 'youtube.com') {
 			return $this->generateForYoutube();
+		} else if ($host === 'www.dailymotion.com' || $host === 'dailymotion.com') {
+			return $this->generateForDailymotion();
+		} else if ($host === 'www.vimeo.com' || $host === 'vimeo.com') {
+			return $this->generateforVimeo();
 		}
 	}
 
@@ -55,6 +61,24 @@ class AnswerVideo
 		$youtubeIframeSrc = 'http://www.youtube.com/embed/' . $videoId;
 
 		return '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' . $youtubeIframeSrc  . '"></iframe></div>';
+	}
+
+	public function generateForDailymotion()
+	{
+		$urlDetails = parse_url($this->videoUrl);
+
+		$dailymotionIframeSrc = 'http://www.dailymotion.com/embed' . $urlDetails['path'];
+
+		return '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' . $dailymotionIframeSrc . '"></iframe></div>';
+	}
+
+	public function generateforVimeo()
+	{
+		$urlDetails = parse_url($this->videoUrl);
+
+		$vimeoIframeSrc = 'http://player.vimeo.com/video' . $urlDetails['path'];
+
+		return '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' . $vimeoIframeSrc . '"></iframe></div>';
 	}
 
 	protected function generateForLocalVideo()

@@ -26,7 +26,6 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="/profile">Profile</a></li>
 							<li><a id="logout_link" href="/logout">Logout</a></li>
 						</ul>
 					</li>

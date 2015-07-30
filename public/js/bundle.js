@@ -6,8 +6,9 @@ require('./vendor/jquery.timeago.js');
 
 // comments for questions.
 new Vue(require('./modules/comments'));
+new Vue(require('./modules/search'));
 
-},{"./modules/comments":70,"./vendor/jquery.timeago.js":71,"vue":68}],2:[function(require,module,exports){
+},{"./modules/comments":70,"./modules/search":71,"./vendor/jquery.timeago.js":72,"vue":68}],2:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -18894,6 +18895,25 @@ module.exports = {
 };
 
 },{}],71:[function(require,module,exports){
+'use strict';
+
+module.exports = {
+	el: '#search_form',
+
+	data: {
+		searchInput: ''
+	},
+
+	methods: {
+		search: function search(event) {
+			event.preventDefault();
+
+			window.location.href = '/questions/search/' + this.searchInput;
+		}
+	}
+};
+
+},{}],72:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');

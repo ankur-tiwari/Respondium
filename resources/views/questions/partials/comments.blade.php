@@ -1,23 +1,14 @@
-<div id="comments" v-el="comments" data-post="{{$question->id}}">
-	@if(Auth::check())
-		<div class="row">
-			<div class="col-md-12">
-				<form v-on="submit: addComment" method="post">
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<div class="form-group">
-						<input v-model="newComment" type="text" class="form-control" placeholder="Write a comment">
-					</div>
-				</form>
-			</div>
-		</div>
-	@endif
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'answersvid';
+    var disqus_identifier = '{{ $question->slug . ':' . $question->id . ':question' }}';
 
-	<div id="comments_list" class="row comments">
-
-		<div class="col-md-12 comment-item" v-repeat="comment in comments">
-			<div class="body">
-				@{{ comment.body }} - @{{ comment.user.name }} <time class="timeago" datetime="@{{ comment.created_at }}">@{{ comment.created_at }}</time>
-			</div>
-		</div>
-	</div>
-</div>
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>

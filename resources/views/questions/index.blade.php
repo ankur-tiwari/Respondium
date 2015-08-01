@@ -4,6 +4,7 @@
 
 	<div class="row">
 		<div class="col-md-9">
+			@include('questions.partials.intro')
 			@include('questions.forms.search')
 			@include('questions.partials.list')
 		</div>

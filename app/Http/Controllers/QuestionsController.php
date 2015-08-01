@@ -30,14 +30,14 @@ class QuestionsController extends Controller
     {
         $questions = $questionRepo->getMainFeed();
 
-        return view('questions.index', compact('questions'));
+        return view('questions.index', compact('questions'))->with('page', 'Home');
     }
 
     public function create()
     {
         $tags = Tag::orderBy('created_at', 'DESC')->get();
 
-        return view('questions.create', compact('tags'))->with('title', 'Ask');
+        return view('questions.create', compact('tags'))->with('title', 'Ask')->with('page', 'Ask');
     }
 
     public function store(StoreQuestionRequest $request)

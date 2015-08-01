@@ -5,7 +5,7 @@
 	<div class="form-group">
 		<button class="btn btn-block btn-social btn-lg btn-linkedin">
 			<i class="fa fa-linkedin"></i>
-			Sign in with linkedin.
+			Sign in with linkedin
 		</button>
 	</div>
 </form>

@@ -29,7 +29,9 @@ class UsersController extends Controller
 
     public function create()
     {
-    	return view('users.create')->with('title', 'Sign Up');
+    	return view('users.create')
+                                ->with('title', 'Sign Up')
+                                ->with('page', 'Sign up');
     }
 
     public function store(StoreUserRequest $request)

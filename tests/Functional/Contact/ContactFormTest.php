@@ -11,6 +11,8 @@ class ContactFormTest extends TestCase
 	/** @test */
 	public function it_sends_the_contact_message()
 	{
+		Mail::pretend();
+
 		$this   ->visit('/')
 				->click('Contact Us')
 				->seePageIs('/contact-us')

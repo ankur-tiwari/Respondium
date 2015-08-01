@@ -13,7 +13,9 @@ class ContactController extends Controller
 {
 	public function form()
 	{
-		return view('contact.form')->with('title', 'Contact Us');
+		return view('contact.form')
+									->with('title', 'Contact Us')
+									->with('page', 'Contact Us');
 	}
 
 	public function send(ContactRequest $request)
@@ -22,6 +24,8 @@ class ContactController extends Controller
 			new SendContactFormEmail($request->email, $request->name, $request->subject, $request->message)
 		);
 
-		return redirect()->back()->with('flash_message', 'Thank you for contacting us. We will respond as soon as we could!');
+		return redirect()
+						->back()
+						->with('flash_message', 'Thank you for contacting us. We will respond as soon as we could!');
 	}
 }

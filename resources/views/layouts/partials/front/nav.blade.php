@@ -2,6 +2,9 @@
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
+			@if ( ! Request::is('/'))
+				<a href="/" class="navbar-brand">AnswersVid</a>
+			@endif
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
@@ -13,14 +16,14 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="/">Home</a></li>
-				<li><a href="/ask">Ask</a></li>
-				<li><a href="/contact-us">Contact Us</a></li>
+				{!! nav_item('Home', '/', $page) !!}
+				{!! nav_item('Ask', '/ask', $page) !!}
+				{!! nav_item('Contact Us', '/contact-us', $page) !!}
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				@if (!Auth::check())
-					<li><a href="/signin">Sign in</a></li>
-					<li><a href="/signup">Sign up</a></li>
+					{!! nav_item('Sign in', '/signin', $page) !!}
+					{!! nav_item('Sign up', '/signup', $page) !!}
 				@endif
 				@if(Auth::check())
 					<li class="dropdown">

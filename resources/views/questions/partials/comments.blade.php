@@ -1,14 +1,24 @@
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'answersvid';
-    var disqus_identifier = '{{ $question->slug . ':' . $question->id . ':question' }}';
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<div id="comments" v-el="comments" data-post="{{ $question->id }}">
+	<form>
+		<div class="form-group">
+			<textarea v-on="keyup: addComment | key 'enter'" v-model="newComment" class="form-control" placeholder="Enter a comment"></textarea>
+		</div>
+	</form>
+	<ul class="media-list">
+		<li v-repeat="comment in comments" class="media">
+			<div class="media-left">
+				<a href="#">
+					<img class="media-object img-circle" src="http://www.gravatar.com/avatar/" alt="Avatar">
+				</a>
+			</div>
+			<div class="media-body">
+				<div class="well">
+					<h4 class="media-heading">
+						<strong>@{{ comment.user.name }}</strong>
+					</h4>
+					<p>@{{ comment.body }}</p>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

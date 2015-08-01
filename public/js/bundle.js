@@ -6,9 +6,12 @@ require('./vendor/jquery.timeago.js');
 
 // comments for questions.
 new Vue(require('./modules/comments'));
+// comments for answers.
+new Vue(require('./modules/answercomment'));
+// search
 new Vue(require('./modules/search'));
 
-},{"./modules/comments":70,"./modules/search":71,"./vendor/jquery.timeago.js":72,"vue":68}],2:[function(require,module,exports){
+},{"./modules/answercomment":70,"./modules/comments":71,"./modules/search":72,"./vendor/jquery.timeago.js":73,"vue":68}],2:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -18852,6 +18855,38 @@ module.exports = Watcher
 },{"./batcher":10,"./config":16,"./observer/dep":50,"./parsers/expression":54,"./util":65,"_process":3}],70:[function(require,module,exports){
 'use strict';
 
+module.exports = {
+	el: '.answer_comment',
+
+	data: {
+		comments: [],
+		newComment: []
+	},
+
+	ready: function ready() {
+		this.answerId = this.$$.answer.getAttribute('data-answer');
+
+		$.get('/answers/' + this.answerId + '/comments').success((function (comments) {
+			this.comments = comments;
+		}).bind(this));
+	},
+
+	methods: {
+		addComment: function addComment(event) {
+			event.preventDefault();
+
+			$.post('/answers/' + this.answerId + '/comments', { body: this.newComment }).success((function (comment) {
+				this.comments.push(comment);
+			}).bind(this));
+
+			this.newComment = '';
+		}
+	}
+};
+
+},{}],71:[function(require,module,exports){
+'use strict';
+
 $.ajaxSetup({
 	headers: {
 		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -18894,7 +18929,7 @@ module.exports = {
 	}
 };
 
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -18913,7 +18948,7 @@ module.exports = {
 	}
 };
 
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');

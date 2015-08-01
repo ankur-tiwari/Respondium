@@ -50,7 +50,8 @@ class VideoUrlsForWebsites
 		return [
 			'youtube.com' => '/^http(s)?:\/\/(www\.)?youtube\.com\/watch\?v=[A-Za-z0-9-_]{11}$/',
 			'dailymotion.com' => '/^http(s)?:\/\/(www\.)?dailymotion\.com\/video\/(.)+$/',
-			'vimeo.com' => '/^http(s)?:\/\/(www\.)?vimeo\.com\/[1-9]+$/'
+			// https://vimeo.com/64703617
+			'vimeo.com' => '/^http(s)?:\/\/(www\.)?vimeo\.com\/[0-9]+$/'
 		];
 	}
 

@@ -3,4 +3,7 @@ require('./vendor/jquery.timeago.js');
 
 // comments for questions.
 new Vue(require('./modules/comments'));
+// comments for answers.
+new Vue(require('./modules/answercomment'))
+// search
 new Vue(require('./modules/search'));

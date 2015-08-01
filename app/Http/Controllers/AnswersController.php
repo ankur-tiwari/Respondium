@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Http\Requests;
-use Illuminate\Http\Request;
-use App\Jobs\UploadVideoCommand;
-use App\Jobs\StoreAnswerCommand;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Authenticate;
+use App\Http\Requests;
 use App\Http\Requests\StoreAnswerRequest;
+use App\Http\Requests\StoreCommentRequest;
+use App\Jobs\StoreAnswerCommand;
+use App\Jobs\UploadVideoCommand;
+use App\Repositories\CommentInterface as CommentRepository;
+use Auth;
+use Illuminate\Http\Request;
 
 class AnswersController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware(Authenticate::class);
+		$this->middleware(Authenticate::class, [
+			'except' => 'listComments'
+		]);
 	}
 
 	public function upload(Request $request)
@@ -42,5 +46,19 @@ class AnswersController extends Controller
 		);
 
 		return redirect()->back();
+	}
+
+	public function listComments($answerId, CommentRepository $repo)
+	{
+		$comments = $repo->getByAnswerId($answerId);
+
+		return $comments;
+	}
+
+	public function storeComments($answerId, StoreCommentRequest $request, CommentRepository $repo)
+	{
+		$comment = $repo->saveAnswerComment($request->body, Auth::user()->id, $answerId);
+
+		return $comment;
 	}
 }

@@ -2,8 +2,9 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Comment as CommentModel;
 use App\Post;
+use App\Answer;
+use App\Comment as CommentModel;
 use App\Repositories\CommentInterface;
 
 class Comment implements CommentInterface
@@ -28,17 +29,41 @@ class Comment implements CommentInterface
 
 	public function saveQuestionComment($body, $userId, $postId)
 	{
-		$comment = new CommentModel();
+		$post = Post::findOrFail($postId);
 
-		$comment->body = $body;
+		$comment = new CommentModel();
 
 		$comment->user_id = $userId;
 
-		$comment->commentable_type = Post::class;
+		$comment->body = $body;
 
-		$comment->commentable_id = $postId;
+		$post->comments()->save($comment);
 
-		$comment->save();
+		return $this->comment->where('id', $comment->id)->with('user')->firstOrFail();
+	}
+
+	public function getByAnswerId($answerId)
+	{
+		$comments = $this->comment
+						 ->where('commentable_id', $answerId)
+						 ->where('commentable_type', Answer::class)
+						 ->with('user')
+						 ->get();
+
+		return $comments;
+	}
+
+	public function saveAnswerComment($body, $userId, $answerId)
+	{
+		$answer = Answer::findOrFail($answerId);
+
+		$comment = new CommentModel();
+
+		$comment->user_id = $userId;
+
+		$comment->body = $body;
+
+		$answer->comments()->save($comment);
 
 		return $this->comment->where('id', $comment->id)->with('user')->firstOrFail();
 	}

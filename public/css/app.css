@@ -6062,6 +6062,12 @@ body {
 .inline {
   display: inline; }
 
+.single-question .single-question-title {
+  font-weight: bold; }
+
+.single-question .single-question-buttons {
+  margin-bottom: 10px; }
+
 .comments {
   padding-left: 20px;
   font-size: .9em; }

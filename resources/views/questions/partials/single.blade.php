@@ -1,13 +1,11 @@
-<div class="row">
+<div class="row single-question">
 	<div class="col-md-12">
-		<h2>{{ $question->title }}</h2>
-		<hr>
-		<div>{!! $question->description !!}</div>
-		<div>
-			@foreach($question->tags as $tag)
-				<a href="/tagged/{{ $tag->name }}" class="label label-primary">{{ $tag->name }}</a>
-			@endforeach
-		</div>
-		<hr>
+		<h2 class="single-question-title">{{ $question->title }}</h2>
+		<p>{!! $question->description !!}</p>
+	</div>
+	<div class="col-md-12 single-question-buttons">
+		<a href="" class="btn btn-primary btn-sm upvote">Upvote</a>
+		<a href="" class="btn btn-default btn-sm downvote">Downvote</a>
+		<a href="" class="btn btn-success btn-sm">Share</a>
 	</div>
 </div>

@@ -30,6 +30,14 @@ Route::group(['as' => 'answer::'], function () {
 	Route::post('/answers/upload', [
 		'uses'	=> 'AnswersController@upload'
 	]);
+
+	Route::get('/answers/{id}/comments', [
+		'uses' => 'AnswersController@listComments'
+	]);
+
+	Route::post('/answers/{id}/comments', [
+		'uses' => 'AnswersController@storeComments'
+	]);
 });
 
 Route::group(['as' => 'tag::'], function () {

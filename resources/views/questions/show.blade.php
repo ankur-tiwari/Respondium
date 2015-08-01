@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-9">
 			@include('questions.partials.single')
-			<div class="row">
+{{-- 			<div class="row">
 				@if (Auth::check())
 				<div class="col-md-6">
 					@include('questions.forms.upvote')
@@ -18,11 +18,11 @@
 						{{ $question->user->name }}
 					</div>
 				</div>
-			</div>
+			</div> --}}
 			@include('questions.partials.comments')
 
-			@include('questions.partials.answerslist')
 			@include('questions.forms.answer')
+			@include('questions.partials.answerslist')
 		</div>
 		<div class="col-md-3"></div>
 	</div>

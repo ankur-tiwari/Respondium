@@ -25,6 +25,17 @@ body {
 	display: inline;
 }
 
+.single-question {
+
+	.single-question-title {
+		font-weight: bold;
+	}
+
+	.single-question-buttons {
+		margin-bottom: 10px;
+	}
+}
+
 @import "resources/assets/sass/modules/comments";
 
 .arrow-mark {

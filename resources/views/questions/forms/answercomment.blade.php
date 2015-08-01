@@ -1,17 +1,26 @@
 @if(\Auth::check())
-	<div class="row">
-		<div class="col-md-12">
-			<form class="answer_comment_form">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-				<input type="hidden" name="post_id" value="{{ $answer->id }}">	
-				<div class="form-group">
-					<textarea name="body" class="form-control" placeholder="Write a comment"></textarea>
+	<div class="row answer_comment" v-el="answer" data-answer="{{ $answer->id }}">
+		<form>
+			<div class="form-group">
+				<textarea v-on="keyup: addComment | key 'enter'" v-model="newComment" class="form-control" placeholder="Enter a comment"></textarea>
+			</div>
+		</form>
+		<ul class="media-list">
+			<li v-repeat="comment in comments" class="media">
+				<div class="media-left">
+					<a href="#">
+						<img class="media-object img-circle" src="http://www.gravatar.com/avatar/" alt="Avatar">
+					</a>
 				</div>
-				
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary">Comment</button>
+				<div class="media-body">
+					<div class="well">
+						<h4 class="media-heading">
+							<strong>@{{ comment.user.name }}</strong>
+						</h4>
+						<p>@{{ comment.body }}</p>
+					</div>
 				</div>
-			</form>
-		</div>
+			</li>
+		</ul>
 	</div>
 @endif

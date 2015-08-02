@@ -61,6 +61,10 @@ Route::group(['as' => 'auth::'], function () {
 		'uses'	=> 'UsersController@store'
 	]);
 
+	Route::get('/auth/show', [
+		'uses' => 'AuthController@show'
+	]);
+
 	Route::get('/signin', [
 		'uses'	=> 'AuthController@create'
 	]);
@@ -97,8 +101,20 @@ Route::group(['as' => 'socialauth::'], function () {
 });
 
 Route::group(['as' => 'vote::'], function () {
-	Route::post('/votes', [
+	Route::get('/questions/{id}/upvotes', [
+		'uses' => 'VotesController@upvotes'
+	]);
+
+	Route::get('/questions/{id}/downvotes', [
+		'uses' => 'VotesController@downvotes'
+	]);
+
+	Route::post('/questions/{id}/votes', [
 		'uses'	=> 'VotesController@store'
+	]);
+
+	Route::get('/questions/{id}/voted', [
+		'uses' => 'VotesController@voted'
 	]);
 });
 

@@ -4,6 +4,8 @@
 var Vue = require('vue');
 require('./vendor/jquery.timeago.js');
 
+// votes for questions.
+new Vue(require('./modules/votes'));
 // comments for questions.
 new Vue(require('./modules/comments'));
 // comments for answers.
@@ -11,7 +13,7 @@ new Vue(require('./modules/answercomment'));
 // search
 new Vue(require('./modules/search'));
 
-},{"./modules/answercomment":70,"./modules/comments":71,"./modules/search":72,"./vendor/jquery.timeago.js":73,"vue":68}],2:[function(require,module,exports){
+},{"./modules/answercomment":70,"./modules/comments":71,"./modules/search":72,"./modules/votes":73,"./vendor/jquery.timeago.js":74,"vue":68}],2:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -18949,6 +18951,84 @@ module.exports = {
 };
 
 },{}],73:[function(require,module,exports){
+'use strict';
+
+module.exports = {
+	el: '.single-question-buttons',
+
+	data: {
+		postId: 0,
+
+		voted: false,
+
+		upvoted: false,
+
+		downvoted: false,
+
+		upvotes: 0,
+
+		downvotes: 0
+	},
+
+	methods: {
+		upvote: function upvote(event) {
+			event.preventDefault();
+
+			$.post('/questions/' + this.postId + '/votes', {
+				type: 'upvote'
+			});
+
+			this.setVoted();
+		},
+
+		downvote: function downvote(event) {
+			event.preventDefault();
+
+			$.post('/questions/' + this.postId + '/votes', {
+				type: 'downvote'
+			});
+
+			this.setVoted();
+		},
+
+		setVoted: function setVoted() {
+			$.get('/questions/' + this.postId + '/voted').success((function (response) {
+				if (response.voted === true) {
+					this.voted = true;
+					if (response.type === 'upvote') {
+						this.upvoted = true;
+					} else if (response.type === 'downvote') {
+						this.downvoted = true;
+					}
+				}
+			}).bind(this));
+
+			this.setUpvotes();
+
+			this.setDownvotes();
+		},
+
+		setUpvotes: function setUpvotes() {
+			$.get('/questions/' + this.postId + '/upvotes').success((function (votes) {
+				this.upvotes = votes.count;
+			}).bind(this));
+		},
+
+		setDownvotes: function setDownvotes() {
+			$.get('/questions/' + this.postId + '/downvotes').success((function (votes) {
+				this.upvotes = votes.count;
+			}).bind(this));
+		}
+	},
+
+	ready: function ready() {
+		this.postId = this.$$.question.getAttribute('data-post');
+
+		this.setVoted();
+	}
+};
+
+},{}],74:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');

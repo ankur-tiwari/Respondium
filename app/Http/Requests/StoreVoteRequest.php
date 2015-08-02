@@ -24,8 +24,7 @@ class StoreVoteRequest extends Request
     public function rules()
     {
         return [
-            'type'  => 'in:upvote,downvote',
-            'post_id'  => 'required|integer',
+            'type'  => 'in:upvote,downvote'
         ];
     }
 }

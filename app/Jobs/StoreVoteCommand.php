@@ -2,8 +2,9 @@
 
 namespace App\Jobs;
 
-use App\Vote;
 use App\Jobs\Job;
+use App\Post;
+use App\Vote;
 use Illuminate\Contracts\Bus\SelfHandling;
 
 class StoreVoteCommand extends Job implements SelfHandling
@@ -25,6 +26,8 @@ class StoreVoteCommand extends Job implements SelfHandling
 
     public function handle()
     {
+        Post::findOrFail($this->postId);
+
         $alreadyExsistingVote = Vote::where('post_id', $this->postId)->where('user_id', $this->userId)->first();
 
         if (is_null($alreadyExsistingVote))
@@ -41,7 +44,7 @@ class StoreVoteCommand extends Job implements SelfHandling
 
             return $vote;
         } else {
-            return false;
+            return null;
         }
     }
 }

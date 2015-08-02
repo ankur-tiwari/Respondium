@@ -12,7 +12,9 @@ module.exports = {
 
 		upvotes: 0,
 
-		downvotes: 0
+		downvotes: 0,
+
+		unauthorized: false
 	},
 
 	methods: {
@@ -37,7 +39,7 @@ module.exports = {
 		},
 
 		setVoted: function() {
-			$.get('/questions/' + this.postId + '/voted').success(function(response) {
+			$.get('/questions/' + this.postId + '/voted').success(function(response, statusText, xhr) {
 				if (response.voted === true) {
 					this.voted = true;
 					if (response.type === 'upvote') {
@@ -46,6 +48,8 @@ module.exports = {
 						this.downvoted = true;
 					}
 				}
+			}.bind(this)).fail(function() {
+				this.unauthorized = true;
 			}.bind(this));
 
 			this.setUpvotes();

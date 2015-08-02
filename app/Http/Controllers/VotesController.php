@@ -17,7 +17,9 @@ class VotesController extends Controller
 
     public function __construct()
     {
-        $this->middleware(Authenticate::class);
+        $this->middleware(Authenticate::class, [
+            'except' => ['upvotes', 'downvotes']
+        ]);
     }
 
     public function voted($postId)

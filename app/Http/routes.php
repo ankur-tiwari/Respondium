@@ -1,11 +1,5 @@
 <?php
 
-view()->composer('layouts.partials.front.nav', function ($view) {
-	if ( ! isset($view->page)) {
-		$view->with('page', null);
-	}
-});
-
 Route::group(['as' => 'question::'], function () {
 	Route::get('/', [
 		'uses'	=> 'QuestionsController@index'

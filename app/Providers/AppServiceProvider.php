@@ -14,6 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        view()->composer('layouts.partials.front.nav', function ($view) {
+            if ( ! isset($view->page)) {
+                $view->with('page', null);
+            }
+        });
     }
 
     /**

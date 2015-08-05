@@ -5,5 +5,8 @@ namespace Helper;
 
 class Selenium extends \Codeception\Module
 {
-
+	public function amOnHomePage()
+	{
+		$this->amOnPage('/');
+	}
 }

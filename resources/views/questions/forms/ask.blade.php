@@ -22,7 +22,7 @@
 	</div>
 
 	<div class="form-group">
-		<input type="submit" value="Ask" class="btn btn-primary">
+		<input type="submit" value="Ask the question" class="btn btn-primary">
 	</div>
 
 </form>

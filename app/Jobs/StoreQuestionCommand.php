@@ -20,7 +20,7 @@ class StoreQuestionCommand extends Job implements SelfHandling
 
     public $tagIds;
 
-    public function __construct($title, $description, $userId, $tagIds)
+    public function __construct($title, $description, $userId, $tagIds=[])
     {
         $this->title = $title;
 

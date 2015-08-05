@@ -46,7 +46,7 @@ class QuestionsController extends Controller
             new StoreQuestionCommand($request->title, $request->description, Auth::user()->id, $request->tags)
         );
 
-        return redirect('/questions/' . $question->slug);
+        return redirect('/questions/' . $question->slug)->with('flash_message', 'Your question was posted successfully.');
     }
 
     public function show($slug, QuestionRepository $questionRepo)

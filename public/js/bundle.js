@@ -13,6 +13,12 @@ new Vue(require('./modules/answercomment'));
 // search
 new Vue(require('./modules/search'));
 
+// tooltip logic
+
+$(document).ready(function () {
+	$('[data-toggle="tooltip"]').tooltip();
+});
+
 },{"./modules/answercomment":70,"./modules/comments":71,"./modules/search":72,"./modules/votes":73,"./vendor/jquery.timeago.js":74,"vue":68}],2:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4

@@ -9,3 +9,9 @@ new Vue(require('./modules/comments'));
 new Vue(require('./modules/answercomment'))
 // search
 new Vue(require('./modules/search'));
+
+// tooltip logic
+
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+});

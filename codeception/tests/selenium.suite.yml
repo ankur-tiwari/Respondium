@@ -1,0 +1,9 @@
+class_name: SeleniumTester
+modules:
+    enabled:
+        - \Helper\Selenium
+        - WebDriver
+    config:
+        WebDriver:
+            url: 'http://localhost'
+            browser: 'firefox'

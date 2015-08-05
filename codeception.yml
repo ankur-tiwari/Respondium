@@ -15,7 +15,7 @@ extensions:
 modules:
     config:
         Db:
-            dsn: ''
-            user: ''
-            password: ''
-            dump: tests/_data/dump.sql
+            dsn: 'mysql:host=localhost;dbname=answersvid'
+            user: 'root'
+            password: 'secret'
+            dump: codeception/tests/_data/dump.sql

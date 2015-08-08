@@ -148,6 +148,7 @@ return [
         App\Providers\ValidatorsServiceProvider::class,
 
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Alerter\AlerterServiceProvider::class,
     ],
 
     /*
@@ -197,6 +198,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Alert'     => Alerter\Alert::class,
     ],
 
 ];

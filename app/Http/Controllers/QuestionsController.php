@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Contracts\Search;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Authenticate;
@@ -46,7 +47,9 @@ class QuestionsController extends Controller
             new StoreQuestionCommand($request->title, $request->description, Auth::user()->id, $request->tags)
         );
 
-        return redirect('/questions/' . $question->slug)->with('flash_message', 'Your question was posted successfully.');
+        Alert::success('Your question was posted successfully.');
+
+        return redirect('/questions/' . $question->slug);
     }
 
     public function show($slug, QuestionRepository $questionRepo)

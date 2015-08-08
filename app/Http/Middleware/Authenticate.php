@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Alert;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
@@ -13,6 +14,10 @@ class Authenticate
      * @var Guard
      */
     protected $auth;
+
+    protected $pathNotices = [
+        'ask' => 'You must sign in to your account before you ask any questions.'
+    ];
 
     /**
      * Create a new filter instance.
@@ -38,10 +43,19 @@ class Authenticate
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
+                $this->showNotices($request->path());
+
                 return redirect()->guest('signin');
             }
         }
 
         return $next($request);
+    }
+
+    protected function showNotices($path)
+    {
+        if ( isset($this->pathNotices[$path]) ) {
+            Alert::info($this->pathNotices[$path], 'Whoops!');
+        }
     }
 }

@@ -7,11 +7,11 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "algolia/algoliasearch-client-php": "1.5.*",
         "laravel/socialite": "^2.0",
         "guzzlehttp/guzzle": "~5.3",
         "elasticsearch/elasticsearch": "~1.0",
-        "codeception/codeception": "^2.1"
+        "codeception/codeception": "^2.1",
+	"iamfaiz/alerter": "0.0.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Authenticate;
 use App\Http\Requests\SignInRequest;
@@ -41,9 +42,13 @@ class AuthController extends Controller
     {
         if (Auth::attempt($request->only('email', 'password')))
         {
-            return redirect('/')->with('flash_message', 'You have successfully signed in!');
+            Alert::success('You have successfully signed in!');
+
+            return redirect()->intended();
         } else {
-            return redirect()->back()->with('flash_message', 'The username or password is incorrect!');
+            Alert::error('The username or password is incorrect!');
+
+            return redirect()->back();
         }
     }
 
@@ -64,35 +69,29 @@ class AuthController extends Controller
 
     public function google(UserRepository $repo)
     {
-        $this->processUserInformationFrom('google');
-
-        return redirect('/');
+        return $this->logTheUserInBy('google');
     }
 
     public function facebook()
     {
-        $this->processUserInformationFrom('facebook');
-
-        return redirect('/');
+        return $this->logTheUserInBy('facebook');
     }
 
     public function github()
     {
-        $this->processUserInformationFrom('github');
-
-        return redirect('/');
+        return $this->logTheUserInBy('github');
     }
 
     public function linkedin()
     {
-        $this->processUserInformationFrom('linkedin');
-
-        return redirect('/');
+        return $this->logTheUserInBy('linkedin');
     }
 
     public function logout()
     {
     	Auth::logout();
+
+        Alert::success('You have successfully logged out!');
 
     	return redirect('/signin');
     }
@@ -104,4 +103,12 @@ class AuthController extends Controller
         return $this->userRepo->getOrCreate($user);
     }
 
+    private function logTheUserInBy($service)
+    {
+        $this->processUserInformationFrom($service);
+
+        Alert::success('You have successfully signed in!');
+
+        return redirect('/');
+    }
 }

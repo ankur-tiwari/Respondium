@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Alert;
 use App\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -40,6 +41,8 @@ class UsersController extends Controller
             new StoreUserCommand($request->name, $request->email, $request->password)
         );
 
-        return redirect('/')->with('flash_message', 'You are successfully registered as a new user!');
+        Alert::success('You are successfully registered as a new user!', 'Congrats!');
+
+        return redirect('/');
     }
 }

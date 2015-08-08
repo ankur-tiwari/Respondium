@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Http\Requests\ContactRequest;
@@ -13,9 +14,12 @@ class ContactController extends Controller
 {
 	public function form()
 	{
-		return view('contact.form')
-									->with('title', 'Contact Us')
-									->with('page', 'Contact Us');
+		$pageTitle = 'Contact Us';
+
+		return view('contact.form', [
+			'title' => $pageTitle,
+			'page' => $pageTitle
+		]);
 	}
 
 	public function send(ContactRequest $request)
@@ -24,8 +28,8 @@ class ContactController extends Controller
 			new SendContactFormEmail($request->email, $request->name, $request->subject, $request->message)
 		);
 
-		return redirect()
-						->back()
-						->with('flash_message', 'Thank you for contacting us. We will respond as soon as we could!');
+		Alert::success('Thank you for contacting us. We will respond as soon as we could!');
+
+		return redirect()->back();
 	}
 }

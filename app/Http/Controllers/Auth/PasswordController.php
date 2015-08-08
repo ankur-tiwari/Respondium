@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Alert;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -30,7 +31,9 @@ class PasswordController extends Controller
 
         switch ($response) {
             case Password::RESET_LINK_SENT:
-                return redirect()->back()->with('flash_message', trans($response));
+                Alert::success(trans($response));
+
+                return redirect()->back();
 
             case Password::INVALID_USER:
                 return redirect()->back()->withErrors(['email' => trans($response)]);

@@ -7,8 +7,7 @@
 			<hr>
 			<div class="row">
 				<div class="col-md-12">
-					<div>{!! $answer->description !!}</div>
-					<hr>
+					<article class="lead">{!! $answer->description !!}</article>
 					{!! $videoGenerator->generate($answer->video_url) !!}
 					<br>
 				</div>
@@ -22,7 +21,6 @@
 				</div>
 			</div>
 			@include('questions.forms.answercomment')
-			@include('questions.partials.answerscommentslist')
 		@endforeach
 	</div>
 

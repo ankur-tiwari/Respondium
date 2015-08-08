@@ -1,42 +1,13 @@
-$.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-});
-
 module.exports = {
 	el: '#comments',
 
 	data: {
-
-		comments: [],
-
-		newComment: ''
-
+		comments: []
 	},
 
-	ready: function() {
-		this.questionId = this.$$.comments.getAttribute('data-post');
-
-		$.get('/questions/' + this.questionId + '/comments').success(function(comments) {
+	created: function () {
+		this.$on('comments-loaded', function (comments) {
 			this.comments = comments;
 		}.bind(this));
-	},
-
-	methods: {
-
-		addComment: function(event) {
-			event.preventDefault();
-
-			$.post('/questions/' + this.questionId + '/comments', {
-				body: this.newComment
-			}).success(function(comment) {
-				this.comments.push(comment);
-			}.bind(this));
-
-			this.newComment = '';
-
-		}
-
 	}
 };

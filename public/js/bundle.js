@@ -4,6 +4,13 @@
 var Vue = require('vue');
 require('./vendor/jquery.timeago.js');
 
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+Vue.component('comments-list', require('./components/comments-list'));
 // votes for questions.
 new Vue(require('./modules/votes'));
 // comments for questions.
@@ -16,10 +23,10 @@ new Vue(require('./modules/search'));
 // tooltip logic
 
 $(document).ready(function () {
-	$('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="tooltip"]').tooltip();
 });
 
-},{"./modules/answercomment":70,"./modules/comments":71,"./modules/search":72,"./modules/votes":73,"./vendor/jquery.timeago.js":74,"vue":68}],2:[function(require,module,exports){
+},{"./components/comments-list":70,"./modules/answercomment":72,"./modules/comments":73,"./modules/search":74,"./modules/votes":75,"./vendor/jquery.timeago.js":76,"vue":68}],2:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -18864,80 +18871,98 @@ module.exports = Watcher
 'use strict';
 
 module.exports = {
-	el: '.answer_comment',
+	props: ['type', 'id', 'comments'],
 
-	data: {
-		comments: [],
-		newComment: []
+	data: function data() {
+		return {
+			comments: [],
+
+			newComment: ''
+		};
 	},
 
-	ready: function ready() {
-		this.answerId = this.$$.answer.getAttribute('data-answer');
+	template: require('./templates/commentsList.html'),
 
-		$.get('/answers/' + this.answerId + '/comments').success((function (comments) {
-			this.comments = comments;
-		}).bind(this));
+	ready: function ready() {
+		if (this.type === 'question') {
+			this.commentsForQuestion();
+		} else if (this.type === 'answer') {
+			this.commentsForAnswer();
+		}
 	},
 
 	methods: {
+
+		commentsForQuestion: function commentsForQuestion() {
+			$.get('/questions/' + this.id + '/comments').success((function (response) {
+				this.comments = response;
+			}).bind(this));
+		},
+
+		commentsForAnswer: function commentsForAnswer() {
+			$.get('/answers/' + this.id + '/comments').success((function (response) {
+				this.comments = response;
+			}).bind(this));
+		},
+
 		addComment: function addComment(event) {
 			event.preventDefault();
 
-			$.post('/answers/' + this.answerId + '/comments', { body: this.newComment }).success((function (comment) {
-				this.comments.push(comment);
-			}).bind(this));
+			if (this.type === 'question') {
+				this.addCommentForQuestion();
+			} else if (this.type === 'answer') {
+				this.addCommentForAnswer();
+			}
 
 			this.newComment = '';
+		},
+
+		addCommentForQuestion: function addCommentForQuestion() {
+			$.post('/questions/' + this.id + '/comments', {
+				body: this.newComment
+			}).success((function (response) {
+				this.comments.push(response);
+			}).bind(this));
+		},
+
+		addCommentForAnswer: function addCommentForAnswer() {
+			$.post('/answers/' + this.id + '/comments', {
+				body: this.newComment
+			}).success((function (response) {
+				this.comments.push(response);
+			}).bind(this));
 		}
+
 	}
 };
 
-},{}],71:[function(require,module,exports){
+},{"./templates/commentsList.html":71}],71:[function(require,module,exports){
+module.exports = '<div>\n	<form v-on="submit: addComment">\n		<div class="form-group">\n			<textarea v-model="newComment" class="form-control" placeholder="Leave a comment"></textarea>\n		</div>\n\n		<div class="form-group">\n			<button class="btn btn-default">Post Comment</button>\n		</div>\n	</form>\n\n	<ul class="media-list">\n		<li v-repeat="comment in comments" class="media">\n			<a class="pull-left" href="#">\n				<img class="media-object img-circle" src="http://www.gravatar.com/avatar" alt="Avatar">\n			</a>\n			<div class="media-body well">\n				<h4 class="media-heading">Faiz Ahmad</h4>\n				<p>{{ comment.body }}</p>\n			</div>\n		</li>\n	</ul>\n\n	<!-- <pre>{{ $data | json }}</pre> -->\n</div>';
+},{}],72:[function(require,module,exports){
 'use strict';
 
-$.ajaxSetup({
-	headers: {
-		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	}
-});
+module.exports = {
+	el: '#answerslist'
+};
+
+},{}],73:[function(require,module,exports){
+'use strict';
 
 module.exports = {
 	el: '#comments',
 
 	data: {
-
-		comments: [],
-
-		newComment: ''
-
+		comments: []
 	},
 
-	ready: function ready() {
-		this.questionId = this.$$.comments.getAttribute('data-post');
-
-		$.get('/questions/' + this.questionId + '/comments').success((function (comments) {
+	created: function created() {
+		this.$on('comments-loaded', (function (comments) {
 			this.comments = comments;
 		}).bind(this));
-	},
-
-	methods: {
-
-		addComment: function addComment(event) {
-			event.preventDefault();
-
-			$.post('/questions/' + this.questionId + '/comments', {
-				body: this.newComment
-			}).success((function (comment) {
-				this.comments.push(comment);
-			}).bind(this));
-
-			this.newComment = '';
-		}
-
 	}
 };
 
-},{}],72:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -18956,7 +18981,7 @@ module.exports = {
 	}
 };
 
-},{}],73:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -19038,7 +19063,7 @@ module.exports = {
 	}
 };
 
-},{}],74:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 'use strict';
 
 var jQuery = require('jquery');

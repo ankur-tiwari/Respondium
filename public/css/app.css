@@ -11,6 +11,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,700italic);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -6046,11 +6047,17 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
   color: #720e9e;
   background-color: #fff; }
 
+body {
+  padding-top: 70px;
+  font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-weight: 300; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-weight: 400; }
+
 .btn-social.btn-lg > :first-child {
   line-height: 68px; }
-
-body {
-  padding-top: 70px; }
 
 a {
   color: #2c3e50; }
@@ -6078,6 +6085,9 @@ a {
   font-weight: bold; }
 
 .single-question .single-question-buttons {
+  margin-bottom: 10px; }
+
+.action-bar {
   margin-bottom: 10px; }
 
 .comments {

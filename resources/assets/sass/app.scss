@@ -2,14 +2,21 @@
 
 @import "resources/assets/sass/vendor/bootstrap-social";
 
-// Line height adjustment from bootstrap-social
-
-.btn-social.btn-lg > :first-child {
-	line-height: 68px;
-}
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,700italic);
 
 body {
 	padding-top: 70px;
+	font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
+	font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
+	font-weight: 400;
+}
+
+.btn-social.btn-lg > :first-child {
+	line-height: 68px;
 }
 
 a {
@@ -51,6 +58,10 @@ a {
 	.single-question-buttons {
 		margin-bottom: 10px;
 	}
+}
+
+.action-bar {
+	margin-bottom: 10px;
 }
 
 @import "resources/assets/sass/modules/comments";

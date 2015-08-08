@@ -1,0 +1,25 @@
+<div>
+	<form v-on="submit: addComment">
+		<div class="form-group">
+			<textarea v-model="newComment" class="form-control" placeholder="Leave a comment"></textarea>
+		</div>
+
+		<div class="form-group">
+			<button class="btn btn-default">Post Comment</button>
+		</div>
+	</form>
+
+	<ul class="media-list">
+		<li v-repeat="comment in comments" class="media">
+			<a class="pull-left" href="#">
+				<img class="media-object img-circle" src="http://www.gravatar.com/avatar" alt="Avatar">
+			</a>
+			<div class="media-body well">
+				<h4 class="media-heading">Faiz Ahmad</h4>
+				<p>{{ comment.body }}</p>
+			</div>
+		</li>
+	</ul>
+
+	<!-- <pre>{{ $data | json }}</pre> -->
+</div>

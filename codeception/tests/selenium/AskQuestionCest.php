@@ -16,11 +16,10 @@ class AskQuestionCest
     {
         $I->amOnPage('/');
 
-        $I->click('Signup now');
-        $I->fillField('name', 'John Doe');
+        $I->click('Sign in');
         $I->fillField('email', 'john@example.com');
         $I->fillField('password', 'secret');
-        $I->click('Sign Up');
+        $I->click('Sign In');
 
         $I->click('Ask');
         $I->fillField('title', 'My Awesome question');

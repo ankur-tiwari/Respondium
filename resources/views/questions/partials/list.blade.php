@@ -8,9 +8,6 @@
 				</h4>
 				<p>{{ str_limit($question->description, 400) }}</p>
 			</div>
-			<div class="col-md-12 single-question-buttons">
-				<a href="" class="btn btn-success btn-sm">Share</a>
-			</div>
 		</div>
 	</li>
 	@endforeach

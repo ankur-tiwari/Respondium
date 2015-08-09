@@ -6,5 +6,13 @@ modules:
         - Db
     config:
         WebDriver:
-            url: 'http://localhost'
+            url: 'http://testing.app'
             browser: 'firefox'
+        Db:
+            dsn: 'mysql:host=localhost;dbname=answersvidtesting'
+            user: 'root'
+            password: 'secret'
+            dump: 'codeception/tests/_data/dump.sql'
+            populate: true
+            cleanup: false
+            reconnect: true

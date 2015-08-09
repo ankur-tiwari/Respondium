@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App;
+use Config;
+use Request;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,11 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('layouts.partials.front.nav', function ($view) {
-            if ( ! isset($view->page)) {
-                $view->with('page', null);
-            }
-        });
+        $this->composerTitleForViews();
+
+        $this->setDatabaseToTestingWhileTesting();
     }
 
     /**
@@ -28,5 +28,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+    }
+
+    protected function composerTitleForViews()
+    {
+        view()->composer('layouts.partials.front.nav', function ($view) {
+            if ( ! isset($view->page)) {
+                $view->with('page', null);
+            }
+        });
+    }
+
+    protected function setDatabaseToTestingWhileTesting()
+    {
+        if ( Request::header('host') === 'testing.app' or $this->app->environment('testing') ) {
+            Config::set('database.default', 'testing');
+        }
     }
 }

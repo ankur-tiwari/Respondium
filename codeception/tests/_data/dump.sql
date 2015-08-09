@@ -31,7 +31,7 @@ CREATE TABLE `answers` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,6 @@ CREATE TABLE `answers` (
 
 LOCK TABLES `answers` WRITE;
 /*!40000 ALTER TABLE `answers` DISABLE KEYS */;
-INSERT INTO `answers` VALUES (1,'https://vimeo.com/134581129','Meteor',1042,'2015-07-30 11:46:55','2015-07-30 11:46:55',184),(2,'http://www.dailymotion.com/video/x16thp0','Angry Man',1042,'2015-07-30 12:38:44','2015-07-30 12:38:44',184),(3,'/video_uploads/55ba616edc599.mp4','Unit Testing with Modules.',1042,'2015-07-30 12:39:59','2015-07-30 12:39:59',184),(4,'https://vimeo.com/64703617','Laravel 4 - Iron.io Push Queues & Closures',1043,'2015-08-01 04:48:34','2015-08-01 04:48:34',184),(5,'https://vimeo.com/26396415','SoundWorks Collection: The Sound of Harry Potter and the Deathly Hallows - Part 2',1,'2015-08-01 05:55:45','2015-08-01 05:55:45',184);
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +59,7 @@ CREATE TABLE `comments` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +68,6 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'A comment for harry potter ipsum.\n',184,1,'App\\Post','2015-08-01 05:54:55','2015-08-01 05:54:55'),(2,'Good answer!\n',184,5,'App\\Answer','2015-08-01 05:56:11','2015-08-01 05:56:11'),(11,'Comments are working too :)\n',184,2,'App\\Post','2015-08-02 01:22:43','2015-08-02 01:22:43'),(12,'It feels ok.\n',184,2,'App\\Post','2015-08-02 02:44:48','2015-08-02 02:44:48');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +89,7 @@ CREATE TABLE `jobs` (
   `created_at` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `jobs_queue_reserved_reserved_at_index` (`queue`,`reserved`,`reserved_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +98,7 @@ CREATE TABLE `jobs` (
 
 LOCK TABLES `jobs` WRITE;
 /*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
-INSERT INTO `jobs` VALUES (47,'default','{\"job\":\"Illuminate\\\\Events\\\\CallQueuedHandler@call\",\"data\":{\"class\":\"App\\\\Events\\\\IndexQuestionInSearch\",\"method\":\"handle\",\"data\":\"a:1:{i:0;O:29:\\\"App\\\\Events\\\\QuestionWasCreated\\\":1:{s:8:\\\"question\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":2:{s:5:\\\"class\\\";s:8:\\\"App\\\\Post\\\";s:2:\\\"id\\\";i:4;}}}\"}}',0,0,NULL,1437763788,1437763788),(48,'default','{\"job\":\"Illuminate\\\\Events\\\\CallQueuedHandler@call\",\"data\":{\"class\":\"App\\\\Events\\\\IndexQuestionInSearch\",\"method\":\"handle\",\"data\":\"a:1:{i:0;O:29:\\\"App\\\\Events\\\\QuestionWasCreated\\\":1:{s:8:\\\"question\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":2:{s:5:\\\"class\\\";s:8:\\\"App\\\\Post\\\";s:2:\\\"id\\\";i:5;}}}\"}}',0,0,NULL,1437767219,1437767219),(49,'default','{\"job\":\"Illuminate\\\\Events\\\\CallQueuedHandler@call\",\"data\":{\"class\":\"App\\\\Events\\\\IndexQuestionInSearch\",\"method\":\"handle\",\"data\":\"a:1:{i:0;O:29:\\\"App\\\\Events\\\\QuestionWasCreated\\\":1:{s:8:\\\"question\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":2:{s:5:\\\"class\\\";s:8:\\\"App\\\\Post\\\";s:2:\\\"id\\\";i:1;}}}\"}}',0,0,NULL,1437768834,1437768834),(50,'default','{\"job\":\"mailer@handleQueuedMessage\",\"data\":{\"view\":\"emails.contact\",\"data\":{\"email\":\"iamfaizahmed123@gmail.com\",\"name\":\"Rana Faiz Ahmad\",\"subject\":\"Subject\",\"bodyMessage\":\"This is my message.\"},\"callback\":\"C:32:\\\"SuperClosure\\\\SerializableClosure\\\":279:{a:5:{s:4:\\\"code\\\";s:149:\\\"function ($message) {\\n    $message->to(\'iamfaizahmed123@gmail.com\', \'Rana Faiz Ahmad\');\\n    $message->subject(\'AnswersVid: Contact Form Message\');\\n};\\\";s:7:\\\"context\\\";a:0:{}s:7:\\\"binding\\\";N;s:5:\\\"scope\\\";s:29:\\\"App\\\\Jobs\\\\SendContactFormEmail\\\";s:8:\\\"isStatic\\\";b:0;}}\"}}',0,0,NULL,1438610362,1438610362);
+INSERT INTO `jobs` VALUES (47,'default','{\"job\":\"Illuminate\\\\Events\\\\CallQueuedHandler@call\",\"data\":{\"class\":\"App\\\\Events\\\\IndexQuestionInSearch\",\"method\":\"handle\",\"data\":\"a:1:{i:0;O:29:\\\"App\\\\Events\\\\QuestionWasCreated\\\":1:{s:8:\\\"question\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":2:{s:5:\\\"class\\\";s:8:\\\"App\\\\Post\\\";s:2:\\\"id\\\";i:4;}}}\"}}',0,0,NULL,1437763788,1437763788),(48,'default','{\"job\":\"Illuminate\\\\Events\\\\CallQueuedHandler@call\",\"data\":{\"class\":\"App\\\\Events\\\\IndexQuestionInSearch\",\"method\":\"handle\",\"data\":\"a:1:{i:0;O:29:\\\"App\\\\Events\\\\QuestionWasCreated\\\":1:{s:8:\\\"question\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":2:{s:5:\\\"class\\\";s:8:\\\"App\\\\Post\\\";s:2:\\\"id\\\";i:5;}}}\"}}',0,0,NULL,1437767219,1437767219),(49,'default','{\"job\":\"Illuminate\\\\Events\\\\CallQueuedHandler@call\",\"data\":{\"class\":\"App\\\\Events\\\\IndexQuestionInSearch\",\"method\":\"handle\",\"data\":\"a:1:{i:0;O:29:\\\"App\\\\Events\\\\QuestionWasCreated\\\":1:{s:8:\\\"question\\\";O:45:\\\"Illuminate\\\\Contracts\\\\Database\\\\ModelIdentifier\\\":2:{s:5:\\\"class\\\";s:8:\\\"App\\\\Post\\\";s:2:\\\"id\\\";i:1;}}}\"}}',0,0,NULL,1437768834,1437768834),(50,'default','{\"job\":\"mailer@handleQueuedMessage\",\"data\":{\"view\":\"emails.contact\",\"data\":{\"email\":\"iamfaizahmed123@gmail.com\",\"name\":\"Rana Faiz Ahmad\",\"subject\":\"Subject\",\"bodyMessage\":\"This is my message.\"},\"callback\":\"C:32:\\\"SuperClosure\\\\SerializableClosure\\\":279:{a:5:{s:4:\\\"code\\\";s:149:\\\"function ($message) {\\n    $message->to(\'iamfaizahmed123@gmail.com\', \'Rana Faiz Ahmad\');\\n    $message->subject(\'AnswersVid: Contact Form Message\');\\n};\\\";s:7:\\\"context\\\";a:0:{}s:7:\\\"binding\\\";N;s:5:\\\"scope\\\";s:29:\\\"App\\\\Jobs\\\\SendContactFormEmail\\\";s:8:\\\"isStatic\\\";b:0;}}\"}}',0,0,NULL,1438610362,1438610362),(51,'default','{\"job\":\"mailer@handleQueuedMessage\",\"data\":{\"view\":\"emails.contact\",\"data\":{\"email\":\"iamfaizahmed123@gmail.com\",\"name\":\"Faiz Ahmad\",\"subject\":\"Subject\",\"bodyMessage\":\"Message.\"},\"callback\":\"C:32:\\\"SuperClosure\\\\SerializableClosure\\\":279:{a:5:{s:4:\\\"code\\\";s:149:\\\"function ($message) {\\n    $message->to(\'iamfaizahmed123@gmail.com\', \'Rana Faiz Ahmad\');\\n    $message->subject(\'AnswersVid: Contact Form Message\');\\n};\\\";s:7:\\\"context\\\";a:0:{}s:7:\\\"binding\\\";N;s:5:\\\"scope\\\";s:29:\\\"App\\\\Jobs\\\\SendContactFormEmail\\\";s:8:\\\"isStatic\\\";b:0;}}\"}}',0,0,NULL,1439061676,1439061676);
 /*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +147,7 @@ CREATE TABLE `password_resets` (
 
 LOCK TABLES `password_resets` WRITE;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
-INSERT INTO `password_resets` VALUES ('iamfaizahmed123@gmail.com','c75dcd772a8739b60912ff1fd56150eedbba4d63b8348cf8e7a5b782d7de2ff5','2015-07-25 03:01:11');
+INSERT INTO `password_resets` VALUES ('iamfaizahmed123@gmail.com','2afaed27230f51ac297caa9c45185409e9135fa83e352c8159777a092a820cbf','2015-08-08 14:59:00');
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +172,7 @@ CREATE TABLE `post_tag` (
 
 LOCK TABLES `post_tag` WRITE;
 /*!40000 ALTER TABLE `post_tag` DISABLE KEYS */;
-INSERT INTO `post_tag` VALUES (9,3),(10,4),(11,3),(12,4),(12,3),(12,2),(12,1),(13,4),(13,3),(13,2),(13,1),(14,3),(15,3),(16,2),(17,1),(18,3),(18,1),(8,1),(6,1),(7,1),(33,3),(233,3),(233,1),(237,3),(238,1),(2,1),(3,4),(3,3),(4,1),(5,3),(1,1),(1043,1),(1,4),(1,3),(1,2),(2,2);
+INSERT INTO `post_tag` VALUES (9,3),(10,4),(11,3),(12,4),(12,3),(12,2),(12,1),(13,4),(13,3),(13,2),(13,1),(14,3),(15,3),(16,2),(17,1),(18,3),(18,1),(8,1),(6,1),(7,1),(33,3),(233,3),(233,1),(237,3),(238,1),(2,1),(4,1),(5,3),(1,1),(1043,1),(1,4),(1,3),(1,2),(2,2),(3,2),(3,1),(17,4),(17,3),(17,2),(18,4),(18,2);
 /*!40000 ALTER TABLE `post_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +196,7 @@ CREATE TABLE `posts` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `posts_title_unique` (`title`),
   UNIQUE KEY `posts_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,7 +205,6 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,'Boggarts lavender robes, Hermione Granger Fantastic Beasts and Where to Find Them?','Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.\r\n\r\nBoggarts lavender robes, Hermione Granger Fantastic Beasts and Where to Find Them. Bee in your bonnet Hand of Glory elder wand, spectacles House Cup Bertie Bott’s Every Flavor Beans Impedimenta. Stunning spells tap-dancing spider Slytherin’s Heir mewing kittens Remus Lupin. Palominos scarlet train black robes, Metamorphimagus Niffler dead easy second bedroom. Padma and Parvati Sorting Hat Minister of Magic blue turban remember my last.','boggarts-lavender-robes-hermione-granger-fantastic-beasts-and-where-to-find-them',184,0,'question','2015-08-01 05:54:32','2015-08-01 05:54:32'),(2,'Biscuit caramels cake tart carrot cake sweet cookie cheesecake?','Halvah dragée chocolate cake soufflé jelly-o pie. Pie tiramisu chocolate cake cheesecake sesame snaps jelly. Chocolate dessert apple pie pie cake tart liquorice cheesecake. Marshmallow pastry sesame snaps cake croissant sweet roll macaroon topping. Tart macaroon sugar plum. Cookie soufflé sugar plum candy canes pie. Jelly chocolate jelly-o brownie sugar plum liquorice tootsie roll wafer. Tootsie roll jujubes sugar plum wafer. Gingerbread liquorice marshmallow jelly-o fruitcake lemon drops toffee gingerbread. Jujubes croissant chupa chups danish. Pudding danish apple pie brownie apple pie wafer biscuit chocolate bar caramels. Cake marzipan cake cookie powder cookie ice cream. Croissant halvah jelly beans oat cake carrot cake macaroon cupcake bonbon. Pudding gummies gummies jelly-o.\r\nApple pie jelly marzipan sweet roll cupcake pastry. Donut macaroon carrot cake. Powder chocolate cheesecake dessert pie pie carrot cake chocolate cake chocolate cake. Powder sesame snaps chupa chups. Pie toffee marzipan cupcake icing apple pie cake sugar plum macaroon. Dessert marzipan ice cream dragée lemon drops cotton candy donut. Sweet tart caramels cake ice cream liquorice muffin tiramisu. Pie dessert powder. Powder bear claw candy soufflé macaroon. Tootsie roll wafer candy lemon drops tiramisu tiramisu liquorice liquorice danish. Lemon drops cookie jelly-o apple pie oat cake apple pie. Tiramisu icing toffee jelly jelly-o cupcake lollipop. Icing dessert liquorice muffin. Pie ice cream liquorice.\r\nCake croissant icing muffin cookie sweet roll. Tootsie roll halvah dessert sesame snaps caramels pudding donut candy. Gummi bears halvah pudding jelly-o caramels pudding toffee. Lollipop cookie sesame snaps lemon drops croissant icing donut marzipan. Wafer marshmallow powder gingerbread liquorice marshmallow tiramisu lollipop. Tiramisu lemon drops jujubes croissant tart wafer marzipan caramels cake. Cake chupa chups sweet roll tart jelly beans ice cream. Marzipan brownie icing fruitcake cake apple pie pie cake. Gummies icing gummi bears jelly-o cheesecake croissant caramels tootsie roll gummi bears. Cake danish brownie wafer carrot cake pudding apple pie. Gummies jelly wafer biscuit fruitcake. Candy jelly-o lollipop bonbon.\r\nCaramels ice cream donut muffin chocolate bar lollipop wafer. Sugar plum caramels tootsie roll jelly beans halvah. Bonbon chocolate bear claw. Pastry soufflé gummies marzipan. Cheesecake candy canes marshmallow candy canes caramels apple pie. Sugar plum candy macaroon caramels macaroon. Gingerbread gummies lollipop biscuit oat cake. Macaroon tart jujubes cupcake soufflé carrot cake oat cake gingerbread. Danish cookie topping. Tart caramels bear claw chupa chups cake. Pastry powder croissant pudding. Dragée sweet roll jelly jelly beans macaroon dragée caramels jelly-o. Ice cream candy canes danish icing.','biscuit-caramels-cake-tart-carrot-cake-sweet-cookie-cheesecake',184,0,'question','2015-08-01 06:05:15','2015-08-01 06:05:15');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,7 +256,7 @@ CREATE TABLE `tags` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `tags_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,7 +287,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=290 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,7 +296,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (49,'Sarmad Ahmad Tahir','sarmad@example.com','$2y$10$SjMffqeb9Ivk3EeKwiCuQ.DGJ6iXop2FTlUZPj23fkS/chCbQ8XV.',0,'EZcgZ5gIqSM5Cs1yyMuh0WmC86kIRiWUjy7pikeXookLcaYYGIuO1WIOBnm6','2015-07-21 03:48:32','2015-07-21 03:58:35'),(182,'Faiz Ahmed','iamfaiz@outlook.com','',0,'hE1G6LvaIfEhrxiK2TbFaLune4gFYdzSggkbWeN2Qw6q9mFSXFZMT8y3mY2i','2015-07-24 15:54:37','2015-08-02 02:33:01'),(183,'Kamran Sharjeel','kamransharjeel03@gmail.com','',0,'g5HCObvZslLqehaCV80yioDMGLOQrymi5IuggbhoO1vpsicz9edWe1dkjx22','2015-07-25 01:05:31','2015-07-25 01:05:37'),(184,'Rana Faiz Ahmad','iamfaizahmed123@gmail.com','$2y$10$JvTnv5vfdO6EQnAy5R846OpoxmD4LFnbtC.KN4KxqrmZI62ZkTKAC',0,'E9tl4NeSwmU6UCGzRPIL5p32u3uW2QTNpi6yaSGklm03rBLaJ1eVHPb0XZe7','2015-07-25 01:30:30','2015-08-02 02:45:02'),(282,'Alyson Lang','uRath@Jacobs.com','a22c0v2Z4g',0,'zAbjA3Dmiv','2015-07-25 13:32:05','2015-07-25 13:32:05'),(283,'William Emard II','Graham.Clement@gmail.com','WyXhone2h1',0,'di9DteY9vP','2015-07-25 13:32:17','2015-07-25 13:32:17'),(284,'Christop Hammes','gBlick@hotmail.com','eScCxDPxhu',0,'1QsAtzFunK','2015-07-25 13:33:24','2015-07-25 13:33:24'),(285,'Talia Hartmann DDS','wRenner@gmail.com','OonYwbjDy9',0,'UQvJrkF1lv','2015-07-25 13:41:18','2015-07-25 13:41:18'),(286,'Weston Dickinson','fHalvorson@gmail.com','JKNUS32YQ9',0,'KXPJQ4Q4dy','2015-07-25 13:42:15','2015-07-25 13:42:15'),(287,'Prof. Jake Witting V','Noel.Kreiger@Cummings.net','dZKZe0DT1p',0,'RpTVsBt3gx','2015-07-25 13:42:22','2015-07-25 13:42:22'),(288,'Shyann Oberbrunner','Francesca06@Blick.info','htAN0OTSec',0,'xnH3QtZwgG','2015-07-25 13:42:49','2015-07-25 13:42:49'),(289,'Clay Bins','Samir20@Lockman.com','1dSHdkPgWO',0,'MYygVyiCbr','2015-07-25 13:44:33','2015-07-25 13:44:33');
+INSERT INTO `users` VALUES (1,'FAIZ AHMED','iamfaizahmed123@gmail.com','',0,'cczEG5qlaNcXWzrVsxLYnVIfh0lvorPQ8h3OoLRS6DdTPt4O5SZn2NRe3JoI','2015-08-08 14:58:34','2015-08-09 02:27:02');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,7 +314,7 @@ CREATE TABLE `views` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -326,7 +323,7 @@ CREATE TABLE `views` (
 
 LOCK TABLES `views` WRITE;
 /*!40000 ALTER TABLE `views` DISABLE KEYS */;
-INSERT INTO `views` VALUES (1,'127.0.0.1',1,'2015-07-19 12:59:35','2015-07-19 12:59:35'),(2,'127.0.0.1',3,'2015-07-20 10:05:14','2015-07-20 10:05:14'),(3,'127.0.0.1',4,'2015-07-20 10:05:49','2015-07-20 10:05:49'),(4,'127.0.0.1',5,'2015-07-20 10:06:30','2015-07-20 10:06:30'),(5,'127.0.0.1',6,'2015-07-20 10:08:43','2015-07-20 10:08:43'),(6,'127.0.0.1',7,'2015-07-20 10:15:45','2015-07-20 10:15:45'),(7,'127.0.0.1',33,'2015-07-21 01:37:34','2015-07-21 01:37:34'),(8,'127.0.0.1',233,'2015-07-24 08:48:29','2015-07-24 08:48:29'),(9,'127.0.0.1',2,'2015-07-24 12:25:13','2015-07-24 12:25:13'),(10,'127.0.0.1',545,'2015-07-25 13:34:26','2015-07-25 13:34:26'),(11,'127.0.0.1',62,'2015-07-25 13:43:56','2015-07-25 13:43:56'),(12,'127.0.0.1',988,'2015-07-26 08:22:06','2015-07-26 08:22:06'),(13,'127.0.0.1',989,'2015-07-26 08:30:10','2015-07-26 08:30:10'),(14,'127.0.0.1',990,'2015-07-26 08:30:18','2015-07-26 08:30:18'),(15,'127.0.0.1',17,'2015-07-26 08:58:37','2015-07-26 08:58:37'),(16,'127.0.0.1',1042,'2015-07-29 03:19:28','2015-07-29 03:19:28'),(17,'127.0.0.1',997,'2015-07-29 05:40:43','2015-07-29 05:40:43'),(18,'127.0.0.1',996,'2015-07-30 12:52:56','2015-07-30 12:52:56'),(19,'127.0.0.1',1043,'2015-08-01 04:02:04','2015-08-01 04:02:04');
+INSERT INTO `views` VALUES (1,'127.0.0.1',1,'2015-07-19 12:59:35','2015-07-19 12:59:35'),(2,'127.0.0.1',3,'2015-07-20 10:05:14','2015-07-20 10:05:14'),(3,'127.0.0.1',4,'2015-07-20 10:05:49','2015-07-20 10:05:49'),(4,'127.0.0.1',5,'2015-07-20 10:06:30','2015-07-20 10:06:30'),(5,'127.0.0.1',6,'2015-07-20 10:08:43','2015-07-20 10:08:43'),(6,'127.0.0.1',7,'2015-07-20 10:15:45','2015-07-20 10:15:45'),(7,'127.0.0.1',33,'2015-07-21 01:37:34','2015-07-21 01:37:34'),(8,'127.0.0.1',233,'2015-07-24 08:48:29','2015-07-24 08:48:29'),(9,'127.0.0.1',2,'2015-07-24 12:25:13','2015-07-24 12:25:13'),(10,'127.0.0.1',545,'2015-07-25 13:34:26','2015-07-25 13:34:26'),(11,'127.0.0.1',62,'2015-07-25 13:43:56','2015-07-25 13:43:56'),(12,'127.0.0.1',988,'2015-07-26 08:22:06','2015-07-26 08:22:06'),(13,'127.0.0.1',989,'2015-07-26 08:30:10','2015-07-26 08:30:10'),(14,'127.0.0.1',990,'2015-07-26 08:30:18','2015-07-26 08:30:18'),(15,'127.0.0.1',17,'2015-07-26 08:58:37','2015-07-26 08:58:37'),(16,'127.0.0.1',1042,'2015-07-29 03:19:28','2015-07-29 03:19:28'),(17,'127.0.0.1',997,'2015-07-29 05:40:43','2015-07-29 05:40:43'),(18,'127.0.0.1',996,'2015-07-30 12:52:56','2015-07-30 12:52:56'),(19,'127.0.0.1',1043,'2015-08-01 04:02:04','2015-08-01 04:02:04'),(20,'127.0.0.1',18,'2015-08-08 14:18:36','2015-08-08 14:18:36');
 /*!40000 ALTER TABLE `views` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,4 +364,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-05 15:22:10
+-- Dump completed on 2015-08-09 15:03:58

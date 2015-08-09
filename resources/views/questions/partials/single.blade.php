@@ -1,7 +1,7 @@
 <div class="row single-question">
 	<div class="col-md-12">
 		<h2 class="single-question-title">{{ $question->title }}</h2>
-		<p>{!! $question->description !!}</p>
+		<p>{!! Markdown::parse($question->description); !!}</p>
 
 		<div class="btn-group action-bar" role="group">
 			<button type="button" class="btn btn-primary" data-toggle="tooltip" title="Like it">

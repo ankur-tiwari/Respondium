@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+		<meta charset="UTF-8" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta content="ERkAXVXlz5gndKgRVD14CEh2PxbtSLQ2diG9JFTN" name="csrf-token" />
+				<title>My Awesome question - AnswersVid</title>
+				<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="/css/app.css" rel="stylesheet" />
+			</head>
+	<body>
+
+		<nav role="navigation" class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+							<a class="navbar-brand" href="/">AnswersVid</a>
+						<button data-target=".navbar-ex1-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/">Home</a></li>
+				<li><a href="/ask">Ask</a></li>
+				<li><a href="/contact-us">Contact Us</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+													<li class="dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" href="#">John Doe <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/logout" id="logout_link">Logout</a></li>
+						</ul>
+					</li>
+							</ul>
+		</div><!-- /.navbar-collapse -->
+	</div>
+</nav>		<div class="container">
+			<div class="alert alert-success">
+        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+		        Your question was posted successfully.    </div>
+						
+	<div class="row">
+		<div class="col-md-9">
+			<div class="row single-question">
+	<div class="col-md-12">
+		<h2 class="single-question-title">My Awesome question</h2>
+		<p></p><p>this is my <em>awesome</em> question description</p><p></p>
+
+		<div role="group" class="btn-group action-bar">
+			<button title="" data-toggle="tooltip" class="btn btn-primary" type="button" data-original-title="Like it">
+				<i class="fa fa-thumbs-o-up"></i>
+			</button>
+			<button title="" data-toggle="tooltip" class="btn btn-primary" type="button" data-original-title="Favourite">
+				<i class="fa fa-heart-o"></i>
+			</button>
+			<button title="" data-toggle="tooltip" class="btn btn-primary" type="button" data-original-title="Share">
+				<i class="fa fa-share-square-o"></i>
+			</button>
+		</div>
+	</div>
+
+</div>
+			<div id="comments">
+	<div>
+	<form>
+		<div class="form-group">
+			<textarea placeholder="Leave a comment" class="form-control"></textarea>
+		</div>
+
+		<div class="form-group">
+			<button class="btn btn-default">Post Comment</button>
+		</div>
+	</form>
+
+	<ul class="media-list">
+		
+	</ul>
+</div>
+</div>
+
+			<div class="panel panel-primary">
+	<div class="panel-heading">Post a video</div>
+	<div class="panel-body">
+		<ul role="tablist" class="nav nav-tabs">
+			<li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="home" href="#by_link_form">Via Link</a></li>
+			<li role="presentation"><a data-toggle="tab" role="tab" aria-controls="profile" href="#by_upload_form">Upload an mp4</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div id="by_link_form" class="tab-pane active in fade" role="tabpanel">
+				<form enctype="multipart/form-data" method="post" action="/answers">
+					<br />
+					<input type="hidden" value="ERkAXVXlz5gndKgRVD14CEh2PxbtSLQ2diG9JFTN" name="_token" />
+					<input type="hidden" value="13" name="post_id" />
+
+					<div class="form-group">
+						<input type="url" placeholder="http://youtube.com/watch?v=123123" class="form-control" name="video_url" />
+						<p class="help-block">Paste a link from the sites YouTube, Vimeo and Dailymotion</p>
+					</div>
+					<div class="form-group">
+						<textarea required="" class="form-control" name="description"></textarea>
+						<p class="help-block">A little description for your video</p>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default">
+							<i class="fa fa-video-camera"></i>
+							Post
+						</button>
+					</div>
+				</form>
+			</div>
+			<div id="by_upload_form" class="tab-pane fade" role="tabpanel">
+
+				<form enctype="multipart/form-data" method="post" action="/answers/upload">
+					<br />
+					<input type="hidden" value="ERkAXVXlz5gndKgRVD14CEh2PxbtSLQ2diG9JFTN" name="_token" />
+					<input type="hidden" value="13" name="post_id" />
+					<div class="form-group">
+						<input type="file" class="form-control" name="video_file" />
+						<p class="help-block">Attach a .mp4 video file.</p>
+					</div>
+					<div class="form-group">
+						<textarea required="" class="form-control" name="description"></textarea>
+						<p class="help-block">A little description for your video</p>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default">
+							<i class="fa fa-upload"></i>
+							Upload
+						</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+			<div id="answerslist">
+				<div id="answers" class="row">
+	<div class="col-md-12">
+		<hr />
+		<h2>0 Answer(s)</h2>
+			</div>
+
+</div>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+
+	<template id="comment_template">
+		<div class="col-md-12 comment-item">
+			<div class="body">{{body}} - {{user.name}} <time datetime="{{created_at}}" class="created-at-timeago"></time></div>
+		</div>
+	</template>
+
+		</div>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="/js/bundle.js"></script>
+			
+</body><canvas id="fxdriver-screenshot-canvas" style="display: none;" width="971" height="972"></canvas></html>

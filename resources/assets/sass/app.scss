@@ -6,6 +6,8 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,700italic);
 
+@import "resources/assets/sass/vendor/chosen";
+
 body {
 	padding-top: 70px;
 	font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
@@ -51,6 +53,9 @@ a {
 	display: inline;
 }
 
+.search-choice-close {
+	color: black;
+}
 
 @import "resources/assets/sass/modules/comments";
 

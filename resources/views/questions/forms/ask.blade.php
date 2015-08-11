@@ -15,8 +15,8 @@
 	<div class="form-group">
 		<label>Tags</label>
 		<select data-placeholder="Choose tags" name="tags[]" id="tags_select_box" class="form-control" multiple="" placeholder="Select tags">
-			@foreach($tags as $tag)
-				<option value="{{$tag->id}}">{{ $tag->name}}</option>
+			@foreach($tags as $tagValue => $tagName)
+				<option value="{{ $tagValue }}">{{ $tagName }}</option>
 			@endforeach
 		</select>
 	</div>

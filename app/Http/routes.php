@@ -20,6 +20,14 @@ Route::group(['as' => 'question::'], function () {
 	Route::get('/questions/{slug}', [
 		'uses'	=> 'QuestionsController@show'
 	]);
+
+	Route::get('/questions/{slug}/edit', [
+		'uses' => 'QuestionsController@edit'
+	]);
+
+	Route::put('/questions/{slug}', [
+		'uses' => 'QuestionsController@update'
+	]);
 });
 
 Route::group(['as' => 'answer::'], function () {

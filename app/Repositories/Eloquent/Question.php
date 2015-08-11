@@ -52,4 +52,19 @@ class Question implements QuestionInterface
 	{
 		return $this->post->whereIn('id', $ids)->latest()->paginate(10);
 	}
+
+	public function updateBySlug($slug, $updates=[])
+	{
+		$question = $this->post->where('slug', $slug)->firstOrFail();
+
+		$question->title = $updates['title'];
+
+		$question->description = $updates['description'];
+
+		$question->tags()->sync($updates['tags']);
+
+		$question->save();
+
+		return $question;
+	}
 }

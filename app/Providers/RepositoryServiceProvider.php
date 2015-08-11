@@ -28,5 +28,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\UserInterface', 'App\Repositories\Eloquent\User');
 
         $this->app->bind('App\Repositories\CommentInterface', 'App\Repositories\Eloquent\Comment');
+
+        $this->app->bind('App\Repositories\TagInterface', 'App\Repositories\Eloquent\Tag');
     }
 }

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="csrf-token" content="nP0AEwQK9GHODXwCU4WGkARo85TbuPVcAhksRlG4">
+		<title>Dolor fugiat placeat dolores atque rerum hic vel. - AnswersVid</title>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/app.css">
+			</head>
+	<body>
+
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+							<a href="/" class="navbar-brand">AnswersVid</a>
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/">Home</a></li>
+				<li><a href="/ask">Ask</a></li>
+				<li><a href="/contact-us">Contact Us</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+													<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="http://www.gravatar.com/avatar/6f051674225049507bccc3c7225f69ff?s=35" alt="Cannot load the gravatar" class="navbar-profile-img"> Prof. Johathan Schneider <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/profile">Profile</a></li>
+							<li><a id="logout_link" href="/logout">Logout</a></li>
+						</ul>
+					</li>
+							</ul>
+		</div><!-- /.navbar-collapse -->
+	</div>
+</nav>		<div class="container">
+			<div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		        You have successfully updated your question    </div>
+						
+	<div class="row">
+		<div class="col-md-9">
+			<div class="row single-question">
+	<div class="col-md-12">
+		<h1 class="page-header">Dolor fugiat placeat dolores atque rerum hic vel.</h1>
+		<p><p>Nulla dolorem ipsum deserunt. Odit quia repudiandae non aut voluptate. Commodi minima odio culpa facere et. Sunt quos non sint quia a.</p></p>
+		<div class="links-bar">
+			<a href="/questions/dolor-fugiat-placeat-dolores-atque-rerum-hic-vel/edit">Edit</a>
+		</div>
+	</div>
+</div>
+			<div id="comments" v-el="comments">
+	<comments-list type="question" id="37"></comments-list>
+</div>
+
+			<div class="panel panel-primary">
+	<div class="panel-heading">Post a video</div>
+	<div class="panel-body">
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#by_link_form" aria-controls="home" role="tab" data-toggle="tab">Via Link</a></li>
+			<li role="presentation"><a href="#by_upload_form" aria-controls="profile" role="tab" data-toggle="tab">Upload an mp4</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active in fade" id="by_link_form">
+				<form action="/answers" method="post" enctype="multipart/form-data">
+					<br>
+					<input type="hidden" name="_token" value="nP0AEwQK9GHODXwCU4WGkARo85TbuPVcAhksRlG4">
+					<input type="hidden" name="post_id" value="37">
+
+					<div class="form-group">
+						<input type="url" name="video_url" class="form-control" placeholder="http://youtube.com/watch?v=123123">
+						<p class="help-block">Paste a link from the sites YouTube, Vimeo and Dailymotion</p>
+					</div>
+					<div class="form-group">
+						<textarea name="description" class="form-control" required></textarea>
+						<p class="help-block">A little description for your video</p>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default">
+							<i class="fa fa-video-camera"></i>
+							Post
+						</button>
+					</div>
+				</form>
+			</div>
+			<div role="tabpanel" class="tab-pane fade" id="by_upload_form">
+
+				<form action="/answers/upload" method="post" enctype="multipart/form-data">
+					<br>
+					<input type="hidden" name="_token" value="nP0AEwQK9GHODXwCU4WGkARo85TbuPVcAhksRlG4">
+					<input type="hidden" name="post_id" value="37">
+					<div class="form-group">
+						<input type="file" name="video_file" class="form-control">
+						<p class="help-block">Attach a .mp4 video file.</p>
+					</div>
+					<div class="form-group">
+						<textarea name="description" class="form-control" required></textarea>
+						<p class="help-block">A little description for your video</p>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default">
+							<i class="fa fa-upload"></i>
+							Upload
+						</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+			<div id="answerslist">
+				<div class="row" id="answers">
+	<div class="col-md-12">
+		<hr>
+		<h2>0 Answer(s)</h2>
+			</div>
+
+</div>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+		</div>
+
+		<footer class="footer text-center">
+	<h6 class="copyright-notice">&copy; AnswersVid 2015. All rights reserved.</h6>
+</footer>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="/js/bundle.js"></script>
+			</body>
+</html>

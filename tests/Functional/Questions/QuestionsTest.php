@@ -5,13 +5,13 @@ use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Support\Str;
 
 class QuestionsTest extends TestCase
 {
 	use DatabaseTransactions;
 
-    public function test_it_displays_questions_on_the_front_page()
+    /** @test */
+    public function it_displays_questions_on_the_front_page()
     {
     	$user = $this->registeredUser();
 

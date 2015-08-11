@@ -1,66 +1,7 @@
-@import "resources/assets/sass/vendor/bootstrap";
-
-@import "resources/assets/sass/vendor/toastr";
-
-@import "resources/assets/sass/vendor/bootstrap-social";
-
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,700italic);
-
-@import "resources/assets/sass/vendor/chosen";
-
-body {
-	padding-top: 70px;
-	font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
-	font-weight: 300;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
-	font-weight: 300;
-}
-
-.btn-social.btn-lg > :first-child {
-	line-height: 68px;
-}
-
-a {
-	color: #2c3e50;
-
-	&:hover {
-		color: #2c3e50;
-	}
-}
-
-.navbar-brand {
-	font-weight: bold;
-}
-
-.intro-title {
-	margin-top: 0;
-	font-weight: 300;
-}
-
-.no-padding {
-	padding: 0px;
-}
-
-.padding-15 {
-	padding-left: 15px;
-	padding-right: 15px;
-}
-
-.inline {
-	display: inline;
-}
-
-.search-choice-close {
-	color: black;
-}
-
-@import "resources/assets/sass/modules/comments";
-
-@import "resources/assets/sass/modules/footer";
-
-@import "resources/assets/sass/modules/page-header";
-
-@import "resources/assets/sass/modules/navbar-profile-img";
+// 3rd party libraries
+@import "vendor/all";
+// Some base styles
+@import "base/all";
+// Modules
+@import "modules/all";

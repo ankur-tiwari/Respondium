@@ -13,4 +13,6 @@ interface QuestionInterface
 	public function getVotesFor($postId);
 
 	public function findByIds($ids);
+
+	public function updateBySlug($slug, $updates=[]);
 }

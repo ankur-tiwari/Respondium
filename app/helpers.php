@@ -8,3 +8,8 @@ function nav_item($text, $href, $current)
 
 	return '<li><a href="' . $href . '">' . $text . '</a></li>';
 }
+
+function gravatar($email, $size=20)
+{
+	return 'http://www.gravatar.com/avatar/' . md5($email) . '?s=' . $size;
+}

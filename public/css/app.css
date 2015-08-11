@@ -6265,10 +6265,18 @@ a {
 
 .footer {
   padding: 30px 0;
+  margin-top: 10px;
   border-top: 1px solid #eee; }
 
 .page-header {
   margin-top: 10px;
   border-bottom: 1px solid #eee; }
+
+.navbar-profile-img {
+  float: left;
+  position: relative;
+  top: -5px;
+  left: -10px;
+  border-radius: 50%; }
 
 /*# sourceMappingURL=app.css.map */

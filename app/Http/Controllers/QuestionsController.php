@@ -31,7 +31,9 @@ class QuestionsController extends Controller
     {
         $questions = $questionRepo->getMainFeed();
 
-        return view('questions.index', compact('questions'))->with('page', 'Home');
+        return view('questions.index', compact('questions'))
+            ->with('page', 'Home')
+            ->with('title', 'Home');
     }
 
     public function create()

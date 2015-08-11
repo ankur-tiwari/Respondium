@@ -18,7 +18,7 @@ class Question implements QuestionInterface
 
 	public function getMainFeed()
 	{
-		return $this->post->with('answers')->with('comments')->with('views')->latest()->paginate(10);
+		return $this->post->latest()->paginate(10);
 	}
 
 	public function getForTag($tagName)

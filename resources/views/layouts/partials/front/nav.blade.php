@@ -21,14 +21,15 @@
 				{!! nav_item('Contact Us', '/contact-us', $page) !!}
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				@if (!Auth::check())
+				@if ( ! Auth::check())
 					{!! nav_item('Sign in', '/signin', $page) !!}
 					{!! nav_item('Sign up', '/signup', $page) !!}
 				@endif
 				@if(Auth::check())
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="{{ gravatar(Auth::user()->email, 35) }}" alt="Cannot load the gravatar" class="navbar-profile-img"> {{ Auth::user()->name }} <b class="caret"></b></a>
 						<ul class="dropdown-menu">
+							<li><a href="/profile">Profile</a></li>
 							<li><a id="logout_link" href="/logout">Logout</a></li>
 						</ul>
 					</li>

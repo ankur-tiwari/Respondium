@@ -11,7 +11,7 @@ class ContactFormTest extends TestCase
 	/** @test */
 	public function it_sends_the_contact_message()
 	{
-		Mail::pretend();
+		Mail::pretend(true);
 
 		$this   ->visit('/')
 				->click('Contact Us')
@@ -19,5 +19,21 @@ class ContactFormTest extends TestCase
 				->submitContactForm()
 				->seePageIs('/contact-us')
 				->see('Thank you for contacting us. We will respond as soon as we could!');
+	}
+
+	/** @test */
+	public function it_automatically_fills_the_email_and_name_fields_if_the_user_is_logged_in()
+	{
+		Mail::pretend(true);
+
+		$user = $this->registeredUser();
+
+		$this
+				->actingAs($user)
+				->visit('/')
+				->click('Contact Us')
+				->seePageIs('/contact-us')
+				->see($user->email)
+				->see($user->name);
 	}
 }

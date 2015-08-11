@@ -8,12 +8,12 @@
 				{!! csrf_field() !!}
 				<div class="form-group">
 					<label>Email </label>
-					<input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+					<input type="email" name="email" class="form-control" value="{{ Auth::check() ? Auth::user()->email : old('email') }}" required>
 				</div>
 
 				<div class="form-group">
 					<label>Name</label>
-					<input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+					<input type="text" name="name" class="form-control" value="{{ Auth::check() ? Auth::user()->name : old('name') }}" required>
 				</div>
 
 				<div class="form-group">

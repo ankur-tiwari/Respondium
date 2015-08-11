@@ -10,16 +10,11 @@ body {
 	padding-top: 70px;
 	font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
 	font-weight: 300;
-	background-color: #eee;
-}
-
-.well {
-	background-color: white;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
-	font-weight: 400;
+	font-weight: 300;
 }
 
 .btn-social.btn-lg > :first-child {
@@ -56,32 +51,8 @@ a {
 	display: inline;
 }
 
-.single-question {
-
-	.single-question-title {
-		font-weight: bold;
-	}
-
-	.single-question-buttons {
-		margin-bottom: 10px;
-	}
-}
-
-.action-bar {
-	margin-bottom: 10px;
-}
-
 @import "resources/assets/sass/modules/comments";
 
-.arrow-mark {
-	font-size: 32px;
-	display: block;
-	margin-top: 5px;
-}
+@import "resources/assets/sass/modules/footer";
 
-.votes {
-	font-size: 32px;
-	display: block;
-	margin-top: 5px;
-	padding-left: 7px;
-}
+@import "resources/assets/sass/modules/page-header";

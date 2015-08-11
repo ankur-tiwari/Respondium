@@ -3,7 +3,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3">
-		    <h3 class="form-signin-heading">Please Sign In</h3>
+		    <h1 class="page-header">Please Sign In</h1>
 		    @include('auth.forms.signin')
 		    <hr>
 		    @include('auth.forms.social.google')

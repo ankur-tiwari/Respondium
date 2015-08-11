@@ -6224,15 +6224,11 @@ button.toast-close-button {
 body {
   padding-top: 70px;
   font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-weight: 300;
-  background-color: #eee; }
-
-.well {
-  background-color: white; }
+  font-weight: 300; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
-  font-weight: 400; }
+  font-weight: 300; }
 
 .btn-social.btn-lg > :first-child {
   line-height: 68px; }
@@ -6259,15 +6255,6 @@ a {
 .inline {
   display: inline; }
 
-.single-question .single-question-title {
-  font-weight: bold; }
-
-.single-question .single-question-buttons {
-  margin-bottom: 10px; }
-
-.action-bar {
-  margin-bottom: 10px; }
-
 .comments {
   padding-left: 20px;
   font-size: .9em; }
@@ -6276,15 +6263,12 @@ a {
     margin-top: 10px;
     padding: 10px 0; }
 
-.arrow-mark {
-  font-size: 32px;
-  display: block;
-  margin-top: 5px; }
+.footer {
+  padding: 30px 0;
+  border-top: 1px solid #eee; }
 
-.votes {
-  font-size: 32px;
-  display: block;
-  margin-top: 5px;
-  padding-left: 7px; }
+.page-header {
+  margin-top: 10px;
+  border-bottom: 1px solid #eee; }
 
 /*# sourceMappingURL=app.css.map */

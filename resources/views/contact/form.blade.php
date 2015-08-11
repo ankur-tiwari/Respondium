@@ -3,8 +3,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-9">
-			<h1>Contact Us</h1>
-			<hr>
+			<h1 class="page-header">Contact Us</h1>
 			<form method="post">
 				{!! csrf_field() !!}
 				<div class="form-group">

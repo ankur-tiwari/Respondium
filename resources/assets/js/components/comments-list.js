@@ -1,3 +1,5 @@
+var toastr = require('toastr');
+
 module.exports = {
 	props: [
 		'type', 'id', 'comments'
@@ -52,6 +54,8 @@ module.exports = {
 				body: this.newComment
 			}).success(function (response) {
 				this.comments.push(response);
+
+				toastr.success('Your comment was posted!', 'Great!');
 			}.bind(this));
 		},
 
@@ -60,6 +64,8 @@ module.exports = {
 				body: this.newComment
 			}).success(function (response) {
 				this.comments.push(response);
+
+				toastr.success('Your comment was posted!', 'Great!');
 			}.bind(this));
 		}
 

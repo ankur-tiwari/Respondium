@@ -20,4 +20,6 @@
 			</div>
 		</li>
 	</ul>
+
+	<!-- <pre>{{ $data | json }}</pre> -->
 </div>

@@ -149,6 +149,7 @@ return [
 
         Laravel\Socialite\SocialiteServiceProvider::class,
         Alerter\AlerterServiceProvider::class,
+        MaxHoffmann\Parsedown\ParsedownServiceProvider::class,
     ],
 
     /*
@@ -199,6 +200,7 @@ return [
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Alert'     => Alerter\Alert::class,
+        'Markdown'  => MaxHoffmann\Parsedown\ParsedownFacade::class,
     ],
 
 ];

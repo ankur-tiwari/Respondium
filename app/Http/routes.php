@@ -80,6 +80,20 @@ Route::group(['as' => 'auth::'], function () {
 	]);
 });
 
+Route::group(['as' => 'user::'], function () {
+	Route::get('/user/{id}/profile', [
+		'uses' => 'UserProfileController@show'
+	]);
+
+	Route::get('/profile/edit', [
+		'uses' => 'UserProfileController@edit'
+	]);
+
+	Route::post('/user/{id}/profile', [
+		'uses' => 'UserProfileController@store'
+	]);
+});
+
 Route::group(['as' => 'socialauth::'], function () {
 	Route::post('/social-login', [
 		'uses' => 'AuthController@social'

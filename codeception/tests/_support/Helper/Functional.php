@@ -5,5 +5,8 @@ namespace Helper;
 
 class Functional extends \Codeception\Module
 {
-
+	public function _before()
+	{
+        putenv('APP_ENV=testing');
+	}
 }

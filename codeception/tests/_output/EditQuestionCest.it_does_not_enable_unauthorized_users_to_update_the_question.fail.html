@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="csrf-token" content="YA5uT2h2AcQ0cdfauX8Bd816OM53NXkwFv6z2l7v">
-		<title>Qui porro eum sint consequatur magni doloremque dolore. - AnswersVid</title>
+		<meta name="csrf-token" content="R1osJd2LfZ474IzO20xzEPqSdZJvaRjzB6LukDp3">
+		<title>My Updated Title - AnswersVid</title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/css/app.css">
 			</head>
@@ -32,9 +32,9 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 													<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="http://www.gravatar.com/avatar/b40ea6c13156629b1c173179d32f26ea?s=35" alt="Cannot load the gravatar" class="navbar-profile-img"> Miss Elyse Kozey PhD <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="http://www.gravatar.com/avatar/906227a57d9a72a720cd100fc2d7e2c9?s=35" alt="Cannot load the gravatar" class="navbar-profile-img"> Lori Champlin <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="/profile">Profile</a></li>
+							<li><a href="/user/315/profile">Profile</a></li>
 							<li><a id="logout_link" href="/logout">Logout</a></li>
 						</ul>
 					</li>
@@ -42,27 +42,94 @@
 		</div><!-- /.navbar-collapse -->
 	</div>
 </nav>		<div class="container">
-										<div class="row">
+			<div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		        You have successfully updated your question    </div>
+						
+	<div class="row">
 		<div class="col-md-9">
-			<h1 class="page-header">Edit</h1>
-			<form method="post" action="/questions/qui-porro-eum-sint-consequatur-magni-doloremque-dolore">
-				<input type="hidden" name="_token" value="YA5uT2h2AcQ0cdfauX8Bd816OM53NXkwFv6z2l7v">
-				<input type="hidden" name="_method" value="PUT">
-				<div class="form-group">
-					<label>Title</label>
-					<input type="text" name="title" value="Qui porro eum sint consequatur magni doloremque dolore." class="form-control">
-				</div>
-
-				<div class="form-group">
-					<label>Description</label>
-					<textarea name="description" class="form-control">Maxime dolor placeat nihil. Quasi architecto enim est ut consequatur quo. Ut a sit nobis ut sapiente sequi eligendi quo. Qui debitis tenetur praesentium vitae quibusdam sint voluptas.</textarea>
-				</div>
-
-				<div class="form-group">
-					<button class="btn btn-primary">Save</button>
-				</div>
-			</form>
+			<div class="row single-question">
+	<div class="col-md-12">
+		<h1 class="page-header">My Updated Title</h1>
+		<p><p>My Updated Description</p></p>
+		<div class="links-bar">
+			<a href="/questions/aut-autem-voluptatum-accusamus/edit">Edit</a>
 		</div>
+	</div>
+</div>
+			<div id="comments" v-el="comments">
+	<comments-list type="question" id="171"></comments-list>
+</div>
+
+			<div class="panel panel-primary">
+	<div class="panel-heading">Post a video</div>
+	<div class="panel-body">
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#by_link_form" aria-controls="home" role="tab" data-toggle="tab">Via Link</a></li>
+			<li role="presentation"><a href="#by_upload_form" aria-controls="profile" role="tab" data-toggle="tab">Upload an mp4</a></li>
+		</ul>
+
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active in fade" id="by_link_form">
+				<form action="/answers" method="post" enctype="multipart/form-data">
+					<br>
+					<input type="hidden" name="_token" value="R1osJd2LfZ474IzO20xzEPqSdZJvaRjzB6LukDp3">
+					<input type="hidden" name="post_id" value="171">
+
+					<div class="form-group">
+						<input type="url" name="video_url" class="form-control" placeholder="http://youtube.com/watch?v=123123">
+						<p class="help-block">Paste a link from the sites YouTube, Vimeo and Dailymotion</p>
+					</div>
+					<div class="form-group">
+						<textarea name="description" class="form-control" required></textarea>
+						<p class="help-block">A little description for your video</p>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default">
+							<i class="fa fa-video-camera"></i>
+							Post
+						</button>
+					</div>
+				</form>
+			</div>
+			<div role="tabpanel" class="tab-pane fade" id="by_upload_form">
+
+				<form action="/answers/upload" method="post" enctype="multipart/form-data">
+					<br>
+					<input type="hidden" name="_token" value="R1osJd2LfZ474IzO20xzEPqSdZJvaRjzB6LukDp3">
+					<input type="hidden" name="post_id" value="171">
+					<div class="form-group">
+						<input type="file" name="video_file" class="form-control">
+						<p class="help-block">Attach a .mp4 video file.</p>
+					</div>
+					<div class="form-group">
+						<textarea name="description" class="form-control" required></textarea>
+						<p class="help-block">A little description for your video</p>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-default">
+							<i class="fa fa-upload"></i>
+							Upload
+						</button>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+			<div id="answerslist">
+				<div class="row" id="answers">
+	<div class="col-md-12">
+		<hr>
+		<h2>0 Answer(s)</h2>
+			</div>
+
+</div>
+			</div>
+		</div>
+		<div class="col-md-3"></div>
 	</div>
 		</div>
 

@@ -4,7 +4,7 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-3">
-			<img src="{{ gravatar($auth->user()->email, 200) }}" alt="{{$auth->user()->name}}" class="img-responsive img-circle">
+			<img src="{{ gravatar($auth->user()->email, 200) }}" alt="{{$auth->user()->name}}" class="img-responsive img-circle profile-gravatar">
 			<p>Want to change your profile photo? We pull from <a href="http://gravatar.com">gravatar.com</a>.</p>
 		</div>
 		<div class="col-md-9">

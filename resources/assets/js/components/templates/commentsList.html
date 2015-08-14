@@ -1,5 +1,5 @@
 <div>
-	<form v-on="submit: addComment">
+	<form v-on="submit: addComment" v-show="isAuthenticated">
 		<div class="form-group">
 			<textarea v-model="newComment" class="form-control" placeholder="Leave a comment"></textarea>
 		</div>

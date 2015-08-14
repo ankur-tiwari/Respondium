@@ -9,7 +9,9 @@ module.exports = {
 		return {
 			comments: [],
 
-			newComment: ''
+			newComment: '',
+
+			isAuthenticated: false
 		};
 	},
 
@@ -21,6 +23,12 @@ module.exports = {
 		} else if ( this.type === 'answer' ) {
 			this.commentsForAnswer();
 		}
+
+		$.get('/auth/show').success(function (response) {
+			if (response.id) {
+				this.isAuthenticated = true;
+			}
+		}.bind(this));
 	},
 
 	methods: {

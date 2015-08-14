@@ -19258,7 +19258,9 @@ module.exports = {
 		return {
 			comments: [],
 
-			newComment: ''
+			newComment: '',
+
+			isAuthenticated: false
 		};
 	},
 
@@ -19270,6 +19272,12 @@ module.exports = {
 		} else if (this.type === 'answer') {
 			this.commentsForAnswer();
 		}
+
+		$.get('/auth/show').success((function (response) {
+			if (response.id) {
+				this.isAuthenticated = true;
+			}
+		}).bind(this));
 	},
 
 	methods: {
@@ -19322,7 +19330,7 @@ module.exports = {
 };
 
 },{"./templates/commentsList.html":72,"toastr":4}],72:[function(require,module,exports){
-module.exports = '<div>\n	<form v-on="submit: addComment">\n		<div class="form-group">\n			<textarea v-model="newComment" class="form-control" placeholder="Leave a comment"></textarea>\n		</div>\n\n		<div class="form-group">\n			<button class="btn btn-default">Post Comment</button>\n		</div>\n	</form>\n\n	<ul class="media-list">\n		<li v-repeat="comment in comments" class="media">\n			<a class="pull-left" href="#">\n				<img class="media-object img-circle" src="http://www.gravatar.com/avatar" alt="Avatar">\n			</a>\n			<div class="media-body well">\n				<h4 class="media-heading">{{ comment.user.name }}</h4>\n				<p>{{ comment.body }}</p>\n			</div>\n		</li>\n	</ul>\n</div>';
+module.exports = '<div>\n	<form v-on="submit: addComment" v-show="isAuthenticated">\n		<div class="form-group">\n			<textarea v-model="newComment" class="form-control" placeholder="Leave a comment"></textarea>\n		</div>\n\n		<div class="form-group">\n			<button class="btn btn-default">Post Comment</button>\n		</div>\n	</form>\n\n	<ul class="media-list">\n		<li v-repeat="comment in comments" class="media">\n			<a class="pull-left" href="#">\n				<img class="media-object img-circle" src="http://www.gravatar.com/avatar" alt="Avatar">\n			</a>\n			<div class="media-body well">\n				<h4 class="media-heading">{{ comment.user.name }}</h4>\n				<p>{{ comment.body }}</p>\n			</div>\n		</li>\n	</ul>\n</div>';
 },{}],73:[function(require,module,exports){
 'use strict';
 

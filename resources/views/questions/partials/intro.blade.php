@@ -1,5 +1,5 @@
 <div class="well">
-	<h1 class="intro-title">AnswersVid (Production)</h1>
+	<h1 class="intro-title">AnswersVid</h1>
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis quasi, recusandae aspernatur quam placeat consectetur voluptatem culpa maiores, natus, debitis cupiditate vel non enim molestiae ad molestias tempora temporibus eius.</p>
 	@if (!Auth::check())
 	<div>

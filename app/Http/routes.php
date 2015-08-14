@@ -35,6 +35,10 @@ Route::group(['as' => 'answer::'], function () {
 		'uses'	=> 'AnswersController@store'
 	]);
 
+	Route::post('/questions/{id}/answers', [
+		'uses'	=> 'AnswersController@store'
+	]);
+
 	Route::post('/answers/upload', [
 		'uses'	=> 'AnswersController@upload'
 	]);

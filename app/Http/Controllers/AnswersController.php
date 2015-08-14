@@ -10,16 +10,24 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Jobs\StoreAnswerCommand;
 use App\Jobs\UploadVideoCommand;
 use App\Repositories\CommentInterface as CommentRepository;
-use Auth;
+use Alert;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Guard as Auth;
 
 class AnswersController extends Controller
 {
-	public function __construct()
+	/**
+	 * @var \Illuminate\Contracts\Auth\Guard $auth
+	 */
+	protected $auth;
+
+	public function __construct(Auth $auth)
 	{
 		$this->middleware(Authenticate::class, [
 			'except' => 'listComments'
 		]);
+
+		$this->auth = $auth;
 	}
 
 	public function upload(Request $request)
@@ -33,17 +41,19 @@ class AnswersController extends Controller
 		}
 
 		$this->dispatch(
-			new StoreAnswerCommand($filePath, $request->description, $request->post_id, Auth::user()->id)
+			new StoreAnswerCommand($filePath, $request->description, $request->post_id, $this->auth->user()->id)
 		);
 
 		return redirect()->back();
 	}
 
-	public function store(StoreAnswerRequest $request)
+	public function store($id, StoreAnswerRequest $request)
 	{
 		$this->dispatch(
-			new StoreAnswerCommand($request->video_url, $request->description, $request->post_id, Auth::user()->id)
+			new StoreAnswerCommand($request->video_url, $request->description, $id, $this->auth->user()->id)
 		);
+
+		Alert::success('Your answer was posted successfully.');
 
 		return redirect()->back();
 	}
@@ -57,7 +67,7 @@ class AnswersController extends Controller
 
 	public function storeComments($answerId, StoreCommentRequest $request, CommentRepository $repo)
 	{
-		$comment = $repo->saveAnswerComment($request->body, Auth::user()->id, $answerId);
+		$comment = $repo->saveAnswerComment($request->body, $this->auth->user()->id, $answerId);
 
 		return $comment;
 	}

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+	protected $fillable = [
+		'description', 'video_url', 'user_id'
+	];
+
 	public function post()
 	{
 		return $this->belongsTo('App\Post');

@@ -26,7 +26,6 @@ class StoreAnswerRequest extends Request
         return [
             'video_url'     => 'required|url|video_urls_for_websites:youtube.com,dailymotion.com,vimeo.com',
             'description'   => 'required',
-            'post_id'       => 'required|integer',
         ];
     }
 }

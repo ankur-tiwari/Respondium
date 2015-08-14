@@ -10,10 +10,10 @@
 
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane active in fade" id="by_link_form">
-				<form action="/answers" method="post" enctype="multipart/form-data">
+				<form action="/questions/{{ $question->id }}/answers" method="post" enctype="multipart/form-data">
 					<br>
 					{!! csrf_field() !!}
-					<input type="hidden" name="post_id" value="{{ $question->id }}">
+					{{-- <input type="hidden" name="post_id" value="{{ $question->id }}"> --}}
 
 					<div class="form-group">
 						<input type="url" name="video_url" class="form-control" placeholder="http://youtube.com/watch?v=123123">

@@ -2,5 +2,6 @@
 /node_modules
 /video_uploads
 Homestead.yaml
-.env
 /public/video_uploads
+.env
+.env.testing

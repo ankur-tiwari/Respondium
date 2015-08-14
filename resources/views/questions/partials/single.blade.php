@@ -1,4 +1,4 @@
-@inject('auth', 'Illuminate\Contracts\Auth\Guard');
+@inject('auth', 'Illuminate\Contracts\Auth\Guard')
 
 <div class="row single-question">
 	<div class="col-md-12">

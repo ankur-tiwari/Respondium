@@ -6611,11 +6611,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
   font-weight: 300; }
 
-a {
-  color: #2c3e50; }
-  a:hover {
-    color: #2c3e50; }
-
 .btn-social.btn-lg > :first-child {
   line-height: 68px; }
 

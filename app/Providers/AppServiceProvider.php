@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
         $this->composerTitleForViews();
 
         $this->setDatabaseToTestingWhileTesting();
+
+        $this->setMailToLogWhileTesting();
     }
 
     /**
@@ -43,6 +45,13 @@ class AppServiceProvider extends ServiceProvider
     {
         if ( Request::header('host') === 'testing.app' or $this->app->environment('testing') ) {
             Config::set('database.default', 'testing');
+        }
+    }
+
+    protected function setMailToLogWhileTesting()
+    {
+        if ($this->app->environment('testing')) {
+            Config::set('mail.driver', 'log');
         }
     }
 }

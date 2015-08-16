@@ -15,6 +15,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\QuestionWasCreated' => [
         ],
+        'App\Events\RegisterUser' => [
+            'App\Listeners\SendWelcomeEmail'
+        ]
     ];
 
     /**

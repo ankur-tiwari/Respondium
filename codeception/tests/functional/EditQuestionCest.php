@@ -61,7 +61,7 @@ class EditQuestionCest
         $I->amOnPage('/');
         $I->click($question->title);
         $I->seeCurrentUrlEquals('/questions/' . $question->slug);
-        $I->click('Edit');
+        $I->amOnPage('/questions/' . $question->slug . '/edit');
         $I->seeCurrentUrlEquals('/questions/' . $question->slug);
         $I->see('You are not authorized to update this question');
     }

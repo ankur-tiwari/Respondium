@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	</head>
-	<body>
-		<h1>Contact Message From AnswersVid</h1>
-		<hr>
-		<div>Email: {{ $email }}</div>
-		<div>Name: {{ $name }}</div>
-		<div>Subject: {{ $subject }}</div>
-		<div>Message: {{ $bodyMessage }}</div>
-	</body>
-</html>
+@extends('emails.layouts.basic')
+
+@section('heading')
+	{{ $subject }}
+@stop
+
+@section('content')
+	Sir, the email came from somebody named {{ $name }}. He/She wrote: <br>
+	{{ $bodyMessage }} <br>
+	His/Her email address was {{ $email }}
+@stop

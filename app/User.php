@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Mailers\Contracts\Mailable;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract, Mailable
 {
     use Authenticatable, CanResetPassword;
 
@@ -56,5 +57,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                 'email'=> $attributes->email
             ]);
         }
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 }

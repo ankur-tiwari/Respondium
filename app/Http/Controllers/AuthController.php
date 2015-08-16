@@ -9,6 +9,7 @@ use App\Http\Requests\SignInRequest;
 use App\Http\Requests\SocialLoginRequest; use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Repositories\UserInterface as UserRepository;
 use Illuminate\Container\Container;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -40,7 +41,13 @@ class AuthController extends Controller
 
     public function store(SignInRequest $request)
     {
-        if (Auth::attempt($request->only('email', 'password')))
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'confirmed' => 1
+        ];
+
+        if (Auth::attempt($credentials))
         {
             Alert::success('You have successfully signed in!');
 
@@ -94,6 +101,20 @@ class AuthController extends Controller
         Alert::success('You have successfully logged out!');
 
     	return redirect('/signin');
+    }
+
+    public function confirm($code, Guard $auth)
+    {
+        if ($user = $this->userRepo->confirmationCodeIsValid($code)) {
+
+            $auth->login($user);
+
+            Alert::success('Your email has been confirmed and you are logged in!', 'Welcome!');
+
+            return redirect('/');
+        }
+
+        return redirect('/');
     }
 
     private function processUserInformationFrom($service)

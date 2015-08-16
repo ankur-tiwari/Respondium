@@ -41,8 +41,8 @@ class UsersController extends Controller
             new StoreUserCommand($request->name, $request->email, $request->password)
         );
 
-        Alert::success('You are successfully registered as a new user!', 'Congrats!');
+        Alert::success('A confirmation link has been sent to your email. Go check your inbox to activate your account.');
 
-        return redirect('/');
+        return redirect('/signup');
     }
 }

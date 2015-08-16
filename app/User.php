@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Mailers\Contracts\ConfirmableUser;
 use App\Mailers\Contracts\Mailable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -9,7 +10,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract, Mailable
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract, Mailable, ConfirmableUser
 {
     use Authenticatable, CanResetPassword;
 
@@ -25,7 +26,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'bio'];
+    protected $fillable = ['name', 'email', 'password', 'bio', 'confirmation_code'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -67,5 +68,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getConfirmationCode()
+    {
+        return $this->confirmation_code;
     }
 }

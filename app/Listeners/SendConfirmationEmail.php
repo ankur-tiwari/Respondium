@@ -2,14 +2,15 @@
 
 namespace App\Listeners;
 
-use App\Events\RegisterUser;
 use App\Mailers\UserMailer;
+use App\Events\RegisterUser;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class SendWelcomeEmail
+class SendConfirmationEmail
 {
     protected $mailer;
+
     /**
      * Create the event listener.
      *
@@ -28,6 +29,6 @@ class SendWelcomeEmail
      */
     public function handle(RegisterUser $registered)
     {
-        $this->mailer->sendWelcomeEmailTo($registered->user);
+        $this->mailer->sendConfirmationEmailTo($registered->user);
     }
 }

@@ -2,12 +2,13 @@
 
 namespace App\Jobs;
 
-use App\User;
-use App\Jobs\Job;
-use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Contracts\Bus\SelfHandling;
-use Illuminate\Contracts\Auth\Guard as Auth;
 use App\Events\RegisterUser;
+use App\Jobs\Job;
+use App\Repositories\UserInterface as UserRepository;
+use App\User;
+use Illuminate\Contracts\Auth\Guard as Auth;
+use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Contracts\Events\Dispatcher;
 
 class StoreUserCommand extends Job implements SelfHandling
 {
@@ -26,19 +27,19 @@ class StoreUserCommand extends Job implements SelfHandling
         $this->password = $password;
     }
 
-    public function handle(Dispatcher $event, Auth $auth)
+    public function handle(Dispatcher $event, Auth $auth, UserRepository $userRepo)
     {
-        $user = User::create([
+        $user = $userRepo->createNew([
             'name' => $this->name,
             'email' => $this->email,
-            'password' => bcrypt($this->password)
+            'password' => bcrypt($this->password),
+            'confirmed' => '0',
+            'confirmation_code' => md5(uniqid(rand(), true)),
         ]);
 
         $event->fire(
             new RegisterUser($user)
         );
-
-        $auth->login($user);
 
         return $user;
     }

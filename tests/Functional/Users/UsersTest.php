@@ -14,9 +14,12 @@ class UsersTest extends TestCase
 	{
 		$user = $this->signUp();
 
-		$this->see('You are successfully registered as a new user!')
-			 ->seeInDatabase('users', ['email' => $user['email']])
-			 ->assertTrue(Auth::check());
+		$this->see('A confirmation link has been sent to your email. Go check your inbox to activate your account.')
+			->seeInDatabase('users', [
+			 	'email' => $user['email'],
+			 	'confirmed' => '0'
+			])
+			->assertFalse(Auth::check());
 	}
 
 	/** @test */
@@ -45,5 +48,23 @@ class UsersTest extends TestCase
 			 ->press('Send Password Reset Link')
 			 ->seePageIs('/password/email')
 			 ->see('We have e-mailed your password reset link!');
+	}
+
+	public function it_confirms_the_email()
+	{
+		$this->registeredUser([
+            'password' => bcrypt('secret'),
+            'confirmation_code' => '123',
+		]);
+
+        $this->visit('/email/confirm/123');
+
+        $this->see('Your email has been confirmed and you are logged in!');
+
+        $this->seeInDatabase('users', [
+            'password' => bcrypt('secret'),
+            'confirmation_code' => '123',
+            'confirmed' => '1'
+        ]);
 	}
 }

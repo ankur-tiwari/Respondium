@@ -33,15 +33,17 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
     protected function signIn()
     {
         $user = $this->registeredUser([
-            'password' => bcrypt('secret')
+            'password' => bcrypt('secret'),
+            'confirmation_code' => '123',
+            'confirmed' => '1'
         ]);
 
         $this->visit('/')
-             ->click('Sign in')
-             ->submitForm('Sign In', [
+            ->click('Sign in')
+            ->submitForm('Sign In', [
                 'email' => $user->email,
                 'password' => 'secret',
-             ]);
+            ]);
     }
 
     protected function signUp()

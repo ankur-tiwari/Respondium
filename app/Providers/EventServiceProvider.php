@@ -16,6 +16,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\QuestionWasCreated' => [
         ],
         'App\Events\RegisterUser' => [
+            'App\Listeners\SendConfirmationEmail',
             'App\Listeners\SendWelcomeEmail'
         ]
     ];

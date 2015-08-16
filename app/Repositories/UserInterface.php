@@ -15,4 +15,8 @@ interface UserInterface
 	public function updateUser($id, $attributes);
 
 	public function deleteUser($id);
+
+	public function createNew($fields);
+
+	public function confirmationCodeIsValid($code);
 }

@@ -79,6 +79,10 @@ Route::group(['as' => 'auth::'], function () {
 		'uses'	=> 'AuthController@store'
 	]);
 
+	Route::get('/email/confirm/{code}', [
+		'uses' => 'AuthController@confirm'
+	]);
+
 	Route::get('/logout', [
 		'uses' 	=> 'AuthController@logout'
 	]);

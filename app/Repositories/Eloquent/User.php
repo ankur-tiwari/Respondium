@@ -56,4 +56,22 @@ class User implements UserInterface
 	{
 		return UserModel::findOrFail($id)->delete();
 	}
+
+	public function createNew($fields)
+	{
+        $user = UserModel::create($fields);
+
+        return $user;
+	}
+
+    public function confirmationCodeIsValid($code)
+    {
+        $user = UserModel::where('confirmation_code', $code)->firstOrFail();
+
+        if ($user) {
+            return $user;
+        }
+
+        return false;
+    }
 }

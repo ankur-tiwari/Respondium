@@ -24,5 +24,9 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="/js/bundle.js"></script>
 		@yield('footer')
+
+		{{-- Google Analytics --}}
+		@include('layouts.partials.front.google_analytics')
+		{{-- /Google Analytics --}}
 	</body>
 </html>

@@ -19,4 +19,8 @@ interface UserInterface
 	public function createNew($fields);
 
 	public function confirmationCodeIsValid($code);
+
+	public function nullOutTheConfirmationCode($userId);
+
+	public function confirmEmail($userId);
 }

@@ -17,26 +17,32 @@ use Socialite;
 
 class AuthController extends Controller
 {
-    private $userRepo;
+    protected $userRepo;
 
-	public function __construct(UserRepository $repo)
+    protected $auth;
+
+	public function __construct(UserRepository $repo, Guard $auth)
 	{
-        $this->userRepo = $repo;
-
         $this->middleware(Authenticate::class, [
             'only' => 'show'
         ]);
 
-		$this->middleware(RedirectIfAuthenticated::class, [
-			'except' => ['logout', 'show']
-		]);
+        $this->middleware(RedirectIfAuthenticated::class, [
+            'except' => ['logout', 'show']
+        ]);
+
+        $this->userRepo = $repo;
+
+        $this->auth = $auth;
 	}
 
     public function create()
     {
     	return view('auth.create')
-                                ->with('title', 'Sign In')
-                                ->with('page', 'Sign in');
+            ->with([
+                'title' => 'Sign In',
+                'page'  => 'Sign In'
+            ]);
     }
 
     public function store(SignInRequest $request)
@@ -47,7 +53,7 @@ class AuthController extends Controller
             'confirmed' => 1
         ];
 
-        if (Auth::attempt($credentials))
+        if ($this->auth->attempt($credentials))
         {
             Alert::success('You have successfully signed in!');
 
@@ -61,7 +67,7 @@ class AuthController extends Controller
 
     public function show()
     {
-        $user = Auth::user();
+        $user = $this->auth->user();
 
         return [
             'id' => $user->id,
@@ -96,18 +102,21 @@ class AuthController extends Controller
 
     public function logout()
     {
-    	Auth::logout();
+    	$this->auth->logout();
 
         Alert::success('You have successfully logged out!');
 
     	return redirect('/signin');
     }
 
-    public function confirm($code, Guard $auth)
+    public function confirm($code)
     {
         if ($user = $this->userRepo->confirmationCodeIsValid($code)) {
+            $this->auth->login($user);
 
-            $auth->login($user);
+            $this->userRepo->nullOutTheConfirmationCode($this->auth->user()->id);
+
+            $this->userRepo->confirmEmail($this->auth->user()->id);
 
             Alert::success('Your email has been confirmed and you are logged in!', 'Welcome!');
 
@@ -117,14 +126,14 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    private function processUserInformationFrom($service)
+    protected function processUserInformationFrom($service)
     {
         $user = Socialite::with($service)->user();
 
         return $this->userRepo->getOrCreate($user);
     }
 
-    private function logTheUserInBy($service)
+    protected function logTheUserInBy($service)
     {
         $this->processUserInformationFrom($service);
 

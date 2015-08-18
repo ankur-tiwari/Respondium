@@ -61,7 +61,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
                 'email'     => $dummyUser['email'],
                 'password'  => $dummyUser['password']
              ])
-             ->seePageIs('/');
+             ->seePageIs('/signup');
 
         return $dummyUser;
     }

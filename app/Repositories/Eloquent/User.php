@@ -74,4 +74,24 @@ class User implements UserInterface
 
         return false;
     }
+
+    public function nullOutTheConfirmationCode($userId)
+    {
+    	$updated = UserModel::findOrFail($userId)->update([
+    		'confirmation_code' => null
+    	]);
+
+    	return $updated;
+    }
+
+    public function confirmEmail($userId)
+    {
+    	$user = UserModel::findOrFail($userId);
+
+    	$user->confirmed = true;
+
+    	$user->save();
+
+    	return $user;
+    }
 }

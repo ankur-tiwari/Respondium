@@ -1,13 +1,10 @@
-;
-
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="csrf-token" content="ChLw9BD5Mmig9wZp57qbdoNmM4dxO1Zxb1t3zoyE">
-		<title>AnswersVid</title>
+		<meta name="csrf-token" content="veYb5SEjtoPzRblsHLaI7triFm1AjnqY1pE6RlWi">
+		<title>AnswersVid - Home</title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/css/app.css">
 			</head>
@@ -17,7 +14,6 @@
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-							<a href="/" class="navbar-brand">AnswersVid</a>
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
@@ -29,15 +25,15 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="/">Home</a></li>
+				<li class="active"><a href="/">Home</a></li>
 				<li><a href="/ask">Ask</a></li>
 				<li><a href="/contact-us">Contact Us</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 													<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="http://www.gravatar.com/avatar/d0b3bbac43ce578c11c853321ae0e83e?s=35" alt="Cannot load the gravatar" class="navbar-profile-img"> Jeremie O&#039;Kon MD <b class="caret"></b></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="http://www.gravatar.com/avatar/89d809783ab2ce3117f2fc0ba4f1bac5?s=35" alt="Cannot load the gravatar" class="navbar-profile-img"> Jonas Nolan <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="/user/274/profile">Profile</a></li>
+							<li><a href="/user/275/profile">Profile</a></li>
 							<li><a id="logout_link" href="/logout">Logout</a></li>
 						</ul>
 					</li>
@@ -45,29 +41,38 @@
 		</div><!-- /.navbar-collapse -->
 	</div>
 </nav>		<div class="container">
-										<div class="row">
-		<div class="col-md-3">
-			<img src="http://www.gravatar.com/avatar/d0b3bbac43ce578c11c853321ae0e83e?s=200" alt="Jeremie O&#039;Kon MD" class="img-responsive img-circle profile-gravatar">
-			<p>Want to change your profile photo? We pull from <a href="http://gravatar.com">gravatar.com</a>.</p>
-		</div>
+			<div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		        Deleted the question successfully    </div>
+						
+	<div class="row">
 		<div class="col-md-9">
-			<form action="/user/274/profile" method="post">
-				<input type="hidden" name="_token" value="ChLw9BD5Mmig9wZp57qbdoNmM4dxO1Zxb1t3zoyE">
-				<div class="form-group">
-					<label>Name</label>
-					<input type="text" class="form-control" name="name" value="Jeremie O&#039;Kon MD" required>
-				</div>
-				<div class="form-group">
-					<label>Bio</label>
-					<textarea name="bio" class="form-control" required>Labore autem et delectus libero magni aperiam. Ut error omnis similique expedita est qui. Dolor voluptas necessitatibus aut sint rerum deserunt. Consequatur placeat aliquam autem dicta est quasi. Provident vel ut cum dicta explicabo.</textarea>
-				</div>
-
-				<div class="form-group">
-					<button class="btn btn-primary btn-sm">Save</button>
-				</div>
-			</form>
+			<div class="well">
+	<h1 class="intro-title">AnswersVid</h1>
+	</div>			<form id="search_form" v-on="submit: search">
+	<div class="form-group">
+		<input type="search" name="query" class="form-control input-bg" placeholder="Search for questions..." v-model="searchInput">
+	</div>
+</form>
+			<ul class="list-group" id="questions-list">
+									<li class="list-group-item question-item">
+	<div class="row">
+		<div class="col-md-12">
+			<h4 class="list-group-item-heading" style="font-weight: bold">
+				<a href="/questions/my-awesome-question">My Awesome question</a>
+			</h4>
+			<p>this is my *awesome* question description</p>
+			<div class="question-tags">
+							</div>
 		</div>
 	</div>
+</li>
+								
+			</ul>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+
 		</div>
 
 		<footer class="footer text-center">

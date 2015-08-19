@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: answersvidtesting
 -- ------------------------------------------------------
--- Server version	5.5.43-0ubuntu0.14.04.1
+-- Server version	5.5.44-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -120,7 +120,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_06_28_095046_create_questions_table',1),('2015_06_28_164224_create_posts_table',1),('2015_06_30_091533_create_comments_table',1),('2015_06_30_141534_create_tags_table',1),('2015_07_02_052542_create_views_table',1),('2015_07_02_091135_drop_views_column_from_posts_table',1),('2015_07_02_112053_create_votes_table',1),('2015_07_04_114553_add_columns_in_posts_table_for_answers',1),('2015_07_04_125802_create_answers_table',1),('2015_07_04_165315_remove_views_column_from_posts_table',1),('2015_07_05_063326_add_user_id_column_in_answers_table',1),('2015_07_06_093414_add_is_answer_field_in_comments_table',1),('2015_07_07_074600_drop_old_comments_table',1),('2015_07_07_075140_create_new_comments_table',1),('2015_07_16_074824_update_answers_table_exclude_website_etc',1),('2015_07_20_145520_create_jobs_table',1);
+INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_06_28_095046_create_questions_table',1),('2015_06_28_164224_create_posts_table',1),('2015_06_30_091533_create_comments_table',1),('2015_06_30_141534_create_tags_table',1),('2015_07_02_052542_create_views_table',1),('2015_07_02_091135_drop_views_column_from_posts_table',1),('2015_07_02_112053_create_votes_table',1),('2015_07_04_114553_add_columns_in_posts_table_for_answers',1),('2015_07_04_125802_create_answers_table',1),('2015_07_04_165315_remove_views_column_from_posts_table',1),('2015_07_05_063326_add_user_id_column_in_answers_table',1),('2015_07_06_093414_add_is_answer_field_in_comments_table',1),('2015_07_07_074600_drop_old_comments_table',1),('2015_07_07_075140_create_new_comments_table',1),('2015_07_16_074824_update_answers_table_exclude_website_etc',1),('2015_07_20_145520_create_jobs_table',1),('2015_08_13_093931_add_bio_field_to_the_users_table',2),('2015_08_16_064423_add_confirmation_columns_in_users_table',3),('2015_08_18_101414_add_video_url_column_to_posts_table',4);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,10 +191,11 @@ CREATE TABLE `posts` (
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `video_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `posts_title_unique` (`title`),
   UNIQUE KEY `posts_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,6 +204,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES (2,'My Awesome question','this is my *awesome* question description','my-awesome-question',2,0,'question','2015-08-14 08:31:40','2015-08-14 08:31:40',NULL);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,9 +284,12 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `bio` text COLLATE utf8_unicode_ci NOT NULL,
+  `confirmed` tinyint(1) NOT NULL DEFAULT '0',
+  `confirmation_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,7 +298,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'John Doe','john@example.com','$2y$10$rSQaQN6R79OffaDaTFFAKub7gNrJ9fsWbKTn5gGuQ5Ln5fMEaOsOq',0,NULL,'2015-08-09 14:43:32','2015-08-09 14:43:32');
+INSERT INTO `users` VALUES (2,'John Doe','john@example.com','$2y$10$rSQaQN6R79OffaDaTFFAKub7gNrJ9fsWbKTn5gGuQ5Ln5fMEaOsOq',0,NULL,'2015-08-09 14:43:32','2015-08-09 14:43:32','',0,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,4 +365,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-10  0:53:07
+-- Dump completed on 2015-08-18 15:16:37

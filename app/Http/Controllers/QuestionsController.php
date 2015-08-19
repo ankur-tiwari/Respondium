@@ -57,7 +57,7 @@ class QuestionsController extends Controller
     public function store(StoreQuestionRequest $request)
     {
         $question = $this->dispatch(
-            new StoreQuestionCommand($request->title, $request->description, $this->auth->user()->id, $request->tags)
+            new StoreQuestionCommand($request->title, $request->description, $this->auth->user()->id, $request->tags, $request->video_url)
         );
 
         Alert::success('Your question was posted successfully.');
@@ -100,6 +100,18 @@ class QuestionsController extends Controller
         Alert::success('You have successfully updated your question');
 
         return redirect('/questions/' . $slug);
+    }
+
+    public function destroy($slug)
+    {
+       $deleted = $this->questionRepo->deleteBySlugIfAuthored($slug, $this->auth->user()->id);
+
+       if ($deleted) {
+            Alert::success('Deleted the question successfully');
+            return redirect('/');
+       }
+
+       return;
     }
 
     public function search($query, Request $request, Search $search)

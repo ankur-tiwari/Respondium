@@ -15,4 +15,8 @@ interface QuestionInterface
 	public function findByIds($ids);
 
 	public function updateBySlug($slug, $updates=[]);
+
+	public function deleteBySlug($slug);
+
+	public function deleteBySlugIfAuthored($slug, $userId);
 }

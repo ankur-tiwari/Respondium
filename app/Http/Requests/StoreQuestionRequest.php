@@ -25,7 +25,8 @@ class StoreQuestionRequest extends Request
     {
         return [
             'title'         => 'required|min:5|unique:posts',
-            'description'   => 'required|min:10'
+            'description'   => 'required|min:10',
+            'video_url'     => 'url|video_urls_for_websites:youtube.com,dailymotion.com,vimeo.com',
         ];
     }
 }

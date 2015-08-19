@@ -20,7 +20,7 @@ class StoreQuestionCommand extends Job implements SelfHandling
 
     public $tagIds;
 
-    public function __construct($title, $description, $userId, $tagIds=[])
+    public function __construct($title, $description, $userId, $tagIds=[], $videoUrl)
     {
         $this->title = $title;
 
@@ -29,6 +29,8 @@ class StoreQuestionCommand extends Job implements SelfHandling
         $this->userId = $userId;
 
         $this->tagIds = $tagIds;
+
+        $this->videoUrl = $videoUrl;
     }
 
     /**
@@ -49,6 +51,8 @@ class StoreQuestionCommand extends Job implements SelfHandling
         $question->type = 'question';
 
         $question->user_id = $this->userId;
+
+        $question->video_url = $this->videoUrl ?: null;
 
         $question->save();
 

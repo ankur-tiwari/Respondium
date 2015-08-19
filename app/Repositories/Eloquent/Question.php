@@ -67,4 +67,20 @@ class Question implements QuestionInterface
 
 		return $question;
 	}
+
+	public function deleteBySlug($slug)
+	{
+		return $this->getBySlug($slug)->delete();
+	}
+
+	public function deleteBySlugIfAuthored($slug, $userId)
+	{
+		$question = $this->getBySlug($slug);
+
+		if ( $question->user_id === $userId ) {
+			return $question->delete();
+		}
+
+		return false;
+	}
 }

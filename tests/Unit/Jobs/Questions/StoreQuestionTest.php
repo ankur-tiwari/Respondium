@@ -25,13 +25,14 @@ class StoreTest extends TestCase
 			'title'			=> 'My Question Title',
 			'description'	=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
 			'userId'		=> $user->id,
-			'tagIds'		=> $tagIds
+			'tagIds'		=> $tagIds,
+			'video_url' 	=> 'https://vimeo.com/135486928',
 		];
 
 		$this->expectsEvents(QuestionWasCreated::class);
 
 		$newQuestion = $this->dispatch(
-			new StoreQuestionCommand($dummyQuestionToCreate['title'], $dummyQuestionToCreate['description'], $dummyQuestionToCreate['userId'], $dummyQuestionToCreate['tagIds'])
+			new StoreQuestionCommand($dummyQuestionToCreate['title'], $dummyQuestionToCreate['description'], $dummyQuestionToCreate['userId'], $dummyQuestionToCreate['tagIds'], $dummyQuestionToCreate['video_url'])
 		);
 
 		$this->seeInDatabase('posts', $newQuestion->toArray());

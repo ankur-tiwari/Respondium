@@ -28,6 +28,10 @@ Route::group(['as' => 'question::'], function () {
 	Route::put('/questions/{slug}', [
 		'uses' => 'QuestionsController@update'
 	]);
+
+	Route::delete('/questions/{slug}', [
+		'uses' => 'QuestionsController@destroy'
+	]);
 });
 
 Route::group(['as' => 'answer::'], function () {

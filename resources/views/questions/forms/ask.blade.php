@@ -13,6 +13,11 @@
 	</div>
 
 	<div class="form-group">
+		<label>Video Url</label>
+		<input type="text" class="form-control" name="video_url">
+	</div>
+
+	<div class="form-group">
 		<label>Tags</label>
 		<select data-placeholder="Choose tags" name="tags[]" id="tags_select_box" class="form-control" multiple="" placeholder="Select tags">
 			@foreach($tags as $tagValue => $tagName)

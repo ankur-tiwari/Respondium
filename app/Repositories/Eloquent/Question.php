@@ -4,35 +4,37 @@ namespace App\Repositories\Eloquent;
 
 use App\Tag;
 use App\Vote;
-use App\Post;
+use App\Question as QuestionModel;
 use App\View;
-use App\PostTagPivot;
+use App\QuestionTagPivot;
 use App\Repositories\QuestionInterface;
 
 class Question implements QuestionInterface
 {
-	public function __construct(Post $post)
+	protected $question;
+
+	public function __construct(QuestionModel $question)
 	{
-		$this->post = $post;
+		$this->question = $question;
 	}
 
 	public function getMainFeed()
 	{
-		return $this->post->latest()->paginate(10);
+		return $this->question->latest()->paginate(10);
 	}
 
 	public function getForTag($tagName)
 	{
 		$tagId = Tag::where('name', $tagName)->firstOrFail()->id;
 
-		$postIds = PostTagPivot::where('tag_id', $tagId)->get()->lists('post_id')->toArray();
+		$postIds = QuestionTagPivot::where('tag_id', $tagId)->get()->lists('post_id')->toArray();
 
-		return $this->post->whereIn('id', $postIds)->latest()->paginate(10);
+		return $this->question->whereIn('id', $postIds)->latest()->paginate(10);
 	}
 
 	public function getBySlug($slug)
 	{
-		return $this->post->where('slug', $slug)->with('comments')->with([
+		return $this->question->where('slug', $slug)->with('comments')->with([
 			'answers' => function($query) {
 			 	$query->with('comments');
 			}
@@ -50,12 +52,12 @@ class Question implements QuestionInterface
 
 	public function findByIds($ids)
 	{
-		return $this->post->whereIn('id', $ids)->latest()->paginate(10);
+		return $this->question->whereIn('id', $ids)->latest()->paginate(10);
 	}
 
 	public function updateBySlug($slug, $updates=[])
 	{
-		$question = $this->post->where('slug', $slug)->firstOrFail();
+		$question = $this->question->where('slug', $slug)->firstOrFail();
 
 		$question->title = $updates['title'];
 

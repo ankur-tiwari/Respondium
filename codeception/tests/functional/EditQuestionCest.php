@@ -1,5 +1,6 @@
 <?php
-use App\Post;
+
+use App\Question;
 use App\User;
 use \FunctionalTester;
 
@@ -20,7 +21,7 @@ class EditQuestionCest
         $I->wantTo('update my existing question');
 
         $user = factory(User::class)->create();
-        $question = factory(Post::class)->create([
+        $question = factory(Question::class)->create([
             'user_id' => $user->id
         ]);
 
@@ -38,7 +39,7 @@ class EditQuestionCest
         $I->see('You have successfully updated your question');
         $I->see('My Updated Title');
 
-        $I->seeRecord('posts', [
+        $I->seeRecord('questions', [
             'id' => $question->id,
             'user_id' => $user->id,
             'title' => 'My Updated Title',
@@ -53,7 +54,7 @@ class EditQuestionCest
 
         $user = factory(User::class)->create();
         $unAuthorizedUser = factory(User::class)->create();
-        $question = factory(Post::class)->create([
+        $question = factory(Question::class)->create([
             'user_id' => $user->id
         ]);
 

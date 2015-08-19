@@ -24,7 +24,7 @@ class StoreQuestionRequest extends Request
     public function rules()
     {
         return [
-            'title'         => 'required|min:5|unique:posts',
+            'title'         => 'required|min:5|unique:questions',
             'description'   => 'required|min:10',
             'video_url'     => 'url|video_urls_for_websites:youtube.com,dailymotion.com,vimeo.com',
         ];

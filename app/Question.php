@@ -7,13 +7,11 @@ use App\View;
 use Illuminate\Database\Eloquent\Model;
 use App\Search\Traits\SearchableModel;
 
-class Post extends Model
+class Question extends Model
 {
 	protected $fillable = [
 		'id', 'title', 'description', 'slug'
 	];
-
-    protected static $indexName = 'questions';
 
     public function user()
     {

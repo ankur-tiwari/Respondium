@@ -10,9 +10,9 @@ class Answer extends Model
 		'description', 'video_url', 'user_id'
 	];
 
-	public function post()
+	public function questions()
 	{
-		return $this->belongsTo('App\Post');
+		return $this->belongsTo('App\Question');
 	}
 
 	public function user()

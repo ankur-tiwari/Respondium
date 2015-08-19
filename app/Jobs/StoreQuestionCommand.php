@@ -2,13 +2,13 @@
 
 namespace App\Jobs;
 
-use Event;
-use App\Post;
-use App\Jobs\Job;
-use Illuminate\Support\Str;
 use App\Events\QuestionWasCreated;
-use Illuminate\Support\Facades\Auth;
+use App\Jobs\Job;
+use App\Question;
+use Event;
 use Illuminate\Contracts\Bus\SelfHandling;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class StoreQuestionCommand extends Job implements SelfHandling
 {
@@ -40,7 +40,7 @@ class StoreQuestionCommand extends Job implements SelfHandling
      */
     public function handle()
     {
-        $question = new Post([
+        $question = new Question([
             'title'         => $this->title,
             'description'   => $this->description,
             'slug'          => Str::slug($this->title)
@@ -48,15 +48,13 @@ class StoreQuestionCommand extends Job implements SelfHandling
 
         $question->user_id = $this->userId;
 
-        $question->type = 'question';
-
         $question->user_id = $this->userId;
 
         $question->video_url = $this->videoUrl ?: null;
 
         $question->save();
 
-        $question->tags()->sync($this->tagIds);
+        $question->tags()->sync($this->tagIds ?: []);
 
         Event::fire(
             new QuestionWasCreated($question)

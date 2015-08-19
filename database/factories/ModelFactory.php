@@ -17,7 +17,7 @@ $factory->define(App\Tag::class, function ($faker) {
 });
 
 
-$factory->define(App\Post::class, function($faker) {
+$factory->define(App\Question::class, function($faker) {
 	$sentence = $faker->sentence;
 	return [
 		'title'			=> $sentence,

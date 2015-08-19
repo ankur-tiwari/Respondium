@@ -26,10 +26,10 @@ CREATE TABLE `answers` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `video_url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `post_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `user_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -120,7 +120,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_06_28_095046_create_questions_table',1),('2015_06_28_164224_create_posts_table',1),('2015_06_30_091533_create_comments_table',1),('2015_06_30_141534_create_tags_table',1),('2015_07_02_052542_create_views_table',1),('2015_07_02_091135_drop_views_column_from_posts_table',1),('2015_07_02_112053_create_votes_table',1),('2015_07_04_114553_add_columns_in_posts_table_for_answers',1),('2015_07_04_125802_create_answers_table',1),('2015_07_04_165315_remove_views_column_from_posts_table',1),('2015_07_05_063326_add_user_id_column_in_answers_table',1),('2015_07_06_093414_add_is_answer_field_in_comments_table',1),('2015_07_07_074600_drop_old_comments_table',1),('2015_07_07_075140_create_new_comments_table',1),('2015_07_16_074824_update_answers_table_exclude_website_etc',1),('2015_07_20_145520_create_jobs_table',1),('2015_08_13_093931_add_bio_field_to_the_users_table',2),('2015_08_16_064423_add_confirmation_columns_in_users_table',3),('2015_08_18_101414_add_video_url_column_to_posts_table',4);
+INSERT INTO `migrations` VALUES ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1),('2015_06_28_095046_create_questions_table',1),('2015_06_28_164224_create_posts_table',1),('2015_06_30_091533_create_comments_table',1),('2015_06_30_141534_create_tags_table',1),('2015_07_02_052542_create_views_table',1),('2015_07_02_091135_drop_views_column_from_posts_table',1),('2015_07_02_112053_create_votes_table',1),('2015_07_04_114553_add_columns_in_posts_table_for_answers',1),('2015_07_04_125802_create_answers_table',1),('2015_07_04_165315_remove_views_column_from_posts_table',1),('2015_07_05_063326_add_user_id_column_in_answers_table',1),('2015_07_06_093414_add_is_answer_field_in_comments_table',1),('2015_07_07_074600_drop_old_comments_table',1),('2015_07_07_075140_create_new_comments_table',1),('2015_07_16_074824_update_answers_table_exclude_website_etc',1),('2015_07_20_145520_create_jobs_table',1),('2015_08_13_093931_add_bio_field_to_the_users_table',1),('2015_08_16_064423_add_confirmation_columns_in_users_table',1),('2015_08_18_101414_add_video_url_column_to_posts_table',1),('2015_08_19_171905_rename_posts_to_questions',1),('2015_08_19_172825_rename_post_tag_to_question_tag',1),('2015_08_19_180130_drop_question_tag_table',1),('2015_08_19_180359_create_question_tag_table_again',1),('2015_08_19_181715_update_post_id_to_question_id_in_answers_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,62 +150,27 @@ LOCK TABLES `password_resets` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `post_tag`
+-- Table structure for table `question_tag`
 --
 
-DROP TABLE IF EXISTS `post_tag`;
+DROP TABLE IF EXISTS `question_tag`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `post_tag` (
-  `post_id` int(10) unsigned NOT NULL,
+CREATE TABLE `question_tag` (
+  `question_id` int(10) unsigned NOT NULL,
   `tag_id` int(10) unsigned NOT NULL,
-  KEY `post_tag_post_id_index` (`post_id`),
-  KEY `post_tag_tag_id_index` (`tag_id`)
+  KEY `question_tag_question_id_index` (`question_id`),
+  KEY `question_tag_tag_id_index` (`tag_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `post_tag`
+-- Dumping data for table `question_tag`
 --
 
-LOCK TABLES `post_tag` WRITE;
-/*!40000 ALTER TABLE `post_tag` DISABLE KEYS */;
-INSERT INTO `post_tag` VALUES (1,2),(1,1);
-/*!40000 ALTER TABLE `post_tag` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `posts`
---
-
-DROP TABLE IF EXISTS `posts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `posts` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `votes` int(11) NOT NULL,
-  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `video_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `posts_title_unique` (`title`),
-  UNIQUE KEY `posts_slug_unique` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `posts`
---
-
-LOCK TABLES `posts` WRITE;
-/*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (2,'My Awesome question','this is my *awesome* question description','my-awesome-question',2,0,'question','2015-08-14 08:31:40','2015-08-14 08:31:40',NULL);
-/*!40000 ALTER TABLE `posts` ENABLE KEYS */;
+LOCK TABLES `question_tag` WRITE;
+/*!40000 ALTER TABLE `question_tag` DISABLE KEYS */;
+/*!40000 ALTER TABLE `question_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -222,14 +187,14 @@ CREATE TABLE `questions` (
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(11) NOT NULL,
   `votes` int(11) NOT NULL,
-  `answers` int(11) NOT NULL,
-  `views` int(11) NOT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `video_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `questions_title_unique` (`title`),
-  UNIQUE KEY `questions_slug_unique` (`slug`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  UNIQUE KEY `posts_title_unique` (`title`),
+  UNIQUE KEY `posts_slug_unique` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +220,7 @@ CREATE TABLE `tags` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   UNIQUE KEY `tags_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,7 +229,6 @@ CREATE TABLE `tags` (
 
 LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-INSERT INTO `tags` VALUES (1,'html','2015-08-09 14:36:52','2015-08-09 14:36:52'),(2,'css','2015-08-09 14:38:14','2015-08-09 14:38:14'),(3,'javascript','2015-08-09 14:38:23','2015-08-09 14:38:23'),(4,'php','2015-08-09 14:38:35','2015-08-09 14:38:35');
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,7 +253,7 @@ CREATE TABLE `users` (
   `confirmation_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -298,7 +262,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'John Doe','john@example.com','$2y$10$rSQaQN6R79OffaDaTFFAKub7gNrJ9fsWbKTn5gGuQ5Ln5fMEaOsOq',0,NULL,'2015-08-09 14:43:32','2015-08-09 14:43:32','',0,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,7 +279,7 @@ CREATE TABLE `views` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -325,7 +288,6 @@ CREATE TABLE `views` (
 
 LOCK TABLES `views` WRITE;
 /*!40000 ALTER TABLE `views` DISABLE KEYS */;
-INSERT INTO `views` VALUES (1,'127.0.0.1',1,'2015-08-09 14:43:34','2015-08-09 14:43:34');
 /*!40000 ALTER TABLE `views` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -365,4 +327,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-08-18 15:16:37
+-- Dump completed on 2015-08-19 23:59:36

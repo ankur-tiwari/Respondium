@@ -10,7 +10,6 @@ use App\Http\Requests;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Jobs\StoreQuestionCommand;
 use App\Jobs\StoreViewCommand;
-use App\Post;
 use App\Repositories\QuestionInterface as QuestionRepository;
 use App\Repositories\TagInterface as TagRepository;
 use App\Tag;

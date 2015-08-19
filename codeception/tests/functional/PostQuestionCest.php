@@ -1,5 +1,5 @@
 <?php
-use App\Post;
+use App\Question;
 use App\User;
 use \FunctionalTester;
 
@@ -23,7 +23,7 @@ class PostQuestionCest
         $I->amOnPage('/');
         $I->click('Ask');
 
-        $question = factory(Post::class)->make([
+        $question = factory(Question::class)->make([
             'title' => 'My Question Title',
             'description' => 'This is the **question** description.',
             'video_url' => 'https://vimeo.com/135486928'
@@ -39,7 +39,7 @@ class PostQuestionCest
         $I->see('My Question Title');
         $I->see('This is the <strong>question</strong> description.');
 
-        $I->seeRecord('posts', [
+        $I->seeRecord('questions', [
             'title' => 'My Question Title',
             'video_url' => 'https://vimeo.com/135486928'
         ]);

@@ -1,6 +1,6 @@
 <?php
 
-use App\Post;
+use App\Question;
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -15,7 +15,7 @@ class QuestionsTest extends TestCase
     {
     	$user = $this->registeredUser();
 
-    	$questions = factory(Post::class, 2)->create([
+    	$questions = factory(Question::class, 2)->create([
     		'user_id' => $user->id
     	]);
 

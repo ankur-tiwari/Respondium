@@ -1,7 +1,7 @@
 <?php
 
 use App\Jobs\Comments\Store;
-use App\Post;
+use App\Question;
 use App\User;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -17,7 +17,7 @@ class StoreComment extends TestCase
 	public function it_creates_a_new_comment()
 	{
 		$user = factory(User::class)->create();
-		$question = factory(Post::class)->create([
+		$question = factory(Question::class)->create([
 			'user_id' => $user->id
 		]);
 		$commentBody = 'Good Comment!';
@@ -30,7 +30,7 @@ class StoreComment extends TestCase
 			'body' => $commentBody,
 			'user_id' => $user->id,
 			'commentable_id' => $question->id,
-			'commentable_type' => Post::class
+			'commentable_type' => Question::class
 		]);
 	}
 }

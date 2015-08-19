@@ -12,20 +12,20 @@ class Store extends Job implements SelfHandling
 
     protected $userId;
 
-    protected $postId;
+    protected $questionId;
 
-    public function __construct($body, $userId, $postId)
+    public function __construct($body, $userId, $questionId)
     {
         $this->body = $body;
 
         $this->userId = $userId;
 
-        $this->postId = $postId;
+        $this->questionId = $questionId;
     }
 
     public function handle(CommentRepository $repo)
     {
-        $comment = $repo->saveQuestionComment($this->body, $this->userId, $this->postId);
+        $comment = $repo->saveQuestionComment($this->body, $this->userId, $this->questionId);
 
         return $comment;
     }

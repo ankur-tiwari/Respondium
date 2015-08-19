@@ -5,6 +5,11 @@ class AskQuestionCest
 {
     public function _before(SeleniumTester $I)
     {
+        $app = require __DIR__.'/../../../bootstrap/app.php';
+
+        $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+
+        return $app;
     }
 
     public function _after(SeleniumTester $I)
@@ -14,6 +19,13 @@ class AskQuestionCest
     // tests
     public function askAQuestion(SeleniumTester $I)
     {
+        $I->haveInDatabase('users', [
+            'email' => 'john@example.com',
+            'password' => bcrypt('secret'),
+            'confirmed' => '1',
+            'name' => 'John Doe',
+        ]);
+
         $I->amOnPage('/');
 
         $I->click('Sign in');

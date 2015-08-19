@@ -11,9 +11,9 @@ class User implements UserInterface
 {
 	public function getForProfile($id)
 	{
-		$user = UserModel::where('id', $id)->with('posts')->with([
+		$user = UserModel::where('id', $id)->with('questions')->with([
 			'answers' => function($query) {
-				$query->with('post')->get();
+				$query->with('questions')->get();
 			}
 		])->firstOrFail();
 

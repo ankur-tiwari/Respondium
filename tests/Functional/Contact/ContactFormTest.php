@@ -11,12 +11,12 @@ class ContactFormTest extends TestCase
 	/** @test */
 	public function it_sends_the_contact_message()
 	{
-		$this   ->visit('/')
-				->click('Contact Us')
-				->seePageIs('/contact-us')
-				->submitContactForm()
-				->seePageIs('/contact-us')
-				->see('Thank you for contacting us. We will respond as soon as we could!');
+		$this->visit('/')
+			->click('Contact Us')
+			->seePageIs('/contact-us')
+			->submitContactForm()
+			->seePageIs('/contact-us')
+			->see('Thank you for contacting us. We will respond as soon as we could!');
 	}
 
 	/** @test */
@@ -27,11 +27,11 @@ class ContactFormTest extends TestCase
 		$user = $this->registeredUser();
 
 		$this
-				->actingAs($user)
-				->visit('/')
-				->click('Contact Us')
-				->seePageIs('/contact-us')
-				->see($user->email)
-				->see($user->name);
+			->actingAs($user)
+			->visit('/')
+			->click('Contact Us')
+			->seePageIs('/contact-us')
+			->see($user->email)
+			->see($user->name);
 	}
 }

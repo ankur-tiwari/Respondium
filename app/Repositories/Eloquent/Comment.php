@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Post;
+use App\Question as QuestionModel;
 use App\Answer;
 use App\Comment as CommentModel;
 use App\Repositories\CommentInterface;
@@ -13,7 +13,7 @@ class Comment implements CommentInterface
 
 	protected $comment;
 
-	public function __construct(Post $post, CommentModel $comment)
+	public function __construct(QuestionModel $post, CommentModel $comment)
 	{
 		$this->post = $post;
 
@@ -22,14 +22,14 @@ class Comment implements CommentInterface
 
 	public function getByPostId($postId)
 	{
-		$comments = $this->comment->where('commentable_id', $postId)->where('commentable_type', Post::class)->with('user')->get();
+		$comments = $this->comment->where('commentable_id', $postId)->where('commentable_type', QuestionModel::class)->with('user')->get();
 
 		return $comments;
 	}
 
 	public function saveQuestionComment($body, $userId, $postId)
 	{
-		$post = Post::findOrFail($postId);
+		$post = QuestionModel::findOrFail($postId);
 
 		$comment = new CommentModel();
 

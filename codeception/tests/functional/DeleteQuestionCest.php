@@ -1,5 +1,6 @@
 <?php
-use App\Post;
+
+use App\Question;
 use App\User;
 use \FunctionalTester;
 
@@ -20,7 +21,7 @@ class DeleteQuestionCest
         $I->wantTo('delete a question that I posted');
 
         $user = factory(User::class)->create();
-        $question = factory(Post::class)->create([
+        $question = factory(Question::class)->create([
             'user_id' => $user->id
         ]);
         $I->amLoggedAs($user);
@@ -32,6 +33,6 @@ class DeleteQuestionCest
         $I->click('Delete');
 
         $I->see('Deleted the question successfully');
-        $I->dontSeeRecord('posts', $question->toArray());
+        $I->dontSeeRecord('questions', $question->toArray());
     }
 }

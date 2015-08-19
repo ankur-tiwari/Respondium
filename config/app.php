@@ -146,6 +146,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\SearchServiceProvider::class,
         App\Providers\ValidatorsServiceProvider::class,
+        App\Services\Backup\Db\ServiceProvider::class,
 
         Laravel\Socialite\SocialiteServiceProvider::class,
         Alerter\AlerterServiceProvider::class,

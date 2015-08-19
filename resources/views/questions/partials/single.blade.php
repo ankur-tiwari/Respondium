@@ -10,17 +10,10 @@
 		@endif
 
 		<div class="links-bar">
-					<form method="post" action="/questions/{{ $question->slug }}">
-						{!! csrf_field() !!}
-						<input type="hidden" name="_method" value="DELETE">
-
-						<button class="btn btn-danger btn-sm" href="/questions/{{ $question->slug }}/delete">Delete</button>
-					</form>
-
 			@if ($auth->check())
 				@if ($auth->user()->id === $question->user->id)
 					<a class="btn btn-primary btn-sm" href="/questions/{{ $question->slug }}/edit">Edit</a>
-					<form method="post" action="/questions/{{ $question->slug }}">
+					<form method="post" action="/questions/{{ $question->slug }}" class="inline">
 						{!! csrf_field() !!}
 						<input type="hidden" name="_method" value="DELETE">
 

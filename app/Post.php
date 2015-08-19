@@ -9,8 +9,6 @@ use App\Search\Traits\SearchableModel;
 
 class Post extends Model
 {
-    use SearchableModel;
-
 	protected $fillable = [
 		'id', 'title', 'description', 'slug'
 	];

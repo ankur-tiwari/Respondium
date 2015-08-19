@@ -144,7 +144,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
-        App\Providers\SearchServiceProvider::class,
         App\Providers\ValidatorsServiceProvider::class,
         App\Services\Backup\Db\ServiceProvider::class,
 

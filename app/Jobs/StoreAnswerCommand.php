@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Post;
+use App\Question;
 use App\Answer;
 use App\Jobs\Job;
 use Illuminate\Contracts\Bus\SelfHandling;
@@ -53,7 +53,7 @@ class StoreAnswerCommand extends Job implements SelfHandling
      */
     public function handle(Event $event)
     {
-        $question = Post::findOrFail($this->postId);
+        $question = Question::findOrFail($this->postId);
 
         $answer = $question->answers()->create([
             'description' => $this->description,

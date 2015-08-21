@@ -3,7 +3,7 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			@if ( ! Request::is('/'))
-				<a href="/" class="navbar-brand">AnswersVid</a>
+				<a href="/" class="navbar-brand">{{ config('app.name') }}</a>
 			@endif
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 				<span class="sr-only">Toggle navigation</span>

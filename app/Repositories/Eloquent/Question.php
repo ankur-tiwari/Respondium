@@ -27,7 +27,7 @@ class Question implements QuestionInterface
 	{
 		$tagId = Tag::where('name', $tagName)->firstOrFail()->id;
 
-		$postIds = QuestionTagPivot::where('tag_id', $tagId)->get()->lists('post_id')->toArray();
+		$postIds = QuestionTagPivot::where('tag_id', $tagId)->get()->lists('question_id')->toArray();
 
 		return $this->question->whereIn('id', $postIds)->latest()->paginate(10);
 	}

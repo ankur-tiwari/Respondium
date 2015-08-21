@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="form-group">
-		<label>Video Url</label>
+		<label>Video Url (optional)</label>
 		<input type="text" class="form-control" name="video_url">
 	</div>
 

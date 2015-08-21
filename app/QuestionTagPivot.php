@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PostTagPivot extends Model
+class QuestionTagPivot extends Model
 {
 
 	protected $table = 'question_tag';

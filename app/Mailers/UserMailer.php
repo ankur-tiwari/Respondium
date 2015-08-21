@@ -10,7 +10,7 @@ class UserMailer extends Mailer
 	public function sendWelcomeEmailTo(Mailable $user)
 	{
 		$view = 'emails.users.welcome';
-		$subject = 'Welcome to our site!';
+		$subject =  '[' . config('app.name') . '] Welcome!';
 
 		$this->sendTo($user, $view, $subject, [
 			'name' => $user->getName()

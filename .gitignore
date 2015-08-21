@@ -5,3 +5,4 @@ Homestead.yaml
 /public/video_uploads
 .env
 .env.testing
+.env.production

@@ -60,7 +60,7 @@ class AnswerVideo
 
 		$youtubeIframeSrc = 'http://www.youtube.com/embed/' . $videoId;
 
-		return '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' . $youtubeIframeSrc  . '"></iframe></div>';
+		return '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' . $youtubeIframeSrc  . '" allowfullscreen=""></iframe></div>';
 	}
 
 	public function generateForDailymotion()

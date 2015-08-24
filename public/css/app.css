@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,700italic);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,700);
 /*!
  * bootswatch v3.3.5
  * Homepage: http://bootswatch.com
@@ -6604,11 +6604,11 @@ button.toast-close-button {
 
 body {
   padding-top: 70px;
-  font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-family: Roboto, "Helvetica Neue", "Helvetica", sans-serif;
   font-weight: 300; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Lato, 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-family: Roboto, "Helvetica Neue", "Helvetica", sans-serif;
   font-weight: 300; }
 
 .btn-social.btn-lg > :first-child {

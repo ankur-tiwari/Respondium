@@ -10,6 +10,7 @@ use App\Http\Requests\StoreCommentRequest;
 use App\Jobs\StoreAnswerCommand;
 use App\Jobs\UploadVideoCommand;
 use App\Repositories\CommentInterface as CommentRepository;
+use App\Repositories\AnswerInterface as AnswerRepo;
 use Alert;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard as Auth;
@@ -70,5 +71,14 @@ class AnswersController extends Controller
 		$comment = $repo->saveAnswerComment($request->body, $this->auth->user()->id, $answerId);
 
 		return $comment;
+	}
+
+	public function destroy($id, AnswerRepo $repo)
+	{
+		$repo->deleteByIdIfAuthored($id, $this->auth->user()->id);
+
+		Alert::success('Your question was removed successfully.');
+
+		return redirect()->back();
 	}
 }

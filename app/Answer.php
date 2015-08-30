@@ -24,4 +24,11 @@ class Answer extends Model
     {
         return $this->morphMany('App\Comment', 'commentable');
     }
+
+    public function delete()
+    {
+    	Comment::where('commentable_type', self::class)->where('commentable_id', $this->id)->delete();
+
+    	return parent::delete();
+    }
 }

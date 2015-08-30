@@ -54,6 +54,10 @@ Route::group(['as' => 'answer::'], function () {
 	Route::post('/answers/{id}/comments', [
 		'uses' => 'AnswersController@storeComments'
 	]);
+
+	Route::delete('/answers/{id}', [
+		'uses' => 'AnswersController@destroy'
+	]);
 });
 
 Route::group(['as' => 'tag::'], function () {

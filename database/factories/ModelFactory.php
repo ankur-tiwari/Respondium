@@ -26,3 +26,9 @@ $factory->define(App\Question::class, function($faker) {
 		'user_id'		=> 1,
 	];
 });
+
+$factory->define(App\Answer::class, function($faker) {
+    return [
+        'description' => $faker->sentence
+    ];
+});

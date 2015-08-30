@@ -5,6 +5,6 @@
 	php artisan backup:db
 	php artisan down
 	git pull
-	composer update
+	composer install
 	php artisan up
 @endtask

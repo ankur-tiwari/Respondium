@@ -12,15 +12,17 @@
 					{{-- TODO: Change the messy generator class. It's all messed up. --}}
 					{!! $videoGenerator->generate($answer->video_url) !!}
 					<br>
-					@if ($auth->user()->id === $answer->user_id)
-					<div class="links-bar">
-						<form method="post" action="/answers/{{ $answer->id }}" class="inline">
-							{!! csrf_field() !!}
-							<input type="hidden" name="_method" value="DELETE">
+					@if($auth->check())
+						@if ($auth->user()->id === $answer->user_id)
+						<div class="links-bar">
+							<form method="post" action="/answers/{{ $answer->id }}" class="inline">
+								{!! csrf_field() !!}
+								<input type="hidden" name="_method" value="DELETE">
 
-							<button class="btn btn-danger btn-sm">Delete</button>
-						</form>
-					</div>
+								<button class="btn btn-danger btn-sm">Delete</button>
+							</form>
+						</div>
+						@endif
 					@endif
 				</div>
 			</div>

@@ -9,6 +9,12 @@
 			{!! $videoGenerator->generate($question->video_url) !!}
 		@endif
 
+		<div class="question-tags">
+			@foreach($question->tags as $tag)
+				<a href="/tagged/{{ $tag->name }}" class="label label-primary">{{ $tag->name }}</a>
+			@endforeach
+		</div>
+
 		<div class="links-bar">
 			@if ($auth->check())
 				@if ($auth->user()->id === $question->user->id)

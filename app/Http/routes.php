@@ -61,8 +61,20 @@ Route::group(['as' => 'answer::'], function () {
 });
 
 Route::group(['as' => 'tag::'], function () {
+	Route::get('/tags', [
+		'uses' => 'TagsController@index'
+	]);
+
 	Route::get('/tagged/{tag}', [
 		'uses' => 'TagsController@show'
+	]);
+
+	Route::get('/tags/create', [
+		'uses' => 'TagsController@create'
+	]);
+
+	Route::post('/tags', [
+		'uses' => 'TagsController@store'
 	]);
 });
 

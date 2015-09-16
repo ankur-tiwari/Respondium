@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Alert;
-use App\Contracts\Search;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Authenticate;
 use App\Http\Requests;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Jobs\StoreQuestionCommand;
 use App\Jobs\StoreViewCommand;
+use App\Question;
 use App\Repositories\QuestionInterface as QuestionRepository;
 use App\Repositories\TagInterface as TagRepository;
+use App\Services\Search\SearchInterface;
 use App\Tag;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
@@ -113,11 +114,11 @@ class QuestionsController extends Controller
        return;
     }
 
-    public function search($query, Request $request, Search $search)
+    public function search($query, SearchInterface $search, Question $question)
     {
-        $ids = $search->getIds('questions', $query);
-
-        $results = $this->questionsRepo->findByIds($ids);
+        $results = $search
+            ->model($question)
+            ->withKeyword($query);
 
         return view('questions.search', compact('results'));
     }

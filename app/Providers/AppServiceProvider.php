@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App;
+use App\Services\Search\Eloquent;
+use App\Services\Search\SearchInterface;
 use Config;
-use Request;
 use Illuminate\Support\ServiceProvider;
+use Request;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +32,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Bind the search interface.
+        $this->app->bind(
+            SearchInterface::class,
+            Eloquent::class
+        );
     }
 
     protected function composerTitleForViews()

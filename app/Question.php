@@ -2,12 +2,12 @@
 
 namespace App;
 
-use App\Vote;
+use App\Services\Search\Searchable;
 use App\View;
+use App\Vote;
 use Illuminate\Database\Eloquent\Model;
-use App\Search\Traits\SearchableModel;
 
-class Question extends Model
+class Question extends Model implements Searchable
 {
 	protected $fillable = [
 		'id', 'title', 'description', 'slug'
@@ -50,5 +50,10 @@ class Question extends Model
     public function answers()
     {
         return $this->hasMany('App\Answer');
+    }
+
+    public function search($keyword)
+    {
+        return self::where('title', 'LIKE', '%' . $keyword . '%')->orWhere('description', 'LIKE', '%' . $keyword . '%')->latest()->paginate(10);
     }
 }

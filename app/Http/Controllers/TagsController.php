@@ -26,11 +26,13 @@ class TagsController extends Controller
         return view('tags.index', compact('tags'));
     }
 
-    public function show($tagName, QuestionRepository $questionRepo)
+    public function show($tagName, QuestionRepository $questionRepo, TagInterface $tagsRepo)
     {
         $questions = $questionRepo->getForTag($tagName);
 
-        return view('questions.index', compact('questions'));
+        $tags = $tagsRepo->getAll();
+
+        return view('questions.index', compact('questions', 'tags'));
     }
 
     public function create()

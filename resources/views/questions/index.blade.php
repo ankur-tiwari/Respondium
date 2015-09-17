@@ -16,7 +16,7 @@
 		<div class="col-md-3 sidebar-tags">
 			<h2>All Tags</h2>
 			@foreach($tags as $tag)
-				<a href="/tags/{{ $tag }}" class="btn btn-default">{{ $tag }}</a>
+				<a href="/tagged/{{ $tag }}" class="btn btn-default">{{ $tag }}</a>
 			@endforeach
 		</div>
 	</div>

@@ -7,7 +7,7 @@
 			<p>{{ str_limit($question->description, 400) }}</p>
 			<div class="question-tags">
 				@foreach($question->tags as $tag)
-					<a href="/tagged/{{ $tag->name }}" class="label label-primary">{{ $tag->name }}</a>
+					<a href="/tagged/{{ $tag->name }}" class="label label-default">{{ $tag->name }}</a>
 				@endforeach
 			</div>
 		</div>

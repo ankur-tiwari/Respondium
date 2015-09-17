@@ -8,7 +8,6 @@
 				@foreach($tags as $tag)
 					<a href="#" class="list-group-item">{{ $tag->name }}</a>
 				@endforeach
-
 			</div>
 		</div>
 	</div>

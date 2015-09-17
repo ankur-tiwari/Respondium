@@ -32,7 +32,7 @@ class TagsController extends Controller
 
         $tags = $tagsRepo->getAll();
 
-        return view('questions.index', compact('questions', 'tags'));
+        return view('tags.questions.index', compact('questions', 'tags'));
     }
 
     public function create()

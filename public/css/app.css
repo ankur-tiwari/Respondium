@@ -6662,6 +6662,9 @@ h1, h2, h3, h4, h5, h6 {
 .links-bar {
   margin: 5px 0; }
 
+.sidebar-tags a {
+  margin-top: 10px; }
+
 .footer {
   padding: 30px 0;
   margin-top: 10px;

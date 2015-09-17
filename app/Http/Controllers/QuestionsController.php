@@ -42,7 +42,9 @@ class QuestionsController extends Controller
     {
         $questions = $questionRepo->getMainFeed();
 
-        return view('questions.index', compact('questions'))
+        $tags = $this->tagRepo->getAll();
+
+        return view('questions.index', compact('questions', 'tags'))
             ->with('page', 'Home')
             ->with('title', 'Home');
     }

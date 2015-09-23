@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-9">
 			@include('questions.partials.intro')
-			@include('questions.forms.search')
+			{{-- @include('questions.forms.search') --}}
 			<ul class="list-group" id="questions-list">
 				@foreach($questions as $question)
 					@include('questions.partials.list')

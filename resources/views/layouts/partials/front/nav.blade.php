@@ -20,6 +20,14 @@
 				{!! nav_item('Ask', '/ask', $page) !!}
 				{!! nav_item('Contact Us', '/contact-us', $page) !!}
 			</ul>
+			<form id="search_form" v-on="submit: search" class="navbar-form navbar-left" role="search">
+			    <div class="form-group navbar-search-form-group">
+					<input type="search" name="query" class="form-control input-bg" placeholder="Search for questions..." v-model="searchInput">
+		            <div class="input-group-btn inline" style="margin-left: -10px">
+		                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+		            </div>
+			    </div>
+			</form>
 			<ul class="nav navbar-nav navbar-right">
 				@if ( ! Auth::check())
 					{!! nav_item('Sign in', '/signin', $page) !!}

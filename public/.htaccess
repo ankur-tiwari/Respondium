@@ -12,4 +12,7 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+	RewriteCond %{http_host} ^respondium.com [nc]
+	RewriteRule ^(.*)$ http://www.respondium.com/$1 [r=301,nc]
 </IfModule>

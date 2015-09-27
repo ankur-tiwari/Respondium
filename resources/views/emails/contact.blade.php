@@ -1,11 +1,9 @@
 @extends('emails.layouts.basic')
 
-@section('heading')
-	{{ $subject }}
-@stop
-
 @section('content')
-	Sir, the email came from somebody named {{ $name }}. He/She wrote: <br>
-	{{ $bodyMessage }} <br>
-	His/Her email address was {{ $email }}
+	<p>Sir somebody sent an email from the contact form on respondium.</p>
+	<p><strong>Name:</strong> {{$name}}</p>
+	<p><strong>Email:</strong> {{$email}}</p>
+	<p><strong>Subject:</strong> {{$subject}}</p>
+	<p><strong>Message:</strong> {{$bodyMessage}}</p>
 @stop

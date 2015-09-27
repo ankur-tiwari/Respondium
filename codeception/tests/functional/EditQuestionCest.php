@@ -32,7 +32,7 @@ class EditQuestionCest
         $I->click('Edit');
         $I->seeCurrentUrlEquals('/questions/' . $question->slug . '/edit');
         $I->fillField('title', 'My Updated Title');
-        $I->fillField('description', 'My Updated Description');
+        $I->fillField('textarea[name=description]', 'My Updated Description');
         $I->click('Save');
 
         $I->seeCurrentUrlEquals('/questions/' . $question->slug);

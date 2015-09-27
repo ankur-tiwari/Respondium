@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Jobs\Job;
+use App\Mailers\SupportMailer;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Mail\Mailer;
 
@@ -27,17 +28,13 @@ class SendContactFormEmail extends Job implements SelfHandling
         $this->message = $message;
     }
 
-    public function handle(Mailer $mailer)
+    public function handle(SupportMailer $mailer)
     {
-        $mailer->queue('emails.contact', [
-            'email' => $this->email,
-            'name' => $this->name,
-            'subject' => $this->subject,
-            'bodyMessage' => $this->message,
-        ], function($message) {
-            $message->to('iamfaizahmed123@gmail.com', 'Rana Faiz Ahmad');
-
-            $message->subject('AnswersVid: Contact Form Message');
-        });
+        $mailer->sendContactMessage([
+            'email'         => $this->email,
+            'name'          => $this->name,
+            'subject'       => $this->subject,
+            'bodyMessage'   => $this->message,
+        ]);
     }
 }

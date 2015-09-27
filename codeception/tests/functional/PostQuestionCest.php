@@ -30,7 +30,7 @@ class PostQuestionCest
         ]);
 
         $I->fillField('title', $question->title);
-        $I->fillField('description', $question->description);
+        $I->fillField('textarea[name=description]', $question->description);
         $I->fillField('video_url', $question->video_url);
         $I->click('Ask the question');
 

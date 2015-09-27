@@ -1,10 +1,5 @@
-@extends('emails.layouts.basic')
-
-@section('heading')
-	Welcome {{ $name }}!
-@stop
+@extends('emails.layouts.basic-with-contact-button')
 
 @section('content')
-	Welcome {{ $name }}! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, ad, quasi! Beatae vero necessitatibus dignissimos ipsam. Voluptates rerum voluptatibus veniam totam, blanditiis eligendi aliquid eaque, neque earum iusto inventore, in.!
+	Welcome to world's first Q&A community where you can ask and answer in videos. If you have something to ask, suggest or share feel free to contact us. We would absolutely love to help and assist you.
 @stop
-

@@ -126,6 +126,16 @@ p, ul, ol {
 
                         <p style="margin-top:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;line-height:1.65;font-size:16px;font-weight:normal;margin-bottom:20px;" >@yield('content')</p>
 
+                        <table style="margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-size:100%;font-family:'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;line-height:1.65;width:100% !important;border-collapse:collapse;" >
+                            <tr style="margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-size:100%;font-family:'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;line-height:1.65;" >
+                                <td align="center" style="margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-size:100%;font-family:'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;line-height:1.65;" >
+                                    <p style="margin-top:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;line-height:1.65;font-size:16px;font-weight:normal;margin-bottom:20px;" >
+                                        <a href="{{ Request::root() }}/contact-us" class="button" style="margin-top:0;margin-bottom:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-size:100%;font-family:'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;line-height:1.65;text-decoration:none;display:inline-block;color:white;background-color:#2c3e50;background-image:none;background-repeat:repeat;background-position:top left;background-attachment:scroll;border-style:solid;border-color:#2c3e50;border-width:10px 20px 8px;font-weight:bold;border-radius:4px;" >Contact Us</a>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+
                         <p style="margin-top:0;margin-right:0;margin-left:0;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;font-family:'Avenir Next', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;line-height:1.65;font-size:16px;font-weight:normal;margin-bottom:20px;" >
                           <!-- Second paragraph -->
                         </p>

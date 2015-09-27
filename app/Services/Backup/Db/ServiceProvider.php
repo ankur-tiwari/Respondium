@@ -14,7 +14,7 @@ class ServiceProvider extends IlluminateServiceProvider
     {
         $this->app->bind(
             \App\Services\Backup\Db\SaverInterface::class,
-            \App\Services\Backup\Db\Savers\File::class
+            \App\Services\Backup\Db\Savers\Email::class
         );
     }
 }

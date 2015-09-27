@@ -20,7 +20,7 @@ class UserMailer extends Mailer
 	public function sendConfirmationEmailTo(ConfirmableUser $user)
 	{
 		$view = 'emails.users.confirmation';
-		$subject = '[AnswersVid] Confirm your email';
+		$subject = '[' . config('app.name') . '] Confirm your email';
 
 		$this->sendTo($user, $view, $subject, [
 			'code' => $user->getConfirmationCode()

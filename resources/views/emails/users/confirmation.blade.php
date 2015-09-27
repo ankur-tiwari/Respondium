@@ -1,11 +1,9 @@
-@extends('emails.layouts.basic')
-
-@section('heading')
-	Welcome to our site!
-@stop
+@extends('emails.layouts.basic-with-contact-button')
 
 @section('content')
-	Thank you very much for registering. Please click at the link below to activate your account. If you have any questions feel free to ask them via <a href="{{ url('/contact-us') }}">our contact form</a>
-	<br>
-	<strong><a href="{{ url('/email/confirm/' + $code) }}">{{ $code }}</a></strong>
+	Thank you very much for registering.
+	<strong>
+		<a href="{{ Request::root() }}/email/confirm/{{$code}}">Confirm Your Email</a>
+	</strong>.
+	If you have something to ask, suggest or share, feel free to contact us. We would absolutely love to help and assist you.
 @stop

@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'iamfaizahmed123@gmail.com', 'name' => 'Rana Faiz Ahmad'],
+    'from' => ['address' => 'support@respondium.com', 'name' => 'Rana Faiz Ahmad'],
 
     /*
     |--------------------------------------------------------------------------

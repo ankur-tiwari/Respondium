@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="keywords" content="videos, questions, web development, programming, Q/A, responses, respondium">
+		<meta name="keywords" content="videos, questions, html, css, javascript, php, ruby">
 		<meta name="description", content="Respondium - Get video responses for your web development questions!">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 		@include('layouts.partials.front.title')

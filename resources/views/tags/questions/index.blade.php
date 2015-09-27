@@ -3,7 +3,6 @@
 @section('content')
 	<div class="row">
 		<div class="col-md-9">
-			@include('questions.forms.search')
 			<ul class="list-group">
 				@foreach($questions as $question)
 					@include('questions.partials.list')

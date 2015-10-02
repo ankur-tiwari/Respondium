@@ -22,8 +22,8 @@
 
 		@include('layouts.partials.front.footer')
 
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
 		<script src="/js/bundle.js"></script>
 		@yield('footer')
 

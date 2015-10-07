@@ -9,6 +9,10 @@
 		</div>
 	</form>
 
+	<br>
+	<a href="/signin" v-show="!isAuthenticated">Sign in to comment!</a>
+	<br>
+
 	<ul class="media-list">
 		<li v-repeat="comment in comments" class="media">
 			<a class="pull-left" href="#">

@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h4 class="list-group-item-heading" style="font-weight: bold">
-				<a itemprop="headline" href="/questions/{{ $question->slug }}">{{ $question->title }}</a>
+				<a href="/questions/{{ $question->slug }}"><span itemprop="headline">{{ $question->title }}</span></a>
 			</h4>
 			<p itemprop="description">{{ str_limit($question->description, 400) }}</p>
 			<div class="question-tags">

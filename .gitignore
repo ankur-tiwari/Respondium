@@ -6,3 +6,4 @@ Homestead.yaml
 .env
 .env.testing
 .env.production
+deploythedarnthing.sh

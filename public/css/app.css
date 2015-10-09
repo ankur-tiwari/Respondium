@@ -6649,7 +6649,8 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
     background: rgba(1, 1, 1, 0.5);
     display: inline-block;
-    padding: 20px; }
+    padding: 20px;
+    margin-top: -30px; }
   .homepage-hero .changing-tags {
     font-size: 5em;
     text-transform: uppercase;

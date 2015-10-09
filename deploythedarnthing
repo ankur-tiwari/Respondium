@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+git status
+git add .
+git add -u
+git commit -m 'Some Change'
+git push
+envoy run deploy

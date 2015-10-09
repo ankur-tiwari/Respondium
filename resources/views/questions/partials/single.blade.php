@@ -1,10 +1,10 @@
 @inject('auth', 'Illuminate\Contracts\Auth\Guard')
 @inject('videoGenerator', 'App\HtmlGenerators\AnswerVideo')
 
-<div class="row single-question">
+<div class="row single-question" itemscope itemtype="http://schema.org/Question">
 	<div class="col-md-12">
-		<h1 class="page-header">{{ $question->title }}</h1>
-		<p>{!! Markdown::parse($question->description); !!}</p>
+		<h1 class="page-header" itemprop="name">{{ $question->title }}</h1>
+		<p itemprop="text">{!! Markdown::parse($question->description); !!}</p>
 		@if($question->video_url)
 			{!! $videoGenerator->generate($question->video_url) !!}
 		@endif

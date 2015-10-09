@@ -8,9 +8,9 @@ require('./vendor/jquery.chosen.js');
 $('#tags_select_box').chosen();
 
 $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
 });
 
 Vue.component('comments-list', require('./components/comments-list'));
@@ -26,8 +26,20 @@ new Vue(require('./modules/search'));
 // tooltip logic
 
 $(document).ready(function () {
-  $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip();
 });
+
+// Text Loop
+
+var loopTags = $(".loop-tags");
+var quoteIndex = -1;
+
+function showNextQuote() {
+    ++quoteIndex;
+    loopTags.eq(quoteIndex % loopTags.length).fadeIn(500).delay(3000).fadeOut(500, showNextQuote);
+}
+
+showNextQuote();
 
 },{"./components/comments-list":71,"./modules/answercomment":73,"./modules/comments":74,"./modules/search":75,"./modules/votes":76,"./vendor/jquery.chosen.js":77,"./vendor/jquery.timeago.js":78,"vue":69}],2:[function(require,module,exports){
 /*!
@@ -19505,7 +19517,7 @@ module.exports = {
 };
 
 },{"./templates/commentsList.html":72,"toastr":4}],72:[function(require,module,exports){
-module.exports = '<div>\n	<form v-on="submit: addComment" v-show="isAuthenticated">\n		<div class="form-group">\n			<textarea v-model="newComment" class="form-control" placeholder="Leave a comment"></textarea>\n		</div>\n\n		<div class="form-group">\n			<button class="btn btn-default">Post Comment</button>\n		</div>\n	</form>\n\n	<br>\n	<a href="/signin" v-show="!isAuthenticated">Sign in to comment!</a>\n\n	<ul class="media-list">\n		<li v-repeat="comment in comments" class="media">\n			<a class="pull-left" href="#">\n				<img class="media-object img-circle" src="http://www.gravatar.com/avatar" alt="Avatar">\n			</a>\n			<div class="media-body well">\n				<h4 class="media-heading">{{ comment.user.name }}</h4>\n				<p>{{ comment.body }}</p>\n			</div>\n		</li>\n	</ul>\n</div>';
+module.exports = '<div>\n	<form v-on="submit: addComment" v-show="isAuthenticated">\n		<div class="form-group">\n			<textarea v-model="newComment" class="form-control" placeholder="Leave a comment"></textarea>\n		</div>\n\n		<div class="form-group">\n			<button class="btn btn-default">Post Comment</button>\n		</div>\n	</form>\n\n	<br>\n	<a href="/signin" v-show="!isAuthenticated">Sign in to comment!</a>\n	<br>\n\n	<ul class="media-list">\n		<li v-repeat="comment in comments" class="media">\n			<a class="pull-left" href="#">\n				<img class="media-object img-circle" src="http://www.gravatar.com/avatar" alt="Avatar">\n			</a>\n			<div class="media-body well">\n				<h4 class="media-heading">{{ comment.user.name }}</h4>\n				<p>{{ comment.body }}</p>\n			</div>\n		</li>\n	</ul>\n</div>';
 },{}],73:[function(require,module,exports){
 'use strict';
 

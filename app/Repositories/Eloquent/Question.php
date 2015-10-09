@@ -85,4 +85,13 @@ class Question implements QuestionInterface
 
 		return false;
 	}
+
+	public function top($howMany=10)
+	{
+		return $this->question
+			->limit(10)
+			->orderBy('created_at', 'DESC')
+			->with('user')
+			->get();
+	}
 }

@@ -1,5 +1,7 @@
 <?php
 
+Route::get('/home', 'HomeController@show');
+
 Route::group(['as' => 'question::'], function () {
 	Route::get('/', [
 		'uses'	=> 'QuestionsController@index'

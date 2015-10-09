@@ -6634,6 +6634,35 @@ h1, h2, h3, h4, h5, h6 {
 .search-choice-close {
   color: black; }
 
+.homepage-hero {
+  background-image: url("/img/table.jpg");
+  background-size: cover;
+  text-align: center;
+  padding: 120px 0;
+  margin-top: -10px; }
+  .homepage-hero * {
+    font-weight: bold;
+    text-align: center; }
+  .homepage-hero .website-tagline {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: white;
+    background: rgba(1, 1, 1, 0.5);
+    display: inline-block;
+    padding: 20px; }
+  .homepage-hero .changing-tags {
+    font-size: 5em;
+    text-transform: uppercase;
+    color: white;
+    margin: 20px 0; }
+    .homepage-hero .changing-tags a {
+      color: white; }
+  .homepage-hero .call-to-action {
+    border-radius: 0; }
+
+.loop-tags {
+  display: none; }
+
 .navbar-profile-img {
   float: left;
   position: relative;

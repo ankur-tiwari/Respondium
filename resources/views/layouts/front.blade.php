@@ -12,8 +12,8 @@
 		@yield('header')
 	</head>
 	<body>
-
 		@include('layouts.partials.front.nav')
+		@yield('content_without_container')
 		<div class="container">
 			@include('layouts.partials.front.flash')
 			@include('partials.errors')

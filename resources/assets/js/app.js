@@ -25,3 +25,18 @@ new Vue(require('./modules/search'));
 $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip();
 });
+
+// Text Loop
+
+var loopTags = $(".loop-tags");
+var quoteIndex = -1;
+
+function showNextQuote() {
+    ++quoteIndex;
+    loopTags.eq(quoteIndex % loopTags.length)
+        .fadeIn(500)
+        .delay(3000)
+        .fadeOut(500, showNextQuote);
+}
+
+showNextQuote();

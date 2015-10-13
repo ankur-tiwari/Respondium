@@ -1,6 +1,7 @@
 var Vue = require('vue');
 require('./vendor/jquery.timeago.js');
 require('./vendor/jquery.chosen.js');
+require('video.js');
 
 $('#tags_select_box').chosen();
 

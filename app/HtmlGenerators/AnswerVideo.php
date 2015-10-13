@@ -83,7 +83,11 @@ class AnswerVideo
 
 	protected function generateForLocalVideo()
 	{
-		$html = '<div align="center" class="embed-responsive embed-responsive-16by9"><video class="embed-responsive-item" controls=""><source src="'. $this->videoUrl .'" type="video/mp4"></video></div>';
+		$html = '<div align="center" class="embed-responsive embed-responsive-16by9">
+			<video id="really-cool-video" class="embed-responsive-item video-js vjs-default-skin" controls preload="auto" data-setup="{}">
+				<source src="'. $this->videoUrl .'" type="video/mp4">
+			</video>
+		';
 
 		return $html;
 	}

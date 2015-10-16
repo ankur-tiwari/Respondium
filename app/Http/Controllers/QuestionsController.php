@@ -71,7 +71,10 @@ class QuestionsController extends Controller
     {
         $question = $this->questionRepo->getBySlug($slug);
 
-        return view('questions.show', compact('question'));
+        return view('questions.show', compact('question'))
+            ->with('title', $question->title)
+            ->with('description', $question->description)
+            ->with('metaTags', implode(',', $question->tags->lists('name')->toArray()));
     }
 
     public function edit($slug)
